@@ -1,0 +1,59 @@
+<div id="teamcoveragedetail-view" data-role="view" data-title="Team Coverage Details"
+     data-layout="afterlogin"
+     data-after-show="disableBackButton" data-before-hide="enableBackButton"
+     data-model="app.teamcoverageView.teamcoverageViewModel"
+     data-bind="events: { show: onShow }">
+    <footer data-role="footer" >
+        <div class="text-center ">
+            <div class="row">
+                <div class="col-xs-12" data-bind="events: {click: onRefresh }"> 
+                        <i style="padding-top:4px!important " 
+                           class="fa fa-2x fa-refresh"></i> 
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div id="dvteamcoveragedetails" style="display:none;">
+        <div class="panel panel-custom">
+            <div class="panel-heading text-center"
+                 style="background-color:#fff!important ">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <input id="txtauocmpemployeelist" class="form-control">
+                            <span class="input-group-addon" data-bind="events: {click: fun_close_txtauocmpemployeelist }">
+                                <i class="fa fa-1-5x fa-close"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-headingcustom">
+                <div class="panel-title text-uppercase " 
+                     id="dvteamename">
+                    Team
+                </div>
+            </div>
+            <div class="panel-body">
+                <div id="chartteamlist-listview"></div>
+                <script type="text/x-kendo-tmpl" id="template-chartteamlist">
+                    <div class="text-center param">
+                        <div class="paramvalue ">
+                            #=ParameterValue #
+                        </div>
+                        <div class="paramname">
+                            #=Parameter #
+                        </div>
+                    </div>
+                </script>
+                <div id="chartbarteamcoveragedetails" style="height:340px"></div>
+            </div>
+            <div class="panel-footer">
+                <div class="text-center">
+                    <b>Data shown for peroid of last six month</b>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div> 
+</div>

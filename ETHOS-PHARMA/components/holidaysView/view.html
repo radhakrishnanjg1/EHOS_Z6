@@ -1,0 +1,81 @@
+<div id="holidays-view"
+     data-role="view" data-title="Field Holidays" data-layout="afterlogin"
+     data-model="app.holidaysView" data-show="app.holidaysView.onShow"
+     data-after-show="app.holidaysView.afterShow" class="screen">
+
+    <style> 
+        #dvholidaysummary .k-calendar .k-content {
+            text-align: center;
+        }
+
+        #dvholidaysummary .k-today {
+            background-color: #006666 !important;
+        }
+
+        #dvholidaysummary .k-state-disabled {
+            background-color: #cc4141 !important; 
+        }
+    </style>
+    <div id="dvholidaysummary" style="display:none;">
+        <div class="panel panel-custom padding0">
+            <div class="panel-heading text-center" id="dvholidayaccess" style="background-color:#fff!important ">
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-12">
+                        <input id="ddldivisionlist" class="dropdown-control"> 
+                    </div>
+                    <div class="col-xs-12 col-sm-12">
+                        <input id="ddlstatelist" class="dropdown-control">
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div data-use- id="national-holidays" style="width:100% !important"></div>
+            </div>
+            <div class="panel-headingsubcustom">
+                <div class="row">
+                    <div class="col-xs-12  ">
+                        <span id="spanmonth"></span> Holiday Details
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding0">
+                <div data-role="listview" id="holidays-listview"></div>
+                <script type="text/x-kendo-tmpl" id="template-holidays">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            #: HolidayDate #
+                        </div>
+                        <div class="col-xs-8">
+                            #: Holiday #
+                        </div>
+                    </div>
+                </script>
+            </div>
+            <div class="panel-headingsubcustom">
+                <div class="row">
+                    <div class="col-xs-12 accordion-toggle" data-toggle="collapse"
+                         data-parent="#accordion" href="#collapse1yearholidaydetails">
+                        <a style="text-decoration:none">
+                            <span id="spanyear"></span> Holiday Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="collapse1yearholidaydetails" class="panel-collapse collapse">
+                <div class="panel-body" style="padding:0">
+                    <div data-role="listview" id="yearholidays-listview"></div>
+                    <script type="text/x-kendo-tmpl" id="template-yearholidays">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                #: HolidayDate #
+                            </div>
+                            <div class="col-xs-8">
+                                #: Holiday #
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

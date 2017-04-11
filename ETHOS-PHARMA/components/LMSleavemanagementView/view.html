@@ -1,0 +1,48 @@
+<div id="LMSleavemanagementView" data-role="view" data-title="Leave Management System"
+     data-layout="afterlogin"
+     data-model="app.LMSleavemanagementView.LMSleavemanagementViewModel"
+     data-bind="events: { show: onShow }" >
+    <div id="dvleavemanagementView">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="btn btn-leave  btn-block " data-role="button"
+                             data-click="app.navigation.navigateLMSapplyleaveView">
+                            <i class="fa fa-2x fa-plus-circle"></i>
+                            <br />
+                            Apply Leave Request
+                        </div>
+                        <div class="btn btn-leave btn-block " data-role="button"
+                             data-click="app.navigation.navigateLMScancelleaveView">
+                            <i class="fa fa-2x fa-minus-circle"></i>
+                            <br />
+                            Leave Cancel  Request
+                        </div>
+                        <div class="btn btn-leave btn-block" data-role="button"
+                             data-click="app.navigation.navigateLMSleavehistoryView">
+                            <i class="fa fa-2x fa-list-alt"></i>
+                            <br />
+                            Leave History
+                        </div>
+                        <div id="dvaccess_approval">
+                            <div style="padding-top:4px"></div>
+                            <div class="btn btn-success btn-block " data-role="button"
+                                 data-click="app.navigation.navigateLMSapproveleaveView">
+                                <i class="fa fa-2x fa-plus-circle"></i><i class="fa fa-2x fa-check"></i>
+                                <br />
+                                Leave Approval
+                            </div>
+                            <div class="btn btn-success btn-block " data-role="button"
+                                 data-click="app.navigation.navigateLMSapproveleavecancelView">
+                                <i class="fa fa-2x fa-minus-circle"></i> <i class="fa fa-2x fa-check"></i>
+                                <br />
+                                Leave Cancel Approve
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

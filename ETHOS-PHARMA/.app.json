@@ -8,6 +8,14 @@
       "title": "Home View",
       "addToNavigation": true,
       "icon": "home"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "homeView1",
+      "components": [],
+      "title": "Home View",
+      "addToNavigation": true,
+      "icon": "home"
     }
   ],
   "dataProviders": [],

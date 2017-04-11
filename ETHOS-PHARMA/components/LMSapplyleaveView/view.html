@@ -1,0 +1,295 @@
+<div id="LMSapplyleaveView" data-role="view" data-title="Leave Request"
+     data-after-show="disableBackButton" data-before-hide="enableBackButton"
+     data-layout="afterlogin"
+     data-model="app.LMSapplyleaveView.LMSapplyleaveViewModel"
+     data-bind="events: { show: onShow,afterShow: afterShow }">
+    <footer data-role="footer">
+        <div class="row text-center">
+            <div data-role="button"
+                 data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </div>
+            <div data-role="button"
+                 data-click="app.navigation.navigateholidays">
+                <i class="fa fa-calendar"> </i> Holidays
+            </div>
+        </div>
+    </footer>
+    <div id="dvapplyleaveview">
+        <div class="panel panel-custom">
+            <div class="panel-headingcustom">
+                <span class="panel-title text-uppercase ">
+                    Details of event
+                </span>
+            </div>
+            <form id="form-applyleave">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group col-xs-6 col-sm-6">
+                            <label class="control-label">Type</label>
+                            <select name="ddlleavetype" id="ddlleavetype"
+                                    class="dropdown-control">
+                                <!--<option value="0" selected disabled>---Select---</option>-->
+                                <!--<option value="865">CL </option>
+                                <option value="866">SL </option>
+                                <option value="868">LTA </option>
+                                <option value="867">EL </option>
+                                <option value="869">EL ENCASHMENT</option>
+                                    <option value="2234">Ml</option>
+                                       <option value="2242">PL</option>
+                                    -->
+                            </select>
+                        </div>
+                        <div id="dveventdetailsforelencashment" style="display: none">
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <label class="control-label">No. Of Days</label>
+                                <input name="txtnodayelencash" id="txtnodayelencash" type="number" class="form-control"
+                                       onkeyup="return textinputlength(this.value, 5, this.id);" />
+                            </div>
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <label class="control-label">Eligible Days</label>
+                                <input name="txteligibledays" id="txteligibledays" type="number" class="form-control"
+                                       disabled
+                                       onkeyup="return textinputlength(this.value, 5, this.id);" />
+                            </div>
+                        </div>
+                        <div id="dvcommoneventdetails">
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <label class="control-label">Days</label>
+                                <input name="txtdays" id="txtdays" type="number" class="form-control"
+                                       disabled
+                                       onkeyup="return textinputlength(this.value, 3, this.id);" />
+                            </div>
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <label class="control-label">From</label>
+                                <input name="txtfrom" id="txtfrom"
+                                       onfocus="this.blur();"
+                                       onchange="fun_applyleave_txttochange()"
+                                       onkeydown="return false;" onkeyup="return textinputlength(this.value, 10, this.id);" />
+                            </div>
+                            <!--data-role='datepicker' data-type="date"-->
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <label class="control-label">To</label>
+                                <input name="txtto" id="txtto"
+                                       onfocus="this.blur();"
+                                       data-greaterdate-field="txtfrom"
+                                       onchange="fun_applyleave_txttochange()"
+                                       onkeydown="return false;" onkeyup="return textinputlength(this.value, 10, this.id);" />
+                            </div>
+                            <!--onfocus="keyboardClose()"-->
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <label class="control-label">Mobile Number</label>
+                                <input name="txtmobilenumber" id="txtmobilenumber" type="number"
+                                       value="9003467461" class="form-control"
+                                       onkeyup="return textinputlength(this.value, 10, this.id);" />
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12">
+                                <label class="control-label">Reason</label>
+                                <input id="txtreason" name="txtreason" type="text" class="form-control"
+                                       value="reason"
+                                       onkeyup="return textinputlength(this.value, 1000, this.id);" />
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12" id="dvaddress" style="display:none">
+                                <label class="control-label">Address</label>
+                                <input id="txtaddress" name="txtaddress" type="text" class="form-control"
+                                       value="address"
+                                       onkeyup="return textinputlength(this.value, 1000, this.id);" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="pull-right">
+                        <a class="btn btn-primary" data-role="button"
+                           data-click="app.navigation.navigateLMSleavemanagementView">
+                            Back
+                        </a>
+                        <a class="btn btn-success"
+                           data-bind="events: {click: fun_applyleavesaveleavedetails }">
+                            Save
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </form>
+            <div class="panel-headingsubcustom">
+                <span class="panel-title text-uppercase ">
+                    Available Leave Info : <span id="currentyear">2017</span>
+                </span>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-xs-6 col-sm-6">
+                        <label class="control-label">Opening Balance</label>
+                        <input id="txtopeningbalance" name="txtopeningbalance" type="number" class="form-control" disabled
+                               value="0" data-bind="value: leave.openingbalance" required
+                               onkeyup="return textinputlength(this.value, 3, this.id);" />
+                    </div>
+                    <div class="form-group col-xs-6 col-sm-6" id="dvearneddays" style="display:none">
+                        <label class="control-label">Earned Days</label>
+                        <input id="txtearneddays" name="txtearneddays" type="number" class="form-control" disabled
+                               value="0" data-bind="value: leave.earneddays" required
+                               onkeyup="return textinputlength(this.value,5, this.id);" />
+                    </div>
+                    <div class="form-group col-xs-6 col-sm-6">
+                        <label class="control-label">Availed Leave</label>
+                        <input id="txtavailedleave" name="txtavailedleave" type="number" class="form-control" disabled
+                               value="0" data-bind="value: leave.availedleave" required
+                               onkeyup="return textinputlength(this.value, 3, this.id);" />
+                    </div>
+                    <div class="form-group col-xs-6 col-sm-6">
+                        <label class="control-label">Available Balance <!--Available(Closing) Balance--></label>
+                        <input id="txtavailablebalance" name="txtavailablebalance" type="number" class="form-control" disabled
+                               value="0" data-bind="value: leave.availablebalance" required
+                               onkeyup="return textinputlength(this.value, 3, this.id);" />
+                    </div>
+                    <div class="form-group col-xs-6 col-sm-6" id="dveldays">
+                        <label class="control-label">EL Days</label>
+                        <input id="txteldays" name="txteldays" type="number" class="form-control" disabled
+                               value="0" data-bind="value: leave.eldays" required
+                               onkeyup="return textinputlength(this.value, 3, this.id);" />
+                    </div>
+                    <div class="form-group col-xs-6 col-sm-6">
+                        <label class="control-label">LOP Days</label>
+                        <input id="txtlopdays" name="txtlopdays" type="number" class="form-control" disabled
+                               value="0" data-bind="value: leave.lopdays" required
+                               onkeyup="return textinputlength(this.value, 3, this.id);" />
+                    </div>
+
+                    <div class="form-group col-xs-6 col-sm-6" id="dvpreviousltaperiod" style="display:none">
+                        <label class="control-label">Prev. LTA Period</label>
+                        <input id="txtpreviousltaperiod" name="txtpreviousltaperiod" type="text" class="form-control" disabled
+                               required
+                               onkeyup="return textinputlength(this.value,200, this.id);" />
+                    </div>
+                    <div class="form-group col-xs-6 col-sm-6" id="dvnextltaeligibility" style="display:none">
+                        <label class="control-label">Next LTA Eligibility</label>
+                        <input id="txtnextltaeligibility" name="txtnextltaeligibility" type="text" class="form-control" disabled
+                               data-bind="value: leave.nextltaeligibility" required
+                               onkeyup="return textinputlength(this.value,200, this.id);" />
+                    </div>
+                    <input type="hidden" id="hdntotalel" value="0" />
+                    <input type="hidden" ID="hdnSLdatediff" value="0" />
+                    <input type="hidden" ID="hdnisconfirmed" />
+                    <input type="hidden" ID="hdndcrdate" />
+                    <input type="hidden" ID="hdnReporting_Employee_ID" />
+
+                </div>
+            </div>
+            <div class="panel-headingsubcustom accordion-toggle" data-toggle="collapse"
+                 data-parent="#accordion" href="#collapse1normsdetails">
+                <a style="text-decoration:none">
+                    <span class="panel-title text-uppercase" id="spanleavenorms">
+                        Leave Norms
+                    </span>
+                </a>
+            </div>
+            <div id="collapse1normsdetails" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row" id="dvleavenorms">
+                        <div class="col-xs-12" id="paraCL" style="display: none">
+                            <!--<span style="font-weight: bold">Casual Leave (CL):</span>-->
+                            <!--<br />-->
+                            1. 15 days Casual Leave (CL) will be given per year.
+                            <br />
+                            2. Hard copy of leave application is not required for 1 or 2 days.<br />
+                            3. Holidays, other than weekly day of rest (Sunday),shall not be prefixed or suffixed.<br />
+                            4. Holidays intervening during the period of leave: A holiday including a weekly
+                            rest day (Sunday)
+                            <br />
+                            intervening during any leave,shall form part of the period of leave.<br />
+                            5. Unutilized CL during a calendar year shall stand lapsed at the end of the year.
+                            <br />
+                        </div>
+
+                        <div class="col-xs-12" id="paraSL" style="display: none">
+                            <!--<span style="font-weight: bold">Sick Leave (SL):</span>-->
+                            <!--<br />-->
+                            1. 10 days of Sick Leave (SL) will be given per year.<br />
+                            2. SL of more than 3 days should be supported by a certificate from a registered
+                            medical practitioner along with the hard copy of applied leave application, else
+                            the same will be considered as EL.<br />
+                            3. Holidays intervening during the period of leave: A holiday including a weekly
+                            rest day (Sunday) intervening during any leave, shall form part of the period of
+                            leave.<br />
+                            4. While resuming duty, an employee shall produce a fitness certificate certified
+                            by a registered medical practitioner, and a letter of resumption of duty.<br />
+                            5. Holidays, other than weekly day of rest (Sunday), shall not be prefixed or suffixed.
+                            <br />
+                            6. Leave on medical
+                            certificate may be taken in continuation of EL.<br />
+                            7. Unutilized SL during a calendar year shall stand lapsed at the end of the year.
+                            <br />
+                        </div>
+
+                        <div class="col-xs-12" id="paraLTA" style="display: none">
+                            <!--<span style="font-weight: bold">Leave Travel Allowance (LTA):</span>-->
+                            <!--<br />-->
+                            1. Employees will be eligible for LTA once in a block of 2 years from the date of
+                            joining. An employee has to complete 1 year of continuous service and has to work
+                            for a minimum period of 240 days during each year.<br />
+                            2. The first LTA would be for a block of 2 years, commencing from the date of joining.
+                            For example, if an MR�s date of joining is Oct 01, 2014, then he/she is eligible
+                            for 1st LTA between October 01, 2014 to September 30, 2016, subject to completion
+                            of 1 year of continuous service and should have work for a minimum of 240 days.
+                            The next LTA will be for the block of 2 years commencing from Oct 1, 2016 to Sep.
+                            30, 2018. To avail the second LTA, the employees should have worked for a minimum
+                            period of 3 years from Oct 01, 2014 and should have work for a minimum of 240 days
+                            during each year.<br />
+                            3. LTA cannot be carried forward.<br />
+                            4. A minimum of five days privilege leave must be availed for LTA and it is to be
+                            accompanied by a leave application duly sanctioned by the superiors/reporting manager.<br />
+                            5. Holidays intervening during the period of leave: A holiday including a weekly
+                            rest day (Sunday) intervening during any leave, shall form part of the period of
+                            leave.
+                            <br />
+                            6. During LTA leave period, the daily call report to be updated as LTA (Leave Travel
+                            Allowance) only.
+                            <br />
+                        </div>
+
+                        <div class="col-xs-12" id="paraEL" style="display: none">
+                            <!--<span style="font-weight: bold">Earned Leave (EL):</span>-->
+                            <!--<br />-->
+                            1. Earned Leave (EL) is one day earned for every 11 days of work on full wages.
+                            <br />
+                            2. The maximum limit up to which Earned Leave can be accumulated shall be 180 days
+                            only.Out of this, an employee can avail himself of 90 days leave at a time. The
+                            Management may, however, allow an employee to avail himself of EL for any period
+                            in excess of 90 days, where an employee is suffering from any lingering illness
+                            such as Tuberculosis, Cancer, Leprosy, Heart disease, Mental illness, or any other
+                            disability, which prevents him from attending duties.<br />
+                            3. An employee shall not be entitled to cash compensation of unavailed EL for a
+                            period exceeding 180 days.
+                            <br />
+                        </div>
+
+                        <div class="col-xs-12" id="paraEncashment" style="display: none">
+                            <!--<span style="font-weight: bold">Leave encashment: </span>-->
+                            <!--<br />-->
+                            1. Leave encashment can be made in multiples of 15 days up to a maximum of 120 days,
+                            subject to the availability of leave.
+                            <br />
+                        </div>
+
+                        <div class="col-xs-12" id="paraMaternity" style="display: none">
+                            <!--<span style="font-weight: bold">Maternity Leave (ML):</span>-->
+                            <!--<br />-->
+                            1.Women employees will be eligible for 180 days of maternity leave.
+                            <br />
+                            2.Maternity Leave will be granted for a maximum of two confinements.<br />
+                        </div>
+
+                        <div class="col-xs-12" id="paraPaternity" style="display: none">
+                            <!--<span style="font-weight: bold">Paternity Leave (PL):</span>-->
+                            <!--<br />-->
+                            1.Men employees will be eligible for 5 days of Paternity leave.
+                            <br />
+                            2.Paternity Leave will be granted for a maximum of two confinements.<br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

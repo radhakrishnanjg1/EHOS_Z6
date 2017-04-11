@@ -1,0 +1,99 @@
+<div id="changepassword-view"
+     data-layout="afterlogin"
+     data-role="view" data-reload="true"
+     data-title="Reset Pasword"
+     data-model="app.changepasswordView.changepasswordViewModel"
+     data-bind="events: { show: onShow}" class="profile-view">
+    <div data-role="header">
+        <div data-role="navbar">
+            <a data-role="button" data-rel="drawer"
+               href="#left-drawer"
+               data-align="left" class="drawertopicon">
+                <i class="fa fa-1-5x fa-bars"></i>
+            </a>
+            <div data-role="view-title"></div>
+            <div data-align="right">
+                <a data-role="button" data-click="app.navigation.back"
+                   class="faicon">
+                    <i class="fa fa-1-5x fa-arrow-left"></i>
+                </a>
+                <a data-role="button" class="faicon"
+                   data-bind="events: {click: updatepassword }">
+                    <i class="fa fa-1-5x fa-save"></i>
+                </a>
+                <a data-role="button" data-rel="drawer"
+                   href="#right-drawer"
+                   class="faicon">
+                    <i class="fa fa-1-5x fa-cog"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-custom padding0">
+        <div class="panel-body">
+            <div class="row">
+                <form id="change-password-form">
+                    <div class="form-group col-xs-12 col-sm-8 col-sm-offset-2">
+                        <label class="control-label">Old Password</label>
+                        <input name="old-password" type="password" class="form-control "
+                               data-bind="value: profile.oldpassword" required
+                               onkeyup="return textinputlength(this.value, 200, this.id);" />
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-8 col-sm-offset-2">
+                        <label class="control-label">New Password</label>
+                        <input name="new-password" type="password" class="form-control "
+                               data-bind="value: profile.newpassword" required
+                               onkeyup="return textinputlength(this.value, 200, this.id);" />
+                    </div> 
+                    <div class="form-group col-xs-12 col-sm-8 col-sm-offset-2">
+                        <label class="control-label">Confirm Password</label>
+                        <input name="confirm-password" type="password" class="form-control "
+                               data-bind="value: profile.confirmpassword" required
+                               onkeyup="return textinputlength(this.value, 200, this.id);"
+                               id="inputcmobile" />
+                    </div>
+                    <!--<div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 ">Old Password</label>
+                        <div class="col-xs-8">
+                            <input name="old-password" type="password" class="form-control "
+                                   data-bind="value: profile.oldpassword" required
+                                   onkeyup="return textinputlength(this.value, 200, this.id);" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 ">New Password</label>
+                        <div class="col-xs-8">
+                            <input name="new-password" type="password" class="form-control "
+                                   data-bind="value: profile.newpassword" required
+                                   onkeyup="return textinputlength(this.value, 200, this.id);" />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12">
+                        <label class="control-label col-xs-4 ">Confirm Password</label>
+                        <div class="col-xs-8">
+                            <input name="confirm-password" type="password" class="form-control "
+                                   data-bind="value: profile.confirmpassword" required
+                                   onkeyup="return textinputlength(this.value, 200, this.id);"
+                                   id="inputcmobile" />
+                        </div>
+                    </div>-->
+                </form>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="pull-right">
+                <a class="btn btn-primary" data-role="button"
+                   data-click="app.navigation.back">
+                    Back
+                </a>
+                <a class="btn btn-success"
+                   data-bind="events: {click: updatepassword }">
+                    Save
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

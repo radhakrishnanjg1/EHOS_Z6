@@ -2,10 +2,10 @@
   "ProjectName": "ETHOS-PHARMA",
   "ProjectGuid": "9335f0c3-ce70-4936-b067-61998ed8590f",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.ETHOSPHARMA",
-  "DisplayName": "ETHOS-PHARMA",
-  "Author": "",
-  "Description": "ETHOS-PHARMA",
+  "AppIdentifier": "com.telerik.ETHOSZ6",
+  "DisplayName": "ETHOS-Z6",
+  "Author": "Radhakrishnan and Doss",
+  "Description": "ETHOS-Z6",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
@@ -19,8 +19,7 @@
     "android.permission.INTERNET"
   ],
   "DeviceOrientations": [
-    "Portrait",
-    "Landscape"
+    "Portrait"
   ],
   "AndroidHardwareAcceleration": "true",
   "iOSStatusBarStyle": "Default",

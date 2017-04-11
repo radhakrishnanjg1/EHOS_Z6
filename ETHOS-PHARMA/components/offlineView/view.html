@@ -1,0 +1,29 @@
+<div id="offline-view"   data-role="view" data-title="Offline"
+     data-after-show="disableBackButton" data-before-hide="enableBackButton"
+     data-layout="afterlogin"
+     data-model="app.offlineView.offlineViewModel"
+     data-bind="events: { show: onShow }" data-stretch="true">
+    <div data-role="header">
+        
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 full-height" id="dvoffline" align="center">
+        <div id="dvofflinecontent" class="middle-align">
+            <!--<i class="fa fa-5x fa-wifi"></i>-->
+            <img src="images/no-wifi.png" alt="no internet" 
+                 height="100" width="100" />
+            <p class="horange ">
+                You seem to be Offline. <br>
+                Please connect your internet to proceed
+            </p>
+            <a data-role="button" class="btn btn-success" id="currentpage"
+               data-click="gotoonlinepage">Retry</a>
+        </div>
+    </div>
+    <input type="hidden" value="" id="hdncurrentpage"/>
+    <!--<div class="full-height">
+        <div class="middle-align">
+            <p>Align me vertically and horizontally</p>
+        </div>
+    </div>-->
+</div>
