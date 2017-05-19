@@ -1,0 +1,89 @@
+<div id="authentication-view" data-role="view" data-title="Authentication"
+     data-layout="main"
+     data-after-show="disableBackButton" data-before-hide="enableBackButton"
+     data-model="app.authenticationView" data-show="app.authenticationView.onShow"
+     class="authentication-view">
+
+    <div class="signin-view" id="dvsignin">
+        <form id="login-form" class="col-xs-10 col-xs-offset-1  col-sm-6 col-sm-offset-3">
+            <div class="text-left marginTopBottom-10">
+                <img src="images/ethoslogo.png" alt="logo" />
+            </div> 
+            <div class="marginTopBottom-10">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-1-5x fa-user" style="color:#f05922;width:15px"></i>
+                </span>
+                <input id="username" name="username" type="text"
+                       class="form-control"
+                       data-bind="value: authenticationViewModel.user.username"
+                       placeholder="Username">
+            </div>
+            <div class="marginTopBottom-10">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-1-5x fa-lock" style="color:#f05922"></i>
+                </span>
+                <input id="password" name="password" type="password"
+                       class="form-control"
+                       data-bind="value: authenticationViewModel.user.password"
+                       placeholder="Password">
+            </div>
+            <div style="height:20px!important ">
+            </div>
+            <div class="form-group">
+                <div class="btn-block btn-signin"
+                     data-bind="events: { click: authenticationViewModel.signin }">
+                    L O G I N
+                </div>
+            </div> 
+        </form>
+    </div>
+    <!-- Modal -->
+    <div data-role="modalview" id="modalview-forgotpassword"
+         style="width:80% !important ;">
+        <div class="panel-headingmodal">
+            <div class="row">
+                <div class="panel-title" style="padding-left:10px !important ; ">
+                    Forgot Password
+                    <a data-click="closemodalforgotpassword"
+                       data-role="button" class="pull-right"
+                       style="padding : 0 10px 0 0; ">
+                        <i class="fa fa-close" style="font-size:large"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-body">
+            <div class="row">
+                <div class="form-group col-xs-12 col-sm-8 col-sm-offset-2">
+                    <label class="control-label">Username</label>
+                    <input id="username" name="username" type="text"
+                           class="form-control"
+                           data-bind="value: authenticationViewModel.user.username"
+                           placeholder="Username">
+                </div>
+                <br />
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="pull-right ">
+                <a id="aclosemodalforgotpassword"
+                   data-click="closemodalforgotpassword"
+                   class="btn btn-danger"
+                   data-role="button">
+                    Close
+                </a>
+                <a class="btn btn-primary"
+                   data-bind="events: {click: authenticationViewModel.forgotpassword }">
+                    Send
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+

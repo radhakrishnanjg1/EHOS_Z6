@@ -1,0 +1,80 @@
+<div id="updateprofileView" data-role="view" data-reload="true"
+     data-title="Profile" data-layout="afterlogin"
+     data-model="app.profileView.profileViewModel"
+     data-bind="events: { show: onShow, hide: onHide }">
+    <div data-role="header">
+        <div data-role="navbar">
+            <a data-role="button" data-rel="drawer"
+               href="#left-drawer"
+               data-align="left" class="drawertopicon">
+                <i class="fa fa-1-5x fa-bars"></i>
+            </a>
+            <div data-role="view-title"></div>
+            <div data-align="right">
+                <a data-role="button" data-click="app.navigation.back"
+                   class="faicon">
+                    <i class="fa fa-1-5x fa-arrow-left"></i>
+                </a>
+                <a data-role="button" class="faicon"
+                   data-bind="events: {click: updateProfile }">
+                    <i class="fa fa-1-5x fa-save"></i>
+                </a>
+                <a data-role="button" data-rel="drawer"
+                   href="#right-drawer"
+                   class="faicon">
+                    <i class="fa fa-1-5x fa-cog"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                Back
+            </a>
+            <a class="btn btn-primary"
+               data-bind="events: {click: updateProfile }">
+                Save
+            </a>
+        </div>
+    </footer>
+    <div class="panel panel-custom padding0">
+        <div class="panel-body">
+            <div class="row">
+                <form id="edit-profile-form">
+                    <div class="form-group col-xs-12 col-sm-8 col-sm-offset-2">
+                        <label class="control-label ">Username</label>
+                        <input name="username" type="text" class="form-control"
+                               data-bind="value: profile.Username" disabled />
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-8 col-sm-offset-2">
+                        <label class="control-label">Email</label>
+                        <input name="email" type="email" class="form-control"
+                               data-bind="value: profile.Email" required
+                               onkeyup="return textinputlength(this.value, 200, this.id);" />
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-8 col-sm-offset-2">
+                        <label class="control-label ">Mobile</label>
+                        <input name="mobile" type="number" class="form-control"
+                               data-bind="value: profile.Mobile" required
+                               onkeyup="return textinputlength(this.value, 200, this.id);" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--<div class="panel-footer">
+            <div class="pull-right">
+                <a class="btn btn-primary" data-role="button"
+                   data-click="app.navigation.back">
+                    Back
+                </a>
+                <a class="btn btn-success"
+                   data-bind="events: {click: updateProfile }">
+                    Save
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>-->
+    </div>
+</div>

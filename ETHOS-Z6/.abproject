@@ -1,0 +1,51 @@
+{
+  "ProjectName": "ETHOS-Z6",
+  "ProjectGuid": "9335f0c3-ce70-4936-b067-61998ed8590f",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.ETHOSZ6",
+  "DisplayName": "ETHOS-Z6",
+  "Author": "Radhakrishnan and Doss",
+  "Description": "ETHOS-Z6",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "4.0.0",
+  "AndroidPermissions": [
+    "android.permission.INTERNET"
+  ],
+  "DeviceOrientations": [
+    "Portrait"
+  ],
+  "AndroidHardwareAcceleration": "true",
+  "iOSStatusBarStyle": "Default",
+  "Framework": "Cordova",
+  "WP8TileTitle": "",
+  "WP8Publisher": "",
+  "WP8Capabilities": [
+    "ID_CAP_NETWORKING",
+    "ID_CAP_WEBBROWSERCOMPONENT"
+  ],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{b7c5130e-a868-4dde-9c7d-201a673b524a}",
+  "WP8ProductID": "{d3a32670-b672-499d-886b-309144ee2441}",
+  "WPSdk": "8.0",
+  "WP8PackageIdentityName": "1234Telerik.ETHOSPHARMA",
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ],
+  "CordovaPluginVariables": {
+    "com.telerik.plugin.telerikanalytics": {
+      "AUTO_TRACK_EXCEPTIONS": "True",
+      "AUTO_TRACK_KENDO_EVENTS": "True",
+      "PRODUCT_ID": "dfce908ac12649a3a567f9593e0548c7"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+<div id="LMSleavehistoryView" data-role="view" data-title="Leave History"
+     data-after-show="disableBackButton" data-before-hide="enableBackButton"
+     data-layout="afterlogin"
+     data-model="app.LMSleavehistoryView.LMSleavehistoryViewModel"
+     data-bind="events: { show: onShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                Back
+            </a>
+            <div class="btn btn-primary"
+                 data-role="button"
+                 data-click="app.navigation.navigateholidays">
+                <i class="fa fa-calendar"> </i> Holidays
+            </div>
+        </div>
+    </footer>
+    <div id="dvleavehistory">
+        <div class="panel-body padding0">
+            <div data-role="listview" id="listview-leavehistory"></div>
+            <script type="text/x-kendo-tmpl" id="template-leavehistory">
+                <div class="row">
+                    <div class="col-xs-1">
+                        <div class="pull-left" style="padding-top:10px !important">
+                            <h3 class="horange"> #: No_Of_Days #</h3>
+                        </div>
+                    </div>
+                    <div class="col-xs-11" style="padding-left:15px!important">
+                        <h4>
+                            #: FromDate # to  #: ToDate #
+                        </h4>
+                         <p> #: LeaveType # - #: OverallStatus #
+                         <br />
+                            #: Reason #
+                        </p>   
+                    </div>
+                </div>
+            </script>
+
+        </div>
+    </div>
+    <!--MonthName	LeaveType	Reason	FromDate	ToDate	No_Of_Days
+    April	CL	personel	26/04/2016	26/04/2016	1-->
+</div>

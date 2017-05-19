@@ -1,0 +1,54 @@
+<div id="LMSapproveleavecancelView" data-role="view" data-title="Leave Cancel Approve"
+     data-layout="afterlogin"
+     data-model="app.LMSapproveleavecancelView.LMSapproveleavecancelViewModel"
+     data-bind="events: { show: onShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                Back
+            </a>
+            <div class="btn btn-primary"
+                 data-role="button"
+                 data-click="app.navigation.navigateholidays">
+                <i class="fa fa-calendar"> </i> Holidays
+            </div>
+        </div>
+    </footer>
+    <div id="dvleavecancelapprovalView">
+        <div class="panel panel-custom">
+            <div class="panel-body padding0"> 
+                    <div data-role="listview" id="listview-leavecancelapproval">
+                    </div>
+                    <script type="text/x-kendo-tmpl" id="template-leavecancelapproval">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <div class="pull-left" style="padding-top:10px !important">
+                                    <h3 class="horange"> #: No_Of_Days #</h3>
+                                </div>
+                            </div>
+                            <div class="col-xs-10" style="padding-left:15px!important">
+                                <h4>
+                                    #: Employee_Name #
+                                </h4>
+                                <p>
+                                    #: FromDate # to  #: ToDate # <br />
+                                    #: Leave_Type #  <br /> 
+                                </p>
+                            </div>
+                            <div class="col-xs-1">
+                                <div class="pull-right ">
+                                    <a class="btn btn-danger" data-role="button"
+                                       data-ethos_leave_master_id="${Ethos_Leave_Master_ID}"
+                                       data-employee_id="${Employee_ID}"
+                                       data-leave_type_id="${Leave_Type_ID}"
+                                       data-click="fun_leavecancelapprove"><i class="fa fa-2x fa-close fa-fw"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </script>
+                
+            </div>
+        </div>
+    </div>
+</div> 

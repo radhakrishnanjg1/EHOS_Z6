@@ -1,0 +1,95 @@
+<div id="MSLView" data-role="view" data-title="MSL List"
+     data-layout="afterlogin"
+     data-model="app.MSLView.MSLViewModel"
+     data-bind="events: { show: onShow,afterShow:afterShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                Back
+            </a>
+            <div class="btn btn-primary"
+                 data-role="button"
+                 data-click="app.navigation.homepage">
+                <i class="fa fa-home"> </i> Home
+            </div>
+        </div>
+    </footer>
+    <div id="dvmsldetails" style="display:none">
+        <div class="panel-body padding0">
+            <div class="tabbable-panel">
+                <div class="tabbable-line">
+                    <ul class="nav nav-tabs ">
+                        <li class="active">
+                            <a href="#tab_default_1" data-toggle="tab">
+                                Doctors
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tab_default_2" data-toggle="tab">
+                                Chemist
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_default_1">
+                            <!--Doctor_MSL_Number
+                                Doctor_Name
+                                Core_Type
+                                Market_Area_Name
+                                Doctor_Search
+                            -->
+
+                            <div data-role="listview" id="listview-doctormsldetails"></div>
+                            <script type="text/x-kendo-tmpl" id="template-doctormsldetails">
+                                <div class="row">
+                                    <div class="col-xs-1">
+                                        <div class="pull-left" style="padding-top:20px !important">
+                                            <h4 class="horange"> #: Doctor_MSL_Number #</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-11" style="padding-left:15px !important">
+                                        <h4>
+                                            #: Doctor_Name # -  #: Core_Type #
+                                        </h4>
+                                        <p>
+                                            #: Speciality_Name #
+                                        </p>
+                                        <p>
+                                            #: Market_Area_Name #
+                                        </p>
+                                    </div>
+                                </div>
+                            </script>
+                        </div>
+                        <div class="tab-pane" id="tab_default_2">
+                            <!--Chemist_MSL_Number
+                                Chemist_Name
+                                Market_Area_Name
+                                Chemist_Search
+                                -->
+                            <div data-role="listview" id="listview-chemistmsldetails"></div>
+                            <script type="text/x-kendo-tmpl" id="template-chemistmsldetails">
+                                <div class="row">
+                                    <div class="col-xs-1">
+                                        <div class="pull-left" style="padding-top:20px !important">
+                                            <h4 class="horange"> #: Chemist_MSL_Number #</h4>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-11" style="padding-left:15px !important">
+                                        <h4>
+                                            #: Chemist_Name #
+                                        </h4>
+                                        <p>
+                                            #: Market_Area_Name #
+                                        </p>
+                                    </div>
+                                </div>
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

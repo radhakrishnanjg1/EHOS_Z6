@@ -1,0 +1,96 @@
+<div id="TourplanView" data-role="view" data-title="TourPlan Details"
+     data-layout="afterlogin"
+     data-model="app.TourplanView.TourplanViewModel"
+     data-bind="events: { show: onShow,afterShow:afterShow }"
+     data-reload="true">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                Back
+            </a>
+            <div class="btn btn-primary"
+                 data-role="button"
+                 data-click="app.navigation.homepage">
+                <i class="fa fa-home"> </i> Home
+            </div>
+        </div>
+    </footer> 
+    <div id="dvtourplanview" style="display:none">
+        <div class="panel-body padding0">
+            <!--TourPlan_Details_ID
+                TourPlan_Date	Activity_Period
+                 Activity	Activity_Short_Name	Mode	Category
+                Contact_Details	Specific_Objective	Worked_With_Details
+                Worked_With_Employee_Details	Worked_With_Sub_Territory_Details
+                    Market_Area_Name	Sub_Territory_Name
+                -->
+            <div class="panel-body">
+                <div  id="tourplan-details-calendar" style="width:100% !important"></div>
+            </div>
+            <div class="panel-headingsubcustom">
+                <div class="row">
+                    <div class="col-xs-12">
+                        Today TourPlan Details
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding0">
+                <div data-role="listview" id="listview-tourplanldetailstoday"></div>
+                <script type="text/x-kendo-tmpl" id="template-tourplanldetailstoday">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="pull-left" style="padding-top:20px !important">
+                                <h4 class="horange"> #: TourPlan_Date #</h4>
+                            </div>
+                        </div>
+                        <div class="col-xs-9">
+                            <h4>
+                                #: Activity_Period # -  #: Activity #
+                            </h4>
+                            <p>
+                                #: Worked_With_Details #
+                                <br />
+                                #: Market_Area_Name #
+                            </p>
+                        </div>
+                    </div>
+                </script>
+            </div>
+            <div class="panel-headingsubcustom">
+                <div class="row">
+                    <div class="col-xs-12 accordion-toggle" data-toggle="collapse"
+                         data-parent="#accordion" href="#collapse1tourplanldetailsmonth">
+                        <a style="text-decoration:none">
+                            <span id="spanmonthtp"></span> Month TourPlan Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="collapse1tourplanldetailsmonth" class="panel-collapse collapse">
+                <div class="panel-body" style="padding:0">
+                    <div data-role="listview" id="listview-tourplanldetailsmonth"></div>
+                    <script type="text/x-kendo-tmpl" id="template-tourplanldetailsmonth">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <div class="pull-left" style="padding-top:20px !important">
+                                    <h4 class="horange"> #: TourPlan_Date #</h4>
+                                </div>
+                            </div>
+                            <div class="col-xs-9">
+                                <h4>
+                                    #: Activity_Period # -  #: Activity #
+                                </h4>
+                                <p>
+                                    #: Worked_With_Details #
+                                    <br />
+                                    #: Market_Area_Name #
+                                </p>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

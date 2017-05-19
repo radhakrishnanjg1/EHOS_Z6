@@ -1,0 +1,104 @@
+<div id="LMSapproveleaveView" data-role="view" data-title="Approve Leave"
+     data-after-show="disableBackButton" data-before-hide="enableBackButton"
+     data-layout="afterlogin"
+     data-model="app.LMSapproveleaveView.LMSapproveleaveViewModel"
+     data-bind="events: { show: onShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                Back
+            </a>
+            <div class="btn btn-primary"
+                 data-role="button"
+                 data-click="app.navigation.navigateholidays">
+                <i class="fa fa-calendar"> </i> Holidays
+            </div>
+        </div>
+    </footer>
+    <div id="dvapproveleaveView">
+        <div class="panel panel-custom">
+            <!--<div class="panel-headingcustom ">
+                <span class="panel-title">
+                    Your Pending Leave List
+                </span>
+            </div>-->
+            <div class="panel-body padding0">
+                <div data-role="listview" id="listview-leaveapprovedetail">
+                </div>
+                <script type="text/x-kendo-tmpl" id="template-leaveapprovedetail">
+                    <div class="row">
+                         
+                        <div class="col-xs-1">
+                            <div class="pull-left" style="padding-top:10px !important">
+                                <h3 class="horange"> #: App_No_Of_Days #</h3>
+                            </div>
+                        </div>
+                        <div class="col-xs-10">
+                            <h4>
+                                #: Employee_Name #
+                            </h4>
+                            <p>
+                                #: FromDate # to  #: ToDate # <br />
+                                #: Leave_Type #  <br />
+                                #: Reason #
+                            </p>
+                        </div>
+                        <div class="col-xs-1">
+                            <div class="pull-right ">
+                                <a class="btn btn-success " data-role="button"
+                                   data-ethos_leave_master_id="${Ethos_Leave_Master_ID}"
+                                   data-employee_id="${employee_id}"
+                                   data-leave_type_id="${Leave_Type_ID}"
+                                   data-click="fun_leave_approve">
+                                    <i class="fa fa-2x fa-check fa-fw"></i>
+                                </a>
+                                <br />
+                                <a class="btn btn-danger" data-role="button"
+                                   data-ethos_leave_master_id="${Ethos_Leave_Master_ID}"
+                                   data-click="fun_leave_reject"><i class="fa fa-2x fa-close fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </script>
+            </div>
+        </div>
+    </div>
+    <div data-role="modalview" id="modalview-approveleave" style="height:auto;width:90%!important ">
+        <div class="panel-headingmodal">
+            <div class="row">
+                <div class="panel-title" style="padding-left:10px !important ; ">
+                    Are you sure you want to reject? <a data-click="closemodalviewapproveleave"
+                                                         data-role="button" class="pull-right"
+                                                         style="padding : 0 10px 0 0; ">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <form id="form-rejectleave">
+            <div class="panel panel-custom">
+                <div class="panel-body" style="background-color:#fff !important">
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-12">
+                            <label class="control-label">Remarks</label>
+                            <input name="txtremarks" id="txtremarks" type="text"
+                                   class="form-control" required
+                                   onkeyup="return textinputlength(this.value, 1000, this.id);" />
+                            <input name="hdnaprvleave_ethos_leave_master_id" id="hdnaprvleave_ethos_leave_master_id" type="hidden" value="0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="pull-right">
+                    <a class="btn btn-danger" data-role="button"
+                       data-click="fun_leave_reject_submit">
+                        <span class="fa fa-close"></span> Reject
+                    </a> 
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </form>
+    </div>
+</div>

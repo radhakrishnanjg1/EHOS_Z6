@@ -1,0 +1,97 @@
+<div id="TeamAbsensesView" data-role="view" data-title="Absences Details"
+     data-layout="afterlogin"
+     data-model="app.TeamAbsensesView.TeamAbsensesViewModel"
+     data-bind="events: { show: onShow,afterShow:afterShow }"
+     data-reload="true">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                Back
+            </a>
+            <div class="btn btn-primary"
+                 data-role="button"
+                 data-click="app.navigation.homepage">
+                <i class="fa fa-home"> </i> Home
+            </div>
+        </div>
+    </footer> 
+    <div id="dvTeamAbsensesView" style="display:none">
+        <div class="panel-body padding0">
+            <!--absenses_Details_ID
+                absenses_Date	Activity_Period
+                 Activity	Activity_Short_Name	Mode	Category
+                Contact_Details	Specific_Objective	Worked_With_Details
+                Worked_With_Employee_Details	Worked_With_Sub_Territory_Details
+                    Market_Area_Name	Sub_Territory_Name
+                -->
+            <div class="panel-body">
+                <div  id="absenses-details-calendar" style="width:100% !important"></div>
+            </div>
+            <div class="panel-headingsubcustom">
+                <div class="row">
+                    <div class="col-xs-12">
+                        Today Absences Details
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body padding0">
+                <div data-role="listview" id="listview-absensesldetailstoday"></div>
+                <script type="text/x-kendo-tmpl" id="template-absensesldetailstoday">
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <div class="pull-left" style="padding-top:10px !important">
+                                <h3 class="horange"> #: No_Of_Days #</h3>
+                            </div>
+                        </div>
+                        <div class="col-xs-11" style="padding-left:15px!important">
+                            <h4>
+                                #: FromDate # to  #: ToDate #
+                            </h4>
+                            <p>
+                                #: LeaveType # - #: OverallStatus #
+                                <br />
+                                #: Reason #
+                            </p>
+                        </div>
+                    </div>
+
+                </script>
+            </div>
+            <div class="panel-headingsubcustom">
+                <div class="row">
+                    <div class="col-xs-12 accordion-toggle" data-toggle="collapse"
+                         data-parent="#accordion" href="#collapse1absensesldetailsmonth">
+                        <a style="text-decoration:none">
+                            <span id="spanmonthabsenses"></span> Month Absences Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="collapse1absensesldetailsmonth" class="panel-collapse collapse">
+                <div class="panel-body" style="padding:0">
+                    <div data-role="listview" id="listview-absensesldetailsmonth"></div>
+                    <script type="text/x-kendo-tmpl" id="template-absensesldetailsmonth">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <div class="pull-left" style="padding-top:10px !important">
+                                    <h3 class="horange"> #: No_Of_Days #</h3>
+                                </div>
+                            </div>
+                            <div class="col-xs-11" style="padding-left:15px!important">
+                                <h4>
+                                    #: FromDate # to  #: ToDate #
+                                </h4>
+                                <p>
+                                    #: LeaveType # - #: OverallStatus #
+                                    <br />
+                                    #: Reason #
+                                </p>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

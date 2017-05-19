@@ -1,0 +1,74 @@
+<div id="TourplanView" data-role="view" data-title="TourPlan View"
+     data-layout="afterlogin"
+     data-model="app.TourplanView.TourplanViewModel"
+     data-bind="events: { show: onShow,afterShow:afterShow }"
+     data-reload="true">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                Back
+            </a>
+            <div class="btn btn-primary"
+                 data-role="button"
+                 data-click="app.navigation.navigateProfile">
+                <i class="fa fa-user"> </i> Profile
+            </div>
+        </div>
+    </footer>
+    <!--<script id="editor" type="text/x-kendo-template" style="width:90% !important">
+        
+        <input type="hidden" data-bind="value: TourPlan_Details_ID" /> 
+        <p>
+            <label>Title: <input name="title"  /></label>
+        </p>
+        <p>
+            <label>Start: <input data-role="datetimepicker" name="start" readonly /></label>
+        </p>
+        <p>
+            <label>End: <input data-role="datetimepicker" name="end" readonly /></label>
+        </p>
+    </script>
+    <script id="event-template" type="text/x-kendo-template">
+        <div>Title: #: title #</div>
+        <div>
+            Atendees:
+            # for (var i = 0; i < resources.length; i++) { #
+            #: resources[i].text #
+            # } #
+        </div>
+    </script>-->
+    <div id="scheduler"></div>
+    <div id="dvtourplanview">
+        <div class="panel-body padding0">
+            <!--TourPlan_Details_ID
+  TourPlan_Date	Activity_Period
+                 Activity	Activity_Short_Name	Mode	Category
+                Contact_Details	Specific_Objective	Worked_With_Details
+                Worked_With_Employee_Details	Worked_With_Sub_Territory_Details
+                    Market_Area_Name	Sub_Territory_Name
+                -->
+
+            <div data-role="listview" id="listview-tourplanldetails"></div>
+            <script type="text/x-kendo-tmpl" id="template-tourplanldetails">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="pull-left" style="padding-top:20px !important">
+                            <h4 class="horange"> #: TourPlan_Date #</h4>
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        <h4>
+                            #: Activity_Period # -  #: Activity #
+                        </h4>
+                        <p>
+                            #: Worked_With_Details #
+                            <br />
+                            #: Market_Area_Name #
+                        </p>
+                    </div>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>

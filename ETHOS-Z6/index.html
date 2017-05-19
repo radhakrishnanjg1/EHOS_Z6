@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ETHOS APP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
+	style-src 'self' 'unsafe-inline' 'unsafe-eval'  *;media-src 'self'
+	'unsafe-inline' 'unsafe-eval' *;">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="kendo/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="kendo/styles/kendo.default.min.css" rel="stylesheet" />
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+
+    <link href="styles/rkcustom.css" rel="stylesheet" />
+    <script src="cordova.js"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+    <script src="kendo/js/kendo.dataviz.mobile.min.js"></script>
+    <script src="scripts/kendo.all.min.js"></script>
+    <script src="scripts/kendo.timezones.min.js"></script>
+    <!--Mapbox scripts and css-->
+    <script src="scripts/mapbox.js"></script>
+    <!--bower components-->
+    <script src="bower_components/everlive/src/everlive.all.js"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+    <script src="bower_components/noty/js/noty/layouts/bottom.js"></script>
+    <script src="bower_components/noty/js/noty/themes/metroui.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--App and utilities scripts-->
+    <script src="app.js"></script>
+    <script src="scripts/common/navigation.js"></script>
+    <script src="scripts/common/notify.js"></script>
+    <script src="scripts/common/settings.js"></script>
+    <script src="scripts/common/validate.js"></script>
+    <script src="scripts/common/constants.js"></script>
+    <script src="scripts/common/utils.js"></script>
+    <script src="scripts/rkutilities.js"></script>
+    <script src="scripts/linq.min.js"></script>
+
+    <!--data provider-->
+    <script src="dataProviders/defaultProvider.js"></script>
+    <!--new pages scripts-->
+    <!--left menu start-->
+    <script src="components/authenticationView/index.js"></script>
+    <script src="components/dashboardView/index.js"></script>
+    <script src="components/teamcoverageView/index.js"></script>
+    <!--Leave Management start-->
+    <script src="components/LMSleavemanagementView/index.js"></script>
+    <script src="components/LMSapplyleaveView/index.js"></script>
+    <script src="components/LMScancelleaveView/index.js"></script>
+    <script src="components/LMSleavehistoryView/index.js"></script>
+    <script src="components/LMSapproveleaveView/index.js"></script>
+    <script src="components/LMSapproveleavecancelView/index.js"></script>
+    <script src="components/MSLView/index.js"></script>
+    <script src="components/TourplanEntryView/index.js"></script>
+    <script src="components/TourplanPreviewView/index.js"></script>
+    <script src="components/TourplanView/index.js"></script> 
+    <script src="components/TeamAbsensesView/index.js"></script>
+    <script src="components/holidaysView/index.js"></script>
+
+    <!--Leave Management end-->
+    <!--DCR start
+    <script src="components/DCRstartView/index.js"></script>
+    <script src="components/DCRmasterView/index.js"></script>
+    <script src="components/DCRinstitutionView/index.js"></script>
+    <script src="components/DCRunlistedinstitutionView/index.js"></script>
+    <script src="components/DCRfinaentryView/index.js"></script>
+    <script src="components/DCRpreviewView/index.js"></script>
+    <script src="components/GPSworklocationsView/index.js"></script>
+
+     <!--DCR end-->
+    <!--left menu end-->
+    <!--right menu start-->
+    <script src="components/updateprofileView/index.js"></script>
+    <script src="components/changepasswordView/index.js"></script>
+    <script src="components/supportView/index.js"></script>
+    <!--right menu end-->
+    <!--common -->
+    <script src="components/offlineView/index.js"></script>
+
+</head>
+<body id="ethosapp">
+
+    <div data-role="layout" data-id="main">
+    </div>
+    <div data-role="layout" data-id="mobile-tabstrip">
+        <div data-role="header">
+            <div data-role="navbar">
+                <a data-role="button" data-rel="drawer"
+                   href="#left-drawer"
+                   data-align="left" class="drawertopicon">
+                    <i class="fa fa-1-5x fa-bars"></i>
+                </a>
+                <div data-role="view-title"></div>
+                <a data-role="button" data-rel="drawer"
+                   href="#right-drawer"
+                   data-align="right" class="drawertopicon">
+                    <i class="fa fa-1-5x fa-cog"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--use the data-after-show and data-before-hide attributes on your view definition-->
+    <div data-role="layout" data-id="afterlogin" data-stretch="true">
+        <div data-role="header">
+            <div data-role="navbar">
+                <a data-role="button" data-rel="drawer"
+                   href="#left-drawer"
+                   data-align="left" class="drawertopicon">
+                    <i class="fa fa-1-5x fa-bars"></i>
+                </a>
+                <div data-role="view-title"></div>
+                <a data-role="button" data-rel="drawer"
+                   href="#right-drawer"
+                   data-align="right" class="drawertopicon">
+                    <i class="fa fa-1-5x fa-cog"></i>
+                </a>
+            </div>
+        </div> 
+    </div>
+    <div data-role="drawer" id="left-drawer" data-title="left"
+         data-swipe-to-open-views="['dashboard-view','teamcoveragedetail-view',
+         'LMSleavemanagementView','LMSapplyleaveView','LMScancelleaveView',
+         'LMSleavehistoryView','LMSapproveleaveView','LMSapproveleavecancelView',
+         'DCRstartView',
+         'GPSworklocationsView',
+         'supportView',
+         'MSLView',
+        'TourplanEntryView',
+         'TourplanView', 
+         'TeamAbsensesView',
+         'holidays-view','profile-view','changepassword-view']">
+        <header data-role="header">
+            <div>
+                <img src="images/H_logo.png" style="width:15em !important;">
+            </div>
+        </header>
+        <ul data-role="listview" class="nav" style="background-color:#fff !important">
+            <li data-role="button">
+                <span class="hgreen">Hi</span>  &nbsp; <span id="dvusername" class="horange">
+                </span>
+                <input type="hidden" id="hdnLogin_ID" value="0" />
+                <input type="hidden" id="hdnEmployee_ID" value="0" />
+            </li>
+            <li data-role="button" data-click="app.navigation.navigatedashboard"
+                id="liindvcoverage" style="display:none">
+                <i class="fa fa-1-5x fa-bar-chart"></i> Dashboard
+            </li>
+            <li data-role="button" data-click="app.navigation.navigateteamcoverage"
+                id="liteamcoverage" style="display:none">
+                <i class="fa fa-1-5x fa-bar-chart "></i> Team Cov. Details
+            </li>
+            <li data-role="button" data-click="app.navigation.navigateLMSleavemanagementView">
+                <i class="fa fa-1-5x fa-list-ol"></i> Leave Mgt. System
+            </li>
+            <!--<li data-role="button" data-click="app.navigation.navigateDCRstartView">
+                <i class="fa fa-1-5x fa-calendar-plus-o"></i> DCR
+            </li>-->
+            <li data-role="button" data-click="app.navigation.navigateGPSworklocationsView"
+                id="lifieldlocator" style="display:none">
+                <i class="fa fa-1-5x fa-map-marker"></i>Field Work Locations
+            </li>
+            <li data-role="button" data-click="app.navigation.navigateMSLView"
+                id="limsllist" style="display:none">
+                <i class="fa fa-1-5x fa-user-md"></i> MSL List
+            </li>
+            <li data-role="button" data-click="app.navigation.navigateTourplanEntryView">
+                <i class="fa fa-1-5x fa-bicycle"></i> TP Entry
+            </li>
+            <li data-role="button" data-click="app.navigation.navigateTourplanView">
+                <i class="fa fa-1-5x fa-motorcycle"></i> TP View
+            </li>
+            <li data-role="button" data-click="app.navigation.navigateTeamAbsensesView">
+                <i class="fa fa-1-5x fa-calendar-times-o"></i> Absences Details
+            </li>
+            
+            <li data-role="button" data-click="app.navigation.navigateholidays">
+                <i class="fa fa-1-5x fa-calendar"></i> Field Holidays
+            </li>
+        </ul>
+    </div>
+    <div data-role="drawer" id="right-drawer" data-position="right"
+         data-swipe-to-open-views="['dashboard-view','teamcoveragedetail-view',
+         'LMSleavemanagementView','LMSapplyleaveView','LMScancelleaveView',
+         'LMSleavehistoryView','LMSapproveleaveView','LMSapproveleavecancelView',
+         'DCRstartView',
+         'GPSworklocationsView',
+         'supportView',
+         'MSLView',
+         'TourplanEntryView',
+         'TourplanView',
+         'TeamAbsensesView',
+         'holidays-view','profile-view','changepassword-view']">
+        <ul data-role="listview" class="km-vertical-tabstrip nav" style="background-color:#fff !important">
+            <li data-role="button" data-click="app.navigation.navigateProfile">
+                <a data-role="button" data-click="app.navigation.navigateProfile">
+                    <i class="fa fa-2x fa-user"></i> 
+                    Profile
+                </a>
+            </li>
+            <li data-role="button" data-click="app.navigation.navigatechangepassword">
+                <a>
+                    <i class="fa fa-2x fa-key"></i> 
+                    Change Password
+                </a>
+            </li>
+            <li data-role="button" data-click="app.navigation.navigatesignout">
+                <a>
+                    <i class="fa fa-2x fa-sign-out"></i> 
+                    <br/>
+                    Log Out
+                </a>
+            </li>
+            <li data-role="button" data-click="app.navigation.navigatesupport">
+                <a>
+                    <i class="fa fa-2x fa-phone"></i>
+                    <br />
+                    Support
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
