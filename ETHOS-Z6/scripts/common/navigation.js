@@ -79,6 +79,10 @@
             return app.mobileApp.navigate('components/MSLView/view.html');
         },
 
+        navigateMSLChemistView: function () {
+            return app.mobileApp.navigate('components/MSLChemistView/view.html');
+        },
+
         navigateTourplanEntryView: function () {
             return app.mobileApp.navigate('components/TourplanEntryView/view.html');
         },
@@ -94,7 +98,9 @@
         navigateholidays: function () {
             return app.mobileApp.navigate('components/holidaysView/view.html');
         },
-
+        navigateEDetailingView: function () {
+            return app.mobileApp.navigate('components/EDetailingView/view.html');
+        },
         //left side menu  start 
         navigateProfile: function () {
             return app.mobileApp.navigate('components/updateprofileView/view.html');

@@ -41,49 +41,7 @@
             </div> 
         </form>
     </div>
-    <!-- Modal -->
-    <div data-role="modalview" id="modalview-forgotpassword"
-         style="width:80% !important ;">
-        <div class="panel-headingmodal">
-            <div class="row">
-                <div class="panel-title" style="padding-left:10px !important ; ">
-                    Forgot Password
-                    <a data-click="closemodalforgotpassword"
-                       data-role="button" class="pull-right"
-                       style="padding : 0 10px 0 0; ">
-                        <i class="fa fa-close" style="font-size:large"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-body">
-            <div class="row">
-                <div class="form-group col-xs-12 col-sm-8 col-sm-offset-2">
-                    <label class="control-label">Username</label>
-                    <input id="username" name="username" type="text"
-                           class="form-control"
-                           data-bind="value: authenticationViewModel.user.username"
-                           placeholder="Username">
-                </div>
-                <br />
-            </div>
-        </div>
-        <div class="panel-footer">
-            <div class="pull-right ">
-                <a id="aclosemodalforgotpassword"
-                   data-click="closemodalforgotpassword"
-                   class="btn btn-danger"
-                   data-role="button">
-                    Close
-                </a>
-                <a class="btn btn-primary"
-                   data-bind="events: {click: authenticationViewModel.forgotpassword }">
-                    Send
-                </a>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
+     
 </div>
 
 

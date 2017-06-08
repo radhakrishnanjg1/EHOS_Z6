@@ -1,4 +1,4 @@
-<div id="TeamAbsensesView" data-role="view" data-title="Absences Details"
+<div id="TeamAbsensesView" data-role="view" data-title="Absence Details"
      data-layout="afterlogin"
      data-model="app.TeamAbsensesView.TeamAbsensesViewModel"
      data-bind="events: { show: onShow,afterShow:afterShow }"
@@ -15,7 +15,7 @@
                 <i class="fa fa-home"> </i> Home
             </div>
         </div>
-    </footer> 
+    </footer>
     <div id="dvTeamAbsensesView" style="display:none">
         <div class="panel-body padding0">
             <!--absenses_Details_ID
@@ -26,12 +26,16 @@
                     Market_Area_Name	Sub_Territory_Name
                 -->
             <div class="panel-body">
-                <div  id="absenses-details-calendar" style="width:100% !important"></div>
+
+                <div id="absenses-details-calendar" style="width:100% !important"></div>
+                <script id="absenses-details-week-template" type="text/x-kendo-template">
+                    <a class="italic">#= data.weekNumber #</a>
+                </script>
             </div>
             <div class="panel-headingsubcustom">
                 <div class="row">
                     <div class="col-xs-12">
-                        Today Absences Details
+                        Today Absence Details
                     </div>
                 </div>
             </div>
@@ -45,6 +49,7 @@
                             </div>
                         </div>
                         <div class="col-xs-11" style="padding-left:15px!important">
+                            <h4 class="horange"> #: Employee_Name #</h4>
                             <h4>
                                 #: FromDate # to  #: ToDate #
                             </h4>
@@ -63,7 +68,7 @@
                     <div class="col-xs-12 accordion-toggle" data-toggle="collapse"
                          data-parent="#accordion" href="#collapse1absensesldetailsmonth">
                         <a style="text-decoration:none">
-                            <span id="spanmonthabsenses"></span> Month Absences Details
+                            Week  <span id="spanthisweekabsenses"></span> Absence Details
                         </a>
                     </div>
                 </div>
@@ -79,6 +84,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-11" style="padding-left:15px!important">
+                                <h4 class="horange"> #: Employee_Name #</h4>
                                 <h4>
                                     #: FromDate # to  #: ToDate #
                                 </h4>
@@ -91,7 +97,7 @@
                         </div>
                     </script>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </div>

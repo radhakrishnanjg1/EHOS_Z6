@@ -51,8 +51,8 @@ function fun_db_APP_Get_Z6_MSL_Details_By_Employee_ID(Employee_ID, Sub_Territory
         app.utils.loading(false);
         //localStorage.setItem("doctomsldetailsdetails", JSON.stringify(data[0])); 
         //localStorage.setItem("msldetailsdetails", JSON.stringify(data[1]));
-        load_doctor_msldetails(JSON.stringify(data[0]));
-        load_chemist_msldetails(JSON.stringify(data[1]));
+         load_doctor_msldetails(JSON.stringify(data[0]));
+         load_chemist_msldetails(JSON.stringify(data[1]));//sss
         $('#dvmsldetails').show();
     });
 }
@@ -72,7 +72,7 @@ function load_doctor_msldetails(records) {
         },
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
-                //custom logic
+                //custom logics
                 $("#listview-doctormsldetails").append("<li>No Records Found!</li>");
             }
         },
@@ -81,29 +81,26 @@ function load_doctor_msldetails(records) {
 }
 
 function load_chemist_msldetails(records) {
-    var lvmsldetails2 = JSON.parse(Enumerable.From(JSON.parse(records))
+    var lvmsldetails = JSON.parse(Enumerable.From(JSON.parse(records))
         .ToJSON());
-    var dsmsldetails2 = new kendo.data.DataSource({
-        data: lvmsldetails2,
+    var dsmsldetails = new kendo.data.DataSource({
+        data: lvmsldetails,
     });
     $("#listview-chemistmsldetails").kendoMobileListView({
-        dataSource: dsmsldetails2,
-        filterable: [
-            {
-                field: 'Chemist_Search',
-                operator: 'contains',
-                ignoreCase: true
-            },
-        ],
-        //dataBound: function (e) {//
-        //    if (this.dataSource.data().length == 0) { 
-        //        $("#listview-chemistmsldetails").append("<li>No Records Found!</li>");
-        //    }
-        //}, 
-        template: $("#template-chemistmsldetails").html(),
-        //error: function (e) {
-        //    app.utils.loading(false); // alert(e);
-        //    app.notify.error('Error loading data please try again later!');
-        //}
+        dataSource: dsmsldetails,
+        filterable: {
+            field: 'Chemist_Search',
+            operator: 'contains',
+            ignoreCase: true
+        },
+        dataBound: function (e) {
+            if (this.dataSource.data().length == 0) {
+                //custom logic
+                $("#listview-chemistmsldetails").append("<li>No Records Found!</li>");
+            }
+        },
+        template: $("#template-chemistmsldetails").html()
     });
+
+    
 }

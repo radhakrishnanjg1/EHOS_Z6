@@ -33,13 +33,13 @@
     var vm = kendo.observable({
         user: {
             displayName: '',
-            //username: '',
-            //password: '',
+            username: '',
+            password: '',
             username: 'ZE-Imphal1', //field
             password: 'dilip',
 
-            //////username: 'ZE-RM-GUWAHATI1', //rm
-            //////password: 'himalaya', 
+            //username: 'ZE-RM-GUWAHATI1', //rm
+            //password: 'himalaya', 
 
             // vacant credentials 
             //username: 'VACANT(ze-ALIGARH3)', //field
@@ -66,7 +66,7 @@
                 return false;
             }
             app.utils.loading(true);
-            fun_db_APP_Verify_Field_User_Authentication(model.username, model.password, app.utils.deviceinformation('Login'));
+            fun_db_APP_Verify_Field_Z6_User_Authentication(model.username, model.password, app.utils.deviceinformation('Login'));
         },
     });
 
@@ -74,11 +74,11 @@
 }());
 
 
-function fun_db_APP_Verify_Field_User_Authentication(username, password, deviceinfo) {
+function fun_db_APP_Verify_Field_Z6_User_Authentication(username, password, deviceinfo) {
     var storelogin = new kendo.data.DataSource({
         transport: {
             read: {
-                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Verify_Field_User_Authentication",
+                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Verify_Field_Z6_User_Authentication",
                 type: "POST",
                 dataType: "json",
                 data: {
@@ -112,7 +112,7 @@ function fun_db_APP_Verify_Field_User_Authentication(username, password, devicei
                 //$('#lifieldlocator').hide();
                 $('#limsllist').show();
                 //redirect dashboard/indiviual  page 
-                app.navigation.navigateMSLView();// navigatedashboard
+                app.navigation.navigatedashboard();//navigateEDetailingView, navigateMSLView,navigatedashboard
                 app.utils.loading(false);
             }
             else if (data[0][0].IsManager == 1) {
@@ -120,7 +120,7 @@ function fun_db_APP_Verify_Field_User_Authentication(username, password, devicei
                 //$('#lifieldlocator').show();
                 $('#limsllist').hide();
                 //redirect dashboard/team coverage page 
-                app.navigation.navigateTeamAbsensesView();//navigateteamcoverage
+                app.navigation.navigateteamcoverage();//navigateEDetailingView, navigateTeamAbsensesView,navigateteamcoverage
                 app.utils.loading(false);
             }
             app_db_init();

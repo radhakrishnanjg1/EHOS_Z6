@@ -1,0 +1,123 @@
+<div id="EDetailingView" data-role="view" data-title="E-Detailing"
+     data-layout="afterlogin"
+     data-model="app.EDetailingView.EDetailingViewModel"
+     data-bind="events: { show: onShow ,afterShow:afterShow}" data-stretch="true">
+    <style>
+        /* Main carousel style */
+        .carousel {
+            width: 100%;
+        }
+
+        #custom_carousel .item {
+            color: #000;
+            background-color: #eee;
+            padding: 3px 0;
+        }
+
+        #custom_carousel .controls {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0;
+            margin: 0;
+            white-space: nowrap;
+            text-align: center;
+            position: relative;
+            background: #ddd;
+            height: 100px;
+        }
+
+            #custom_carousel .controls li {
+                display: table-cell;
+                width: 1%;
+                max-width: 90px;
+            }
+
+                #custom_carousel .controls li.active {
+                    background-color: #eee;
+                    border-top: 3px solid orange;
+                }
+
+            #custom_carousel .controls a small {
+                overflow: hidden;
+                display: block;
+                font-size: 10px;
+                margin-top:2px;
+                font-weight: bold;
+            }
+    </style>
+    <div data-role="header">
+    </div>
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                Exit
+            </a>
+        </div>
+    </footer>
+    <div class="panel panel-custom">
+        <div class="panel-headingcustom">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle"
+                                type="button" data-toggle="dropdown">
+                            Products
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Product 1</a></li>
+                            <li><a href="#">Product 2</a></li>
+                            <li><a href="#">Product 3</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="panel-body padding0">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="custom_carousel" class="carousel slide" data-ride="carousel" data-interval="2500">
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img alt="" src="images/E-Detailing/1.jpg"
+                                     class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img alt="" src="images/E-Detailing/2.jpg"
+                                     class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img alt="" src="images/E-Detailing/3.jpg"
+                                     class="img-responsive">
+                            </div>
+                            <div class="item">
+                                <img alt="" src="images/E-Detailing/4.jpg"
+                                     class="img-responsive">
+                            </div>
+                        </div>
+                        <!-- End Carousel Inner -->
+                        <div class="controls">
+                            <ul class="nav">
+                                <li data-target="#custom_carousel" data-slide-to="0" class="active"><a href="#"><img alt="" src="images/E-Detailing/thumbnail1.png"><small>Slide One</small></a></li>
+                                <li data-target="#custom_carousel" data-slide-to="1"><a href="#"><img alt="" src="images/E-Detailing/thumbnail1.png"><small>Slide Two</small></a></li>
+                                <li data-target="#custom_carousel" data-slide-to="2"><a href="#"><img alt="" src="images/E-Detailing/thumbnail1.png"><small>Slide Three</small></a></li>
+                                <li data-target="#custom_carousel" data-slide-to="3"><a href="#"><img alt="" src="images/E-Detailing/thumbnail1.png"><small>Slide Four</small></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function (ev) {
+                            $('#custom_carousel').on('slide.bs.carousel', function (evt) {
+                                $('#custom_carousel .controls li.active').removeClass('active');
+                                $('#custom_carousel .controls li:eq(' + $(evt.relatedTarget).index() + ')').addClass('active');
+                            })
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

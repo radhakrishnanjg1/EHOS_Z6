@@ -7,6 +7,17 @@ var disableBackButton = function () {
 var enableBackButton = function () {
     document.removeEventListener("backbutton", emptyFunc);
 };
+
+var exitApp = function () { 
+    document.addEventListener("backbutton", onBackButtonexitApp, true);
+    // app.utils.loading(false);
+};
+// Handle the button
+function onBackButtonexitApp() {
+    // Exit the app!
+    //alert("Exited!");
+    navigator.app.exitApp();
+}
 (function () {
     app.utils = app.utils || {};
     //Get a device infor with actin

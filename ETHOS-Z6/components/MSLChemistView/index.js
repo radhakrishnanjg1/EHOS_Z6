@@ -2,11 +2,11 @@
 'use strict';
 
 (function () {
-    var view = app.MSLView = kendo.observable();
-    var MSLViewModel = kendo.observable({
+    var view = app.MSLChemistView = kendo.observable();
+    var MSLChemistViewModel = kendo.observable({
         onShow: function () {
             if (!app.utils.checkinternetconnection()) {
-                return app.navigation.navigateoffline("MSLView");
+                return app.navigation.navigateoffline("MSLChemistView");
             }
             app.navigation.logincheck();
 
@@ -22,7 +22,7 @@
         },
     });
 
-    view.set('MSLViewModel', MSLViewModel);
+    view.set('MSLChemistViewModel', MSLChemistViewModel);
 }());
 
 function fun_db_APP_Get_Z6_MSL_Details_By_Employee_ID(Employee_ID, Sub_Territory_ID) {
@@ -51,35 +51,13 @@ function fun_db_APP_Get_Z6_MSL_Details_By_Employee_ID(Employee_ID, Sub_Territory
         app.utils.loading(false);
         //localStorage.setItem("doctomsldetailsdetails", JSON.stringify(data[0])); 
         //localStorage.setItem("msldetailsdetails", JSON.stringify(data[1]));
-        load_doctor_msldetails(JSON.stringify(data[0]));
+        //load_doctor_msldetails(JSON.stringify(data[0]));
         load_chemist_msldetails(JSON.stringify(data[1]));
-        $('#dvmsldetails').show();
+        $('#dvmslchemistdetails').show();
+        //sadsdsss
     });
 }
-
-function load_doctor_msldetails(records) {
-    var lvmsldetails = JSON.parse(Enumerable.From(JSON.parse(records))
-        .ToJSON());
-    var dsmsldetails = new kendo.data.DataSource({
-        data: lvmsldetails,
-    });
-    $("#listview-doctormsldetails").kendoMobileListView({
-        dataSource: dsmsldetails,
-        filterable: {
-            field: 'Doctor_Search',  
-            operator: 'contains',
-            ignoreCase: true
-        }, 
-        dataBound: function (e) {
-            if (this.dataSource.data().length == 0) {
-                //custom logic
-                $("#listview-doctormsldetails").append("<li>No Records Found!</li>");
-            }
-        },
-        template: $("#template-doctormsldetails").html()
-    });
-}
-
+ 
 function load_chemist_msldetails(records) {
     var lvmsldetails2 = JSON.parse(Enumerable.From(JSON.parse(records))
         .ToJSON());
@@ -89,21 +67,17 @@ function load_chemist_msldetails(records) {
     $("#listview-chemistmsldetails").kendoMobileListView({
         dataSource: dsmsldetails2,
         filterable: [
-            { 
-                field: 'Chemist_Search',
+            {
+                field: 'Chemist_Search_Keyword',
                 operator: 'contains',
                 ignoreCase: true
-            },
+            } 
         ],
-        //dataBound: function (e) {//
-        //    if (this.dataSource.data().length == 0) { 
-        //        $("#listview-chemistmsldetails").append("<li>No Records Found!</li>");
-        //    }
-        //}, 
-        template: $("#template-chemistmsldetails").html(), 
-        //error: function (e) {
-        //    app.utils.loading(false); // alert(e);
-        //    app.notify.error('Error loading data please try again later!');
-        //}
+        dataBound: function (e) {//
+            if (this.dataSource.data().length == 0) { 
+                $("#listview-chemistmsldetails").append("<li>No Records Found!</li>");
+            }
+        }, 
+        template: $("#template-chemistmsldetails").html() 
     });
 }

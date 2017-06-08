@@ -54,9 +54,10 @@
     <script src="components/LMSapproveleaveView/index.js"></script>
     <script src="components/LMSapproveleavecancelView/index.js"></script>
     <script src="components/MSLView/index.js"></script>
+    <!--<script src="components/MSLChemistView/index.js"></script>-->
     <script src="components/TourplanEntryView/index.js"></script>
     <script src="components/TourplanPreviewView/index.js"></script>
-    <script src="components/TourplanView/index.js"></script> 
+    <script src="components/TourplanView/index.js"></script>
     <script src="components/TeamAbsensesView/index.js"></script>
     <script src="components/holidaysView/index.js"></script>
 
@@ -79,7 +80,7 @@
     <!--right menu end-->
     <!--common -->
     <script src="components/offlineView/index.js"></script>
-
+    <script src="components/EDetailingView/index.js"></script>
 </head>
 <body id="ethosapp">
 
@@ -118,7 +119,7 @@
                     <i class="fa fa-1-5x fa-cog"></i>
                 </a>
             </div>
-        </div> 
+        </div>
     </div>
     <div data-role="drawer" id="left-drawer" data-title="left"
          data-swipe-to-open-views="['dashboard-view','teamcoveragedetail-view',
@@ -129,7 +130,7 @@
          'supportView',
          'MSLView',
         'TourplanEntryView',
-         'TourplanView', 
+         'TourplanView',
          'TeamAbsensesView',
          'holidays-view','profile-view','changepassword-view']">
         <header data-role="header">
@@ -166,6 +167,10 @@
                 id="limsllist" style="display:none">
                 <i class="fa fa-1-5x fa-user-md"></i> MSL List
             </li>
+            <!--<li data-role="button" data-click="app.navigation.navigateMSLChemistView"
+                id="limsllist" >
+                <i class="fa fa-1-5x fa-user-md"></i> MSL Chemist
+            </li>--> 
             <li data-role="button" data-click="app.navigation.navigateTourplanEntryView">
                 <i class="fa fa-1-5x fa-bicycle"></i> TP Entry
             </li>
@@ -173,11 +178,13 @@
                 <i class="fa fa-1-5x fa-motorcycle"></i> TP View
             </li>
             <li data-role="button" data-click="app.navigation.navigateTeamAbsensesView">
-                <i class="fa fa-1-5x fa-calendar-times-o"></i> Absences Details
+                <i class="fa fa-1-5x fa-calendar-times-o"></i> Absence Details
             </li>
-            
             <li data-role="button" data-click="app.navigation.navigateholidays">
                 <i class="fa fa-1-5x fa-calendar"></i> Field Holidays
+            </li>
+            <li data-role="button" data-click="app.navigation.navigateEDetailingView">
+                <i class="fa fa-1-5x fa fa-product-hunt"></i> E - Detailing
             </li>
         </ul>
     </div>
@@ -196,20 +203,20 @@
         <ul data-role="listview" class="km-vertical-tabstrip nav" style="background-color:#fff !important">
             <li data-role="button" data-click="app.navigation.navigateProfile">
                 <a data-role="button" data-click="app.navigation.navigateProfile">
-                    <i class="fa fa-2x fa-user"></i> 
+                    <i class="fa fa-2x fa-user"></i>
                     Profile
                 </a>
             </li>
             <li data-role="button" data-click="app.navigation.navigatechangepassword">
                 <a>
-                    <i class="fa fa-2x fa-key"></i> 
+                    <i class="fa fa-2x fa-key"></i>
                     Change Password
                 </a>
             </li>
             <li data-role="button" data-click="app.navigation.navigatesignout">
                 <a>
-                    <i class="fa fa-2x fa-sign-out"></i> 
-                    <br/>
+                    <i class="fa fa-2x fa-sign-out"></i>
+                    <br />
                     Log Out
                 </a>
             </li>
