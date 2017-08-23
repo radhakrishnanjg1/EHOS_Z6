@@ -9,10 +9,7 @@
                 app.utils.loading(true);
                 var user = JSON.parse(localStorage.getItem("userdata"));
                 fun_db_APP_User_Logout(user.Login_ID, user.Employee_ID, app.utils.deviceinformation('Logout'));
-                $('#username').val('');
-                $('#password').val('');
-                $('#hdnLogin_ID').val('0');
-                localStorage.clear();
+                 
             }
             if (app.user != null) {
                 return app.navigation.navigatedashboard();
@@ -33,14 +30,19 @@
     var vm = kendo.observable({
         user: {
             displayName: '',
-            username: '',
-            password: '',
+            //username: '',
+            //password: '',
             username: 'ZE-Imphal1', //field
             password: 'dilip',
-
+            //username: 'ZR-MANGALDOI1', //field
+            //password: 'pankaj',
             //username: 'ZE-RM-GUWAHATI1', //rm
-            //password: 'himalaya', 
+            //password: 'himalaya',
 
+            //username: 'ZE-ZM-GUWAHATI1', //zm
+            //password: 'emp73',
+            //username: 'ZE-SM-KOLKATA1', //sm
+            //password: 'emp66',
             // vacant credentials 
             //username: 'VACANT(ze-ALIGARH3)', //field
             //password: 'NEW',
@@ -54,13 +56,12 @@
         registerValidator: null,
         signin: function (username, password) {
             var model = vm.user;
-            if (model.username == '') {
+            if ($('#username').val() == '' || model.username == '' || model.username == undefined) {
                 username = model.username;
                 app.notify.error("Enter username!");
                 return false;
             }
-
-            if (model.password == '') {
+            if ($('#password').val() == '' || model.password == '' || model.password == undefined) {
                 password = model.password;
                 app.notify.error("Enter password!");
                 return false;
@@ -100,30 +101,32 @@ function fun_db_APP_Verify_Field_Z6_User_Authentication(username, password, devi
             $('#dvusername').html(data[0][0].Employee_Name)
             $('#hdnLogin_ID').val(data[0][0].Login_ID)
             $('#hdnEmployee_ID').val(data[0][0].Employee_ID)
+            $('#dvlast_visited').html(data[2][0].Last_Visited);
             localStorage.clear();
             localStorage.setItem("userdata", JSON.stringify(data[0][0])); // userdata details 
 
             localStorage.setItem("ethosmastervalues", JSON.stringify(data[1])); // ethosmastervalues details 
-            //app.navigation.navigateMSLView();
-            //app.utils.loading(false);
-            //$('#limsllist').show();
-            if (data[0][0].IsManager == 0) {
-                $('#liindvcoverage').show();
-                //$('#lifieldlocator').hide();
-                $('#limsllist').show();
-                //redirect dashboard/indiviual  page 
-                app.navigation.navigatedashboard();//navigateEDetailingView, navigateMSLView,navigatedashboard
-                app.utils.loading(false);
-            }
-            else if (data[0][0].IsManager == 1) {
-                $('#liteamcoverage').show();
-                //$('#lifieldlocator').show();
-                $('#limsllist').hide();
-                //redirect dashboard/team coverage page 
-                app.navigation.navigateteamcoverage();//navigateEDetailingView, navigateTeamAbsensesView,navigateteamcoverage
-                app.utils.loading(false);
-            }
             app_db_init();
+            app.navigation.navigateAppDashboardView();  //navigateAppDashboardView
+            app.utils.loading(false);
+            if (data[0][0].IsManager == 1) {
+                localStorage.setItem("ethosinssubordinatesdetails", JSON.stringify(data[3])); // coverage details 
+            }
+            //if (data[0][0].IsManager == 0) {
+            //    $('#dvindvcoverage').show();
+            //    //$('#lifieldlocator').hide(); 
+            //    //redirect dashboard/indiviual  page 
+            //    app.navigation.navigateAppDashboardView();//navigateEDetailingView,
+            //    //navigateMSLView, navigatedashboard
+            //    app.utils.loading(false);
+            //}
+            //else if (data[0][0].IsManager == 1) {
+            //    $('#dvteamcoverage').show();
+            //    //$('#lifieldlocator').show(); 
+            //    //redirect dashboard/team coverage page 
+            //    app.navigation.navigateAppDashboardView();//navigateEDetailingView, navigateTeamAbsensesView,navigateteamcoverage
+            //    app.utils.loading(false);
+            //}
         }
         else {
             app.notify.error(data[0][0].Output_Message);
@@ -158,6 +161,10 @@ function fun_db_APP_User_Logout(Login_ID, Employee_ID, deviceinfo) {
         if (data[0].Output_ID == 1) {
             app.notify.success(data[0].Output_Message);
             app.utils.loading(false);
+            $('#username').val('');
+            $('#password').val('');
+            $('#hdnLogin_ID').val('0');
+            localStorage.clear();
         }
         else {
             app.notify.error(data[0].Output_Message);

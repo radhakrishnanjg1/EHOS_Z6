@@ -3,7 +3,6 @@
      data-model="app.TourplanPreviewView.TourplanPreviewViewModel"
      data-bind="events: { show: onShow ,afterShow:afterShow}">
     <footer data-role="footer">
-
         <div class="btn-group btn-group-justified">
             <a data-role="button" class="btn btn-danger"
                data-click="app.navigation.back">
@@ -29,19 +28,19 @@
                            id="hdntourplan_master_ww_details_string" name="hdntourplan_master_ww_details_string" />
                     <input type="hidden" value=""
                            id="hdntourplan_master_mj_details_string" name="hdntourplan_master_mj_details_string" />
-                    
-                    
+                     
+
                     <input type="hidden" value=""
-                           id="hdntourplanmaster_periodid" name="hdntourplanmaster_periodid" />                    
+                           id="hdntourplanmaster_periodid" name="hdntourplanmaster_periodid" />
                     <input type="hidden" value=""
-                           id="hdntourplanmaster_activityid" name="hdntourplanmaster_activityid" />                     
+                           id="hdntourplanmaster_activityid" name="hdntourplanmaster_activityid" />
                     <input type="hidden" value=""
-                           id="hdntourplanmaster_categoryid" name="hdntourplanmaster_categoryid" />                    
+                           id="hdntourplanmaster_categoryid" name="hdntourplanmaster_categoryid" />
                     <input type="hidden" value=""
                            id="hdntourplanmaster_modeid" name="hdntourplanmaster_modeid" />
 
                     <div class="row">
-                        <div class="panel-headingcustom">
+                        <div class="panel-headingsubcustom">
                             <div class="row">
                                 <div class="col-xs-12 ">
                                     Master Details
@@ -57,67 +56,71 @@
                                 <div class="col-xs-6">
                                     <label class="control-label">Period</label>
                                     <div id="dvtourplanmaster_period"></div>
-                                    
+
 
                                 </div>
                                 <div class="col-xs-6">
                                     <label class="control-label">Activity</label>
                                     <div id="dvtourplanmaster_activity"></div>
                                 </div>
-                                <div class="col-xs-6">
-                                    <label class="control-label">Category</label>
-                                    <div id="dvtourplanmaster_category"></div>
-                                </div>
-                                <div class="col-xs-6">
-                                    <label class="control-label">Mode</label>
-                                    <div id="dvtourplanmaster_mode"></div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="row">
-                                        <div class="panel-headingsubcustom">
-                                            <div class="row">
-                                                <div class="col-xs-12  ">
-                                                    Work With Employees
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel-body padding0">
-                                            <div data-role="listview" id="listview-tp_entrymasterww"></div>
-                                            <script type="text/x-kendo-tmpl" id="template-tp_entrymasterww">
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="pull-left">
-                                                            <span> #: ww_name #</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </script>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <div class="row">
-                                        <div class="panel-headingsubcustom">
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    Major Town
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel-body padding0">
-                                            <div data-role="listview" id="listview-tp_entrymastermj"></div>
-                                            <script type="text/x-kendo-tmpl" id="template-tp_entrymastermj">
-                                                <div class="row">
-                                                    <div class="col-xs-12">
-                                                        <div class="pull-left">
-                                                            <span> #: mj_name #</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </script>
-                                        </div>
+                                <div id="dv_tourplan_preview_master_details">
 
+                                    <div class="col-xs-6">
+                                        <label class="control-label">Category</label>
+                                        <div id="dvtourplanmaster_category"></div>
                                     </div>
+                                    <div class="col-xs-6">
+                                        <label class="control-label">Mode</label>
+                                        <div id="dvtourplanmaster_mode"></div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="row">
+                                            <div class="panel-headingsubcustom">
+                                                <div class="row">
+                                                    <div class="col-xs-12  ">
+                                                        Work With Employees
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body padding0">
+                                                <div data-role="listview" id="listview-tp_entrymasterww"></div>
+                                                <script type="text/x-kendo-tmpl" id="template-tp_entrymasterww">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="pull-left">
+                                                                <span> #: ww_name #</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <div class="row">
+                                            <div class="panel-headingsubcustom">
+                                                <div class="row">
+                                                    <div class="col-xs-12">
+                                                        Major Town
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body padding0">
+                                                <div data-role="listview" id="listview-tp_entrymastermj"></div>
+                                                <script type="text/x-kendo-tmpl" id="template-tp_entrymastermj">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="pull-left">
+                                                                <span> #: mj_name #</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     
                                 </div>
                                 <div class="col-xs-12">
                                     <div class="row">
@@ -150,3 +153,6 @@
         </div>
     </div>
 </div>
+
+ 
+ 

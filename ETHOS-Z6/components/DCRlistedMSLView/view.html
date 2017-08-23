@@ -1,0 +1,179 @@
+<div id="DCRlistedMSLView" data-role="view"
+     data-reload="true"
+     data-title="MSL Entry"
+     data-before-hide="enableBackButton"
+     data-layout="afterlogin"
+     data-model="app.DCRlistedMSLView.DCRlistedMSLViewModel"
+     data-show="app.DCRlistedMSLView.DCRlistedMSLViewModel.onShow"
+     data-after-show="app.DCRlistedMSLView.DCRlistedMSLViewModel.afterShow">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <div data-role="button" class="btn btn-primary"
+                 data-bind="events: {click: savelisteddcrdetails }">
+                <i class="fa fa-plus"> </i> Add
+            </div>
+            <div data-role="button" class="btn btn-primary"
+                 data-click="app.navigation.navigateDCRunlistedMSLView">
+                <i class="fa fa-user-circle"> </i>  MSL
+            </div>
+            <div data-role="button" class="btn btn-primary"
+                 data-click="app.navigation.navigateDCRfinaentryView">
+                <i class="fa fa-file-text"></i>  Final
+            </div> 
+        </div>
+    </footer>
+    <div id="dvDCRlistedMSLView">
+        <div class="panel panel-custom ">
+            <div class="panel-body padding0">
+                <div class="tabbable-panel">
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs" id="tabpanellistedmsl">
+                            <li class="active" id="tabpanellistedmsl-doctor">
+                                <a href="#tab_default_1" data-toggle="tab">
+                                    <i class="fa fa-stethoscope"> </i>  Doctors
+                                </a>
+                            </li>
+                            <li id="tabpanellistedmsl-chemist">
+                                <a href="#tab_default_2" data-toggle="tab">
+                                    <i class="fa fa-medkit"> </i> Chemist
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_default_1">
+                                <div class="panel-body padding0">
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Serial Number</label>
+                                        <input type="text" value="1" class="form-control"
+                                               disabled
+                                               id="hdndcr_doctor_master_id" name="hdndcr_doctor_master_id" />
+                                    </div>
+                                    <div class="form-group col-xs-6 horange">
+                                        <label class="control-label text-center">Master Values</label><br />
+                                        <div data-role="button" class="padding0 " data-click="openmodalview_dcr_selected_workwith">
+                                            <i class="fa fa-1-5x fa-users horange"></i>
+                                        </div>
+                                        &nbsp;
+                                        <div data-role="button" class="padding0 " data-click="openmodalview_dcr_selected_market_areas">
+                                            <i class="fa fa-1-5x fa-map-marker horange"></i>
+                                        </div> 
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label class="control-label">Doctor</label>
+                                        <div class="input-group">
+                                            <input id="txtlisteddoctor" name="txtlisteddoctor"
+                                                   class="form-control " required>
+                                            <span class="input-group-addon" data-bind="events: {click: fun_close_txtlisteddoctor }">
+                                                <i class="fa fa-1-5x fa-close"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label class="control-label">POB</label>
+                                        <div class="input-group">
+                                            <input id="txtlisteddoctorpob" name="txtlisteddoctorpob"
+                                                   class="form-control " type="number">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <div class="panel-heading-action">
+                                            <div class="row">
+                                                <div class="col-xs-12 accordion-toggle" data-toggle="collapse"
+                                                     data-parent="#accordion" href="#collapse-dcr-listeddoctor-brandremainer">
+                                                    <a style="text-decoration:none">
+                                                        Brand Reminder
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="collapse-dcr-listeddoctor-brandremainer" class="panel-collapse collapse">
+                                            <div class="panel-body" style="padding:0">
+                                                <div id="grid_listeddoctor_brandremainer"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group col-xs-12">
+                                        <div class="panel-heading-action">
+                                            <div class="row">
+                                                <div class="col-xs-12 accordion-toggle" data-toggle="collapse"
+                                                     data-parent="#accordion" href="#collapse-dcr-listeddoctor-sample">
+                                                    <a style="text-decoration:none">
+                                                        sample
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="collapse-dcr-listeddoctor-sample" class="panel-collapse collapse">
+                                            <div class="panel-body" style="padding:0">
+                                                <div id="grid_listeddoctor_sample"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab_default_2">
+                                <div class="panel-body padding0">
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Serial Number</label>
+                                        <input type="text" value="1" class="form-control"
+                                               disabled
+                                               id="hdndcr_chemist_master_id" name="hdndcr_chemist_master_id" />
+                                    </div>
+                                    <div class="form-group col-xs-6 horange">
+                                        <label class="control-label text-center">Master Values</label><br />
+                                        <div data-role="button" class="padding0 " data-click="openmodalview_dcr_selected_workwith">
+                                            <i class="fa fa-1-5x fa-users horange"></i>
+                                        </div>
+                                        &nbsp;
+                                        <div data-role="button" class="padding0 " data-click="openmodalview_dcr_selected_market_areas">
+                                            <i class="fa fa-1-5x fa-map-marker horange"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label class="control-label">Chemist</label>
+                                        <div class="input-group">
+                                            <input id="txtlistedchemist" name="txtlistedchemist"
+                                                   class="form-control " required>
+                                            <span class="input-group-addon" data-bind="events: {click: fun_close_txtlistedchemist }">
+                                                <i class="fa fa-1-5x fa-close"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label class="control-label">POB</label>
+                                        <div class="input-group">
+                                            <input id="txtlistedchemistpob" name="txtlistedchemistpob"
+                                                   class="form-control " required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <div class="panel-heading-action">
+                                            <div class="row">
+                                                <div class="col-xs-12 accordion-toggle" data-toggle="collapse"
+                                                     data-parent="#accordion" href="#collapse-dcr-chemist-brandremainer">
+                                                    <a style="text-decoration:none">
+                                                        Brand Reminder
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="collapse-dcr-chemist-brandremainer" class="panel-collapse collapse">
+                                            <div class="panel-body" style="padding:0">
+                                                <div id="grid_listedchemist_brandremainer"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+

@@ -1,4 +1,4 @@
-<div id="dashboard-view" data-role="view" data-title="Dashboard"
+<div id="dashboard-view" data-role="view" data-title="Coverage Details"
      data-layout="afterlogin"
       data-after-show="disableBackButton" data-before-hide="enableBackButton"
       data-model="app.dashboardView.dashboardViewModel"
@@ -15,16 +15,20 @@
     </footer>-->
 
     <footer data-role="footer">
-        <div class="btn-group btn-group-justified"> 
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
             <a class="btn btn-primary"
                data-bind="events: {click: onRefresh }">
-                <i class="fa fa-2x fa-refresh"></i>
+                <i class="fa fa-refresh"></i> Refresh
             </a>
-        </div>
+        </div> 
     </footer>
     <div id="dvvisionsummarycoveragedetails" style="display:none;">
         <div class="panel panel-custom">
-            <div class="panel-headingcustom">
+            <div class="panel-headingsubcustom">
                 <div class="panel-title text-uppercase " id="dvemployeename"> 
                 </div>
             </div>

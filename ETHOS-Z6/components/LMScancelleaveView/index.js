@@ -9,10 +9,20 @@
                 return app.navigation.navigateoffline("LMScancelleaveView");
             }
             app.navigation.logincheck();
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var Employee_ID = parseInt(userdata.Employee_ID);
+            if (localStorage.getItem("LMScancelleavedetails_live") == null ||
+               localStorage.getItem("LMScancelleavedetails_live") != 1) {
+                app.utils.loading(true);
+                fun_db_APP_Get_Ethos_Leave_Cancel(Employee_ID);
+            }
+        },
+        onRefresh: function () {
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var Employee_ID = parseInt(userdata.Employee_ID); 
             app.utils.loading(true);
-              fun_db_APP_Get_Ethos_Leave_Cancel(parseInt($('#hdnEmployee_ID').val())); 
-            $('#hdn_leavecancel_ethos_leave_master_id').val('0');
-        },  
+            fun_db_APP_Get_Ethos_Leave_Cancel(Employee_ID); 
+        },
     }); 
     view.set('LMScancelleaveViewModel', LMScancelleaveViewModel);
 }());
@@ -79,6 +89,7 @@ function fun_db_APP_Get_Ethos_Leave_Cancel(Employee_ID) {
     datasource.fetch(function () {
         var data = this.data();
         fun_cancelleave_canceldetails(JSON.stringify(data));
+        localStorage.setItem("LMScancelleavedetails_live", 1);
         app.utils.loading(false);
     });
 

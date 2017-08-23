@@ -1,0 +1,306 @@
+<div id="DCRunlistedMSLView" data-role="view"
+     data-reload="true"
+     data-title="Unlisted Entry"
+     data-before-hide="enableBackButton"
+     data-layout="afterlogin"
+     data-model="app.DCRunlistedMSLView.DCRunlistedMSLViewModel"
+     data-show="app.DCRunlistedMSLView.DCRunlistedMSLViewModel.onShow"
+     data-after-show="app.DCRunlistedMSLView.DCRunlistedMSLViewModel.afterShow">
+    
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <div data-role="button" class="btn btn-primary"
+                 data-bind="events: {click: saveunlistedscrdetails }">
+                <i class="fa fa-plus"> </i> Add
+            </div>
+            <div data-role="button" class="btn btn-primary"
+                 data-click="app.navigation.navigateDCRlistedMSLView">
+                <i class="fa fa-user-circle-o"> </i> MSL
+            </div>
+            <div data-role="button" class="btn btn-primary"
+                 data-click="app.navigation.navigateDCRfinaentryView">
+                <i class="fa fa-file-text"></i>  Final
+            </div> 
+        </div>
+    </footer>
+    <div id="dvDCRunlistedMSLView">
+        <div class="panel panel-custom">
+            <div class="panel-body padding0">
+                <div class="tabbable-panel">
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs" id="tabpanelunlistedmsl">
+                            <li class="active" id="tabpanelunlistedmsl-doctor">
+                                <a href="#tab_default_1_unlisted" data-toggle="tab">
+                                    <i class="fa fa-stethoscope"> </i> Doctors
+                                </a>
+                            </li>
+                            <li id="tabpanelunlistedmsl-chemist">
+                                <a href="#tab_default_2_unlisted" data-toggle="tab">
+                                    <i class="fa fa-medkit"> </i> Chemist
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_default_1_unlisted">
+                                <div class="panel-body padding0">
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Serial Number</label>
+                                        <input type="text" value="1" class="form-control"
+                                               disabled
+                                               id="hdndcr_unlisted_doctor_master_id"
+                                               name="hdndcr_unlisted_doctor_master_id" />
+                                    </div>
+                                    <div class="form-group col-xs-6 horange">
+                                        <label class="control-label text-center">Master Values</label><br />
+                                        <div data-role="button" class="padding0 " data-click="openmodalview_dcr_selected_workwith">
+                                            <i class="fa fa-1-5x fa-users horange"></i>
+                                        </div>
+                                        &nbsp;
+                                        <div data-role="button" class="padding0 " data-click="openmodalview_dcr_selected_market_areas">
+                                            <i class="fa fa-1-5x fa-map-marker horange"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label class="control-label">Doctor Name <span class="mandatory">*</span></label>
+                                        <input id="txtunlisteddoctorname" name="txtunlisteddoctorname"
+                                               class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-xs-6" id="dvrbunlisteddoctorgender">
+                                        <label class="control-label">Sex</label><br />
+                                        <input type="radio" id="19" name="rbunlisteddoctorgender" value="Male" checked>
+                                        <label for="radioyes" class="green">Male</label>
+                                        <input type="radio" id="20" name="rbunlisteddoctorgender" value="Female">
+                                        <label for="radiono" class="red">Female</label>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Reg No. <span class="mandatory">*</span></label>
+                                        <input id="txtunlisteddoctorregno" name="txtunlisteddoctorregno"
+                                               class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Qual1 <span class="mandatory">*</span></label>
+                                        <select name="ddlunlisteddoctorqual1" id="ddlunlisteddoctorqual1"
+                                                class="dropdown-control" required></select>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Qual2</label>
+                                        <select name="ddlunlisteddoctorqual2" id="ddlunlisteddoctorqual2"
+                                                class="dropdown-control" required></select>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Qual3</label>
+                                        <select name="ddlunlisteddoctorqual3" id="ddlunlisteddoctorqual3"
+                                                class="dropdown-control" required></select>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Speciality <span class="mandatory">*</span></label>
+                                        <select name="ddlunlisteddoctorspeciality" id="ddlunlisteddoctorspeciality"
+                                                class="dropdown-control" required></select>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Major Town <span class="mandatory">*</span></label>
+                                        <select name="ddlunlisteddoctormajortown" id="ddlunlisteddoctormajortown"
+                                                class="dropdown-control" required></select>
+                                    </div>
+                                    <div class="form-group col-xs-12 col-sm-12">
+                                        <label class="control-label">Address</label>
+                                        <input name="txtunlisteddoctoraddress" id="txtunlisteddoctoraddress"
+                                               class="form-control" type="text"
+                                               onkeyup="return textinputlength(this.value, 1000, this.id);" />
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Pincode</label>
+                                        <input name="txtunlisteddoctorpincode" id="txtunlisteddoctorpincode"
+                                               class="form-control" type="number"
+                                               onkeyup="return textinputlength(this.value, 6, this.id);" />
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Phone</label>
+                                        <input name="txtunlisteddoctorphone" id="txtunlisteddoctorphone"
+                                               class="form-control" type="number"
+                                               onkeyup="return textinputlength(this.value,15, this.id);" />
+                                    </div>
+
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Mobile</label>
+                                        <input name="txtunlisteddoctormobile" id="txtunlisteddoctormobile"
+                                               class="form-control" type="number"
+                                               onkeyup="return textinputlength(this.value, 10, this.id);" />
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Email</label>
+                                        <input name="txtunlisteddoctoremail" id="txtunlisteddoctoremail"
+                                               class="form-control" type="email"
+                                               onkeyup="return textinputlength(this.value, 100, this.id);" />
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">POB</label>
+                                        <input name="txtunlisteddoctorpobsingle" id="txtunlisteddoctorpobsingle" required
+                                               class="form-control" type="number"
+                                               onkeyup="return textinputlength(this.value, 6, this.id);" />
+                                    </div>
+                                    <div id="dvdcr_unlisteddoctordata_ww">  
+                                        <!--<div class="form-group col-xs-12 col-sm-12">
+                                            <label class="control-label">Products Promoted</label>
+                                            <div class="pull-right horange">Close</div>
+                                            <select id="ddlunlisteddoctorproductspromoted" multiple="multiple"
+                                                    data-placeholder="Select Products"></select>
+                                        </div>-->
+
+                                        <div class="form-group col-xs-12">
+                                            <div class="panel-heading-action">
+                                                <div class="row">
+                                                    <div class="col-xs-12 accordion-toggle" data-toggle="collapse"
+                                                         data-parent="#accordion" href="#collapse-dcr-unlisteddoctor-brandremainer">
+                                                        <a style="text-decoration:none">
+                                                            Brand Reminder
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="collapse-dcr-unlisteddoctor-brandremainer" class="panel-collapse collapse">
+                                                <div class="panel-body padding0">
+                                                    <div id="grid_unlisteddoctor_brandremainer"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group col-xs-12">
+                                            <div class="panel-heading-action">
+                                                <div class="row">
+                                                    <div class="col-xs-12 accordion-toggle" data-toggle="collapse"
+                                                         data-parent="#accordion" href="#collapse-dcr-unlisteddoctor-sample">
+                                                        <a style="text-decoration:none">
+                                                            sample
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="collapse-dcr-unlisteddoctor-sample" class="panel-collapse collapse">
+                                                <div class="panel-body padding0">
+                                                    <div id="grid_unlisteddoctor_sample"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="tab_default_2_unlisted">
+                                <div class="panel-body padding0">
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Serial Number</label>
+                                        <input type="text" value="1" class="form-control"
+                                               disabled
+                                               id="hdndcr_unlisted_chemist_master_id" name="hdndcr_unlisted_chemist_master_id" />
+                                    </div>
+                                    <div class="form-group col-xs-6 horange">
+                                        <label class="control-label text-center">Master Values</label><br />
+                                        <div data-role="button" class="padding0 " data-click="openmodalview_dcr_selected_workwith">
+                                            <i class="fa fa-1-5x fa-users horange"></i>
+                                        </div>
+                                        &nbsp;
+                                        <div data-role="button" class="padding0 " data-click="openmodalview_dcr_selected_market_areas">
+                                            <i class="fa fa-1-5x fa-map-marker horange"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label class="control-label">Chemist Name <span class="mandatory">*</span></label>
+                                        <input id="txtunlistedchemistname" name="txtunlistedchemistname"
+                                               class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Contact Person <span class="mandatory">*</span></label>
+                                        <input id="txtunlistedchemistcontactperson" name="txtunlistedchemistcontactperson"
+                                               class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Major Town <span class="mandatory">*</span></label>
+                                        <select name="ddlunlistedchemistmajortown" id="ddlunlistedchemistmajortown"
+                                                class="dropdown-control" required></select>
+                                    </div>
+                                    <div class="form-group col-xs-12 col-sm-12">
+                                        <label class="control-label">Address</label>
+                                        <input name="txtunlistedchemistaddress" id="txtunlistedchemistaddress"
+                                               class="form-control" type="text"
+                                               onkeyup="return textinputlength(this.value, 1000, this.id);" />
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Pincode</label>
+                                        <input name="txtunlistedchemistpincode" id="txtunlistedchemistpincode"
+                                               class="form-control" type="number"
+                                               onkeyup="return textinputlength(this.value, 6, this.id);" />
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Phone</label>
+                                        <input name="txtunlistedchemistphone" id="txtunlistedchemistphone"
+                                               class="form-control" type="number"
+                                               onkeyup="return textinputlength(this.value,15, this.id);" />
+                                    </div>
+
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Mobile</label>
+                                        <input name="txtunlistedchemistmobile" id="txtunlistedchemistmobile"
+                                               class="form-control" type="number"
+                                               onkeyup="return textinputlength(this.value, 10, this.id);" />
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Email</label>
+                                        <input name="txtunlistedchemistemail" id="txtunlistedchemistemail"
+                                               class="form-control" type="email"
+                                               onkeyup="return textinputlength(this.value, 100, this.id);" />
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">Drug Lincense No.</label>
+                                        <input id="txtunlistedchemistdruglincenseno" name="txtunlistedchemistdruglincenseno"
+                                               class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">VAT No.</label>
+                                        <input id="txtunlistedchemistvatno" name="txtunlistedchemistvatno"
+                                               class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label">POB</label>
+                                        <input name="txtunlistedchemistpobsingle" id="txtunlistedchemistpobsingle" required
+                                               class="form-control" type="number"
+                                               onkeyup="return textinputlength(this.value, 6, this.id);" />
+                                    </div>
+                                    <div id="dvdcr_unlistedchemistdata_ww">
+                                         
+                                        <!--<div class="form-group col-xs-12 col-sm-12">
+                                            <label class="control-label">Products Promoted</label>
+                                            <div class="pull-right horange">Close</div>
+                                            <select id="ddlunlistedchemistproductspromoted" multiple="multiple"
+                                                    data-placeholder="Select Products"></select>
+                                        </div>-->
+
+                                        <div class="form-group col-xs-12 col-sm-12">
+                                            <div class="panel-heading-action">
+                                                <div class="row">
+                                                    <div class="col-xs-12 accordion-toggle" data-toggle="collapse"
+                                                         data-parent="#accordion" href="#collapse-dcr-unlistedchemist-brandremainer">
+                                                        <a style="text-decoration:none">
+                                                            Brand Reminder
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="collapse-dcr-unlistedchemist-brandremainer" class="panel-collapse collapse">
+                                                <div class="panel-body padding0">
+                                                    <div id="grid_unlistedchemist_brandremainer"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

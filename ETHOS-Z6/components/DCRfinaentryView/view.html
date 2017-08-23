@@ -1,0 +1,46 @@
+<div id="DCRfinaentryView" data-role="view" data-title="Deviation Details"
+     data-after-show="disableBackButton" data-before-hide="enableBackButton"
+     data-layout="afterlogin"
+     data-model="app.DCRfinaentryView.DCRfinaentryViewModel"
+     data-bind="events: { show: onShow ,afterShow: afterShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <div data-role="button" class="btn btn-primary"
+                 data-bind="events: {click: savefinalentrydetails }">
+                <i class="fa fa-check-square"> </i> Preview
+            </div> 
+        </div>
+    </footer>
+    <div id="dvDCRfinaentryView">
+        <div class="panel panel-custom padding0">
+            <div class="panel-body">
+                <div class="row">
+                    <form id="form-finalentry">
+                        <input type="hidden" value=""
+                               id="hdn_dcr_master_date" name="hdn_dcr_master_date" />
+                        <input type="hidden" value=""
+                               id="hdn_dcr_master_activity_period" name="hdn_dcr_master_activity_period" />
+                        <input type="hidden" value=""
+                               id="hdn_dcr_master_activity_id" name="hdn_dcr_master_activity_id" />
+
+                        <input type="hidden" value=""
+                               id="hdndcr_master_ww_details_string_finalentry" name="hdndcr_master_ww_details_string_finalentry" />
+                        <input type="hidden" value=""
+                               id="hdndcr_ins_master_string_finalentry" name="hdndcr_ins_master_string_finalentry" />
+
+                        <div class="form-group col-xs-12 col-sm-12">
+                            <label class="control-label">Deviation Reason</label>
+                             <textarea class="form-control" rows="5" id="txtdeviationreason"
+                                      onkeyup="return textinputlength(this.value, 1000, this.id);"></textarea>
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12">
+                            <label class="control-label">Description/Feedback</label>
+                            <textarea class="form-control" rows="5" id="txtdescription"
+                                      onkeyup="return textinputlength(this.value, 1000, this.id);"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

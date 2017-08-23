@@ -1,0 +1,464 @@
+<div id="DCRpreviewView" data-role="view" data-title="DCR Preview"
+     data-after-show="disableBackButton" data-before-hide="enableBackButton"
+     data-layout="afterlogin"
+     data-model="app.DCRpreviewView.DCRpreviewViewModel"
+     data-bind="events: { show: onShow ,afterShow:afterShow}">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <div data-role="button" class="btn btn-danger"
+                 data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </div>
+            <div data-role="button" class="btn btn-red"
+                 data-bind="events: {click: cleardcrdetails }">
+                <i class="fa fa-trash"> </i> Clear All
+            </div>
+            <div data-role="button" class="btn btn-primary"
+                 data-bind="events: {click: submitdcrdetails }">
+                <i class="fa fa-save"> </i> Submit
+            </div>
+        </div>
+    </footer>
+    <div id="dvDCRpreviewView">
+        <div class="panel panel-custom ">
+            <div class="panel-body padding0">
+                <div class="col-xs-12">
+                    <input type="hidden" value=""
+                           id="hdndcr_master_string" name="hdndcr_master_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_master_ww_details_string" name="hdndcr_master_ww_details_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_master_mj_details_string" name="hdndcr_master_mj_details_string" />
+                    <!--doctor-->
+                    <input type="hidden" value=""
+                           id="hdndcr_doctor_string" name="hdndcr_doctor_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_doctor_ww_details_string" name="hdndcr_doctor_ww_details_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_doctor_gift_details_string" name="hdndcr_doctor_gift_details_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_doctor_sample_details_string" name="hdndcr_doctor_sample_details_string" />
+
+                    <input type="hidden" value=""
+                           id="hdndcr_unlisted_doctor_string" name="hdndcr_unlisted_doctor_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_unlisted_doctor_ww_details_string" name="hdndcr_unlisted_doctor_ww_details_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_unlisted_doctor_pp_details_string" name="hdndcr_unlisted_doctor_pp_details_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_unlisted_doctor_gift_details_string" name="hdndcr_unlisted_doctor_gift_details_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_unlisted_doctor_sample_details_string" name="hdndcr_unlisted_doctor_sample_details_string" />
+
+                    <!--chemist-->
+                    <input type="hidden" value=""
+                           id="hdndcr_chemist_string" name="hdndcr_chemist_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_chemist_ww_details_string" name="hdndcr_chemist_ww_details_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_chemist_gift_details_string" name="hdndcr_chemist_gift_details_string" />
+
+                    <input type="hidden" value=""
+                           id="hdndcr_unlisted_chemist_string" name="hdndcr_unlisted_chemist_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_unlisted_chemist_ww_details_string" name="hdndcr_unlisted_chemist_ww_details_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_unlisted_chemist_pp_details_string" name="hdndcr_unlisted_chemist_pp_details_string" />
+                    <input type="hidden" value=""
+                           id="hdndcr_unlisted_chemist_gift_details_string" name="hdndcr_unlisted_chemist_gift_details_string" />
+                    <!--promo balace-->
+                    <input type="hidden" value=""
+                           id="hdndcr_promo_balance_details_string" name="hdndcr_promo_balance_details_string" />
+
+                    <!--master value ids-->
+                    <input type="hidden" value=""
+                           id="hdndcr_periodid" name="hdndcr_periodid" />
+                    <input type="hidden" value=""
+                           id="hdndcr_activityid" name="hdndcr_activityid" />
+                    <input type="hidden" value=""
+                           id="hdndcr_categoryid" name="hdndcr_categoryid" />
+                    <input type="hidden" value=""
+                           id="hdndcr_modeid" name="hdndcr_modeid" />
+
+                    <div class="row">
+                        <div class="panel-headingsubcustom">
+                            Master Details
+                        </div>
+                        <div class="panel-body padding0">
+
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <td>
+                                            <div id="dvdcrmaster_date"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Period
+                                        </th>
+                                        <td>
+                                            <div id="dvdcrmaster_period"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Activity
+                                        </th>
+                                        <td>
+                                            <div id="dvdcrmaster_activity"></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="dv_dcr_fiedstaffandsecond_condition" style="display:none">
+                                        <th>
+                                            Category
+                                        </th>
+                                        <td>
+                                            <div id="dvdcrmaster_category"></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="dv_dcr_fiedstaffandsecond_condition" style="display:none">
+                                        <th>
+                                            Mode
+                                        </th>
+                                        <td>
+                                            <div id="dvdcrmaster_mode"></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="dv_dcr_fiedstaffandsecond_condition" style="display:none">
+                                        <th>
+                                            SFC Route
+                                        </th>
+                                        <td>
+                                            <div id="dvdcrmaster_sfcroute"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div id="dv_dcr_ww_mj_condition" style="display:none">
+                                <div class="panel-headingsubcustom">
+                                    Worked With Employees
+                                </div>
+                                <div class="panel-body padding0">
+                                    <div data-role="listview" id="listview-dcrmasterww"></div>
+                                    <script type="text/x-kendo-tmpl" id="template-dcrmasterww">
+                                        <div style="padding:0px !important;text-align:left!important" class="pull-left">
+                                            <span> #: ww_name #</span>
+                                        </div>
+                                    </script>
+                                </div>
+                                <div class="panel-headingsubcustom">
+                                    Major Town
+                                </div>
+                                <div class="panel-body padding0">
+                                    <div data-role="listview" id="listview-dcrmastermj"></div>
+                                    <script type="text/x-kendo-tmpl" id="template-dcrmastermj">
+                                        <div style="padding:0px !important;text-align:left!important" class="pull-left">
+                                            <span> #: mj_name #</span>
+                                        </div>
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="dv_dcr_fiedstaff_condition" style="display:none">
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div class="panel-headingsubcustom">
+                                            Listed Doctor Details
+                                        </div>
+                                        <div class="panel-body padding0">
+                                            <div data-role="listview" id="listview-dcr-listeddoctor"></div>
+                                            <script type="text/x-kendo-tmpl" id="template-dcr-listeddoctor">
+                                                <div style="padding:0px !important;text-align:left!important" class="horange" data-role="button"
+                                                     data-dcr_doctor_master_id="${dcr_doctor_master_id}"
+                                                     data-click="fun_dcr_listeddoctor_modelopen">
+                                                    #: doctor_name #
+                                                </div>
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div class="panel-headingsubcustom">
+                                            UnListed Doctor Details
+                                        </div>
+                                        <div class="panel-body padding0">
+                                            <div data-role="listview" id="listview-dcr-unlisteddoctor"></div>
+                                            <script type="text/x-kendo-tmpl" id="template-dcr-unlisteddoctor">
+                                                <div style="padding:0px !important;text-align:left!important" class="horange" data-role="button"
+                                                     data-dcr_unlisted_doctor_master_id="${dcr_unlisted_doctor_master_id}"
+                                                     data-click="fun_dcr_unlisteddoctor_modelopen">
+                                                    #: doctor_name # -
+                                                    #: pob #
+                                                </div>
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div class="panel-headingsubcustom">
+                                            Listed chemist Details
+                                        </div>
+                                        <div class="panel-body padding0">
+                                            <div data-role="listview" id="listview-dcr-listedchemist"></div>
+                                            <script type="text/x-kendo-tmpl" id="template-dcr-listedchemist">
+                                                <div style="padding:0px !important;text-align:left!important" class="horange" data-role="button"
+                                                     data-dcr_chemist_master_id="${dcr_chemist_master_id}"
+                                                     data-click="fun_dcr_listedchemist_modelopen">
+                                                    #: chemist_name #
+                                                </div>
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div class="panel-headingsubcustom">
+                                            UnListed chemist Details
+                                        </div>
+                                        <div class="panel-body padding0">
+                                            <div data-role="listview" id="listview-dcr-unlistedchemist"></div>
+                                            <script type="text/x-kendo-tmpl" id="template-dcr-unlistedchemist">
+                                                <div style="padding:0px !important;text-align:left!important" class="horange" data-role="button"
+                                                     data-dcr_unlisted_chemist_master_id="${dcr_unlisted_chemist_master_id}"
+                                                     data-click="fun_dcr_unlistedchemist_modelopen">
+                                                    #: chemist_name # -
+                                                    #: pob #
+                                                </div>
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="panel-headingsubcustom">
+                                        Deviation Details
+                                    </div>
+                                    <div class="panel-body padding0">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <th style="width:50%">
+                                                        Deviation Reason
+                                                    </th>
+                                                    <td class="text-left ">
+                                                        <div id="dvdcrmaster_deviationreason"></div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:50%">
+                                                        Description/Feedback
+                                                    </th>
+                                                    <td class="text-left ">
+                                                        <div id="dvdcrmaster_description"></div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="modalview" id="modalview-dcr_listeddoctor"
+         style="height:70%!important ; width:90%!important ">
+        <div data-role="header" class="panel-headingmodal">
+            <div class="row">
+                <div class="panel-title" style="padding-left:10px !important ; ">
+                    Listed Doctor  Description<a data-click="fun_dcr_listeddoctor_modelclose"
+                                                 data-role="button" class="pull-right"
+                                                 style="padding : 0 10px 0 0; ">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-custom">
+            <div class="panel-body" style="padding-top:0px;background-color:#fff !important">
+                <div class="row">
+                    <!--<div class="panel-headingmodal-subheader">
+                        Worked With  Details
+                    </div>
+                    <div class="panel-body padding0">
+                        <div data-role="listview" id="listview-dcr_listeddoctor_ww"></div>
+                        <script type="text/x-kendo-tmpl" id="template-dcr_listeddoctor_ww">
+
+                            <div class="pull-left">
+                                <span> #: ww_name #</span>
+                            </div>
+                        </script>
+                    </div>-->
+                    <!--<div class="panel-headingmodal-subheader">
+                        Brand remainer  Details
+                    </div>-->
+                    <div class="panel-body padding0">
+                        <div id="grid_preview_listeddoctor_brandremainer"></div>
+                    </div>
+
+                    <!--<div class="panel-headingmodal-subheader">
+                        sample  Details
+                    </div>-->
+                    <div class="panel-body padding0">
+                        <div id="grid_preview_listeddoctor_sample"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-role="modalview" id="modalview-dcr_unlisteddoctor"
+         style="height:70%!important ; width:90%!important ">
+        <div data-role="header" class="panel-headingmodal">
+            <div class="row">
+                <div class="panel-title" style="padding-left:10px !important ; ">
+                    Unlisted Doctor Description <a data-click="fun_dcr_unlisteddoctor_modelclose"
+                                                   data-role="button" class="pull-right"
+                                                   style="padding : 0 10px 0 0; ">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-custom">
+            <div class="panel-body" style="padding-top:0px;background-color:#fff !important">
+                <div class="row">
+                    <!--<div class="panel-headingmodal-subheader">
+                        Worked With Details
+                    </div>
+                    <div class="panel-body padding0">
+                        <div data-role="listview" id="listview-dcr_unlisteddoctor_ww"></div>
+                        <script type="text/x-kendo-tmpl" id="template-dcr_unlisteddoctor_ww">
+                            <div class="pull-left">
+                                <span> #: ww_name #</span>
+                            </div>
+                        </script>
+                    </div>-->
+                    <!--<div class="panel-headingmodal-subheader">
+                        Product Promoted Details
+                    </div>
+                    <div class="panel-body padding0">
+                        <div data-role="listview" id="listview-dcr_unlisteddoctor_pp"></div>
+                        <script type="text/x-kendo-tmpl" id="template-dcr_unlisteddoctor_pp">
+                            <div class="pull-left">
+                                <span> #: pp_name #</span>
+                            </div>
+                        </script>
+                    </div>-->
+                    <!--<div class="panel-headingmodal-subheader">
+                        Brand remainer  Details
+                    </div>-->
+                    <div class="panel-body padding0">
+                        <div id="grid_preview_unlisteddoctor_brandremainer"></div>
+                    </div>
+
+                    <!--<div class="panel-headingmodal-subheader">
+                        sample  Details
+                    </div>-->
+                    <div class="panel-body padding0">
+                        <div id="grid_preview_unlisteddoctor_sample"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="modalview" id="modalview-dcr_listedchemist"
+         style="height:70%!important ; width:90%!important ">
+        <div data-role="header" class="panel-headingmodal">
+            <div class="row">
+                <div class="panel-title" style="padding-left:10px !important ; ">
+                    Listed Chemist  Description<a data-click="fun_dcr_listedchemist_modelclose"
+                                                  data-role="button" class="pull-right"
+                                                  style="padding : 0 10px 0 0; ">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-custom">
+            <div class="panel-body" style="padding-top:0px;background-color:#fff !important">
+                <div class="row">
+                    <!--<div class="panel-headingmodal-subheader">
+                        Worked With  Details
+                    </div>
+                    <div class="panel-body padding0">
+                        <div data-role="listview" id="listview-dcr_listedchemist_ww"></div>
+                        <script type="text/x-kendo-tmpl" id="template-dcr_listedchemist_ww">
+
+                            <div class="pull-left">
+                                <span> #: ww_name #</span>
+                            </div>
+                        </script>
+                    </div>-->
+                    <!--<div class="panel-headingmodal-subheader">
+                        Brand remainer  Details
+                    </div>-->
+                    <div class="panel-body padding0">
+                        <div id="grid_preview_listedchemist_brandremainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-role="modalview" id="modalview-dcr_unlistedchemist"
+         style="height:70%!important ; width:90%!important ">
+        <div data-role="header" class="panel-headingmodal">
+            <div class="row">
+                <div class="panel-title" style="padding-left:10px !important ; ">
+                    Unlisted Chemist Description <a data-click="fun_dcr_unlistedchemist_modelclose"
+                                                    data-role="button" class="pull-right"
+                                                    style="padding : 0 10px 0 0; ">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-custom">
+            <div class="panel-body" style="padding-top:0px;background-color:#fff !important">
+                <div class="row">
+                    <!--<div class="panel-headingmodal-subheader">
+                        Worked With Details
+                    </div>
+                    <div class="panel-body padding0">
+                        <div data-role="listview" id="listview-dcr_unlistedchemist_ww"></div>
+                        <script type="text/x-kendo-tmpl" id="template-dcr_unlistedchemist_ww">
+                            <div class="pull-left">
+                                <span> #: ww_name #</span>
+                            </div>
+                        </script>
+                    </div>-->
+                    <!--<div class="panel-headingmodal-subheader">
+                        Product Promoted Details
+                    </div>
+                    <div class="panel-body padding0">
+                        <div data-role="listview" id="listview-dcr_unlistedchemist_pp"></div>
+                        <script type="text/x-kendo-tmpl" id="template-dcr_unlistedchemist_pp">
+                            <div class="pull-left">
+                                <span> #: pp_name #</span>
+                            </div>
+                        </script>
+                    </div>-->
+                    <!--<div class="panel-headingmodal-subheader">
+                        Brand remainer  Details
+                    </div>-->
+                    <div class="panel-body padding0">
+                        <div id="grid_preview_unlistedchemist_brandremainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

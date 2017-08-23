@@ -11,25 +11,136 @@
             app.navigation.logincheck();
 
         },
-
         afterShow: function () {
             var userdata = JSON.parse(localStorage.getItem("userdata"));
             var Employee_ID = parseInt(userdata.Employee_ID);
             var Sub_Territory_ID = parseInt(userdata.Sub_Territory_ID);
-            app.utils.loading(true);
-            fun_db_APP_Get_Z6_MSL_Details_By_Employee_ID(Employee_ID, Sub_Territory_ID);
+            if (localStorage.getItem("mslchemistdetails_live") == null ||
+                localStorage.getItem("mslchemistdetails_live") != 1) {
+                init_mslchemistview()
+                app.utils.loading(true);
+                fun_db_APP_Get_Chemist_MSL_Details_By_Employee_ID(Employee_ID, Sub_Territory_ID);
+            }
+            var Employee_Name = userdata.Employee_Name;
+            if (userdata.IsManager == 1) {
+                $("#dvmslchemistview_manager").show();
+                $("#dvmslchemistview_team").show();
+                load_subordinates_mslchemistview();
+            }
+            else {
+                $("#dvmslchemistview_manager").hide();
+                $("#dvmslchemistview_team").hide();
+            }
+            $('#dvmslchemistview_teamname').html(Employee_Name);
+            $('#mslchemistview_txtauocmpemployeelist').val('');
+            $("#mslchemistview_txtauocmpemployeelist").kendoAutoComplete({
+                clearButton: false
+            })
+        },
 
+        ScrollTop: function () {
+            $(".km-scroll-container").css("transform", "none");
+        },
+        fun_close_mslchemistview_txtauocmpemployeelist: function () {
+            $('#mslchemistview_txtauocmpemployeelist').val('');
+            setTimeout(function () {
+                $("#mslchemistview_txtauocmpemployeelist").blur();
+                var autocomplete = $("#mslchemistview_txtauocmpemployeelist").data("kendoAutoComplete");
+                // Close the suggestion popup
+                autocomplete.close();
+            }, 1);
         },
     });
 
     view.set('MSLChemistViewModel', MSLChemistViewModel);
 }());
 
-function fun_db_APP_Get_Z6_MSL_Details_By_Employee_ID(Employee_ID, Sub_Territory_ID) {
+function load_subordinates_mslchemistview() {
+    var localdata = JSON.parse(Enumerable.From(JSON.parse(localStorage.getItem("ethosinssubordinatesdetails")))
+        .Where("$.Employee_Name!='ALL'")
+        .ToJSON());
+    //create AutoComplete UI component
+    $("#mslchemistview_txtauocmpemployeelist").kendoAutoComplete({
+        dataSource: localdata,
+        dataTextField: "Employee_Name",
+        valuePrimitive: true,
+        ignoreCase: true,
+        minLength: 1,
+        filter: "contains",
+        placeholder: "Type employee or sub-territory name",
+        clearButton: false,
+        //separator: ", "
+        noDataTemplate: 'No records found!',
+        change: function (e) {
+            var value = this.value();
+            if (value.length > 6) {
+                var ethosmastervaluesdata = JSON.parse(localStorage.getItem("ethosinssubordinatesdetails"));
+                var ethosmastervaluesrecords = JSON.parse(Enumerable.From(ethosmastervaluesdata)
+               .Where("$.Employee_Name=='" + value + "'")
+               .ToJSON());
+                if (ethosmastervaluesrecords.length == 0) {
+                    app.notify.error("Select valid employee name in list!");
+                    return false;
+                }
+                var empid = value.split("|")[1];
+                var ethosmastervaluesdata_sub = JSON.parse(Enumerable.From(ethosmastervaluesdata)
+               .Where("$.Employee_ID==" + empid)
+               .ToJSON());
+                var Sub_Territory_ID = ethosmastervaluesdata_sub[0].Sub_Territory_ID;
+                app.utils.loading(true);
+                fun_db_APP_Get_Chemist_MSL_Details_By_Employee_ID(empid, Sub_Territory_ID);
+            }
+            else {
+                var userdata = JSON.parse(localStorage.getItem("userdata"));
+                var Employee_ID = parseInt(userdata.Employee_ID);
+                var Sub_Territory_ID = parseInt(userdata.Sub_Territory_ID);
+                app.utils.loading(true);
+                fun_db_APP_Get_Chemist_MSL_Details_By_Employee_ID(Employee_ID, Sub_Territory_ID);
+            }
+            $('.k-nodata').hide();
+            setTimeout(function () {
+                $("#mslchemistview_txtauocmpemployeelist").blur();
+                var autocomplete = $("#mslchemistview_txtauocmpemployeelist").data("kendoAutoComplete");
+                // Close the suggestion popup
+                autocomplete.close();
+            }, 1);
+        }
+    });
+}
+
+function init_mslchemistview() {
+     
+    $("#listview-chemistmsldetails").kendoMobileListView({
+        dataSource: [],
+        filterable: {
+            field: 'Chemist_Search',
+            operator: 'contains',
+            ignoreCase: true
+        },
+        dataBound: function (e) {
+            if (this.dataSource.data().length == 0) {
+                //custom logics
+                $("#listview-chemistmsldetails").append("<li>No records found!</li>");
+            }
+        },
+        template: $("#template-chemistmsldetails").html()
+    }); 
+}
+
+function load_mslchemistview(records) {
+    var lvmsldetails = JSON.parse(Enumerable.From(JSON.parse(records))
+        .ToJSON());
+    var dsmsldetails = new kendo.data.DataSource({
+        data: lvmsldetails,
+    }); 
+    $("#listview-chemistmsldetails").data("kendoMobileListView").setDataSource(dsmsldetails);
+}
+
+function fun_db_APP_Get_Chemist_MSL_Details_By_Employee_ID(Employee_ID, Sub_Territory_ID) {
     var datasource = new kendo.data.DataSource({
         transport: {
             read: {
-                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Get_Z6_MSL_Details_By_Employee_ID",
+                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Get_Chemist_MSL_Details_By_Employee_ID",
                 type: "POST",
                 dataType: "json",
                 data: {
@@ -40,7 +151,7 @@ function fun_db_APP_Get_Z6_MSL_Details_By_Employee_ID(Employee_ID, Sub_Territory
         },
         schema: {
             parse: function (response) {
-                var getdata = response.Result.Data;
+                var getdata = response.Result.Data[0];
                 return getdata;
             }
         }
@@ -49,35 +160,18 @@ function fun_db_APP_Get_Z6_MSL_Details_By_Employee_ID(Employee_ID, Sub_Territory
     datasource.fetch(function () {
         var data = this.data();
         app.utils.loading(false);
-        //localStorage.setItem("doctomsldetailsdetails", JSON.stringify(data[0])); 
-        //localStorage.setItem("msldetailsdetails", JSON.stringify(data[1]));
-        //load_doctor_msldetails(JSON.stringify(data[0]));
-        load_chemist_msldetails(JSON.stringify(data[1]));
-        $('#dvmslchemistdetails').show();
-        //sadsdsss
-    });
+        load_mslchemistview(JSON.stringify(data));
+        localStorage.setItem("mslchemistdetails_live", 1);
+        var userdata = JSON.parse(localStorage.getItem("userdata")); 
+        var Employee_Name = userdata.Employee_Name;
+        if (userdata.IsManager == 1) {
+            var ethosmastervaluesdata = JSON.parse(localStorage.getItem("ethosinssubordinatesdetails"));
+            var ethosmastervaluesrecords = JSON.parse(Enumerable.From(ethosmastervaluesdata)
+           .Where("$.Employee_ID==" + Employee_ID + "")
+           .ToJSON());
+            $('#dvmslchemistview_teamname').html(ethosmastervaluesrecords[0].Employee_Name.split("|")[0]); 
+        }
+        });
 }
- 
-function load_chemist_msldetails(records) {
-    var lvmsldetails2 = JSON.parse(Enumerable.From(JSON.parse(records))
-        .ToJSON());
-    var dsmsldetails2 = new kendo.data.DataSource({
-        data: lvmsldetails2,
-    });
-    $("#listview-chemistmsldetails").kendoMobileListView({
-        dataSource: dsmsldetails2,
-        filterable: [
-            {
-                field: 'Chemist_Search_Keyword',
-                operator: 'contains',
-                ignoreCase: true
-            } 
-        ],
-        dataBound: function (e) {//
-            if (this.dataSource.data().length == 0) { 
-                $("#listview-chemistmsldetails").append("<li>No Records Found!</li>");
-            }
-        }, 
-        template: $("#template-chemistmsldetails").html() 
-    });
-}
+
+

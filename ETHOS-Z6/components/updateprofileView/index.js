@@ -22,12 +22,14 @@
                     Username: userdata.Username,
                     Birthday: userdata.Birthday,
                     Designation: userdata.Designation,
-
+                    Image_Path: userdata.Image_Path == null ? "../../images/Temp.png" : userdata.ImagePath,
                     //DisplayName: "Ram", 
                     //Birthday: "1965-12-12",
                     ////Gender: "1", 
                 });
                 this.set('profile', profile);
+                var cameratakephoto = new cameraApp();
+                cameratakephoto.run();
         },
         onHide: function () {
 
@@ -51,7 +53,7 @@
             }
             else if (user.Mobile != profile.Mobile || user.Email != profile.Email) {
                 // update profile in db
-                fun_dbupdateprofiledetail(user.Login_ID, user.Employee_ID, profile.Email, profile.Mobile);
+                fun_db_APP_Change_Profile_Image_Details(user.Login_ID, user.Employee_ID, profile.Email, profile.Mobile);
             }
             else {
                 app.notify.error('Change the email or mobile!');
@@ -63,16 +65,19 @@
 }());
 
 
-function fun_dbupdateprofiledetail(Login_ID, Employee_ID, Email, Mobile) {
+function fun_db_APP_Change_Profile_Image_Details(Login_ID, Employee_ID, Email, Mobile) {
     var datacheck = new kendo.data.DataSource({
         transport: {
             read: {
-                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Change_Profile_Details",
+                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Change_Profile_Image_Details",
                 type: "POST",
                 dataType: "json",
                 data: {
-                    "Login_ID": Login_ID, "Employee_ID": Employee_ID,
-                    "Email": Email, "Mobile": Mobile
+                    "Login_ID": Login_ID,
+                    "Employee_ID": Employee_ID,
+                    "Email": Email,
+                    "Mobile": Mobile,
+                    "Image_Path": "http://himalayasql.cloudapp.net/EthosFilesUpload/UploadedFiles/Ethos_App/profile_images/"+Login_ID+".png",
                 }
             }
         },

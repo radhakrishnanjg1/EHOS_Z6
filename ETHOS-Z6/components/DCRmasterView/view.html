@@ -1,0 +1,116 @@
+<div id="DCRmasterView" data-role="view" data-reload="true"
+     data-title="DCR Master Entry" data-before-hide="enableBackButton"
+     data-layout="afterlogin"
+     data-model="app.DCRmasterView.DCRmasterViewModel"
+     data-show="app.DCRmasterView.DCRmasterViewModel.onShow"
+     data-after-show="app.DCRmasterView.DCRmasterViewModel.afterShow">
+     
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
+            <a data-role="button" class="btn btn-primary"
+               data-bind="events: {click: savedcrmsterdetails }">
+                Next <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </footer>
+    <!--<div id="dvDCRmasterView_offgps" style="display:none">
+        <div class="col-xs-12 col-sm-12 full-height"
+             align="center">
+            <div class="middle-align">
+                <i class="fa fa-5x fa-map-marker" id="fa-map-marker"></i>
+                <p class="horange">
+                    You seem to be GPS Offline. <br>
+                    Switch on the GPS location in your phone device
+                </p>
+                <a data-role="button" class="btn btn-success" 
+                   id="currentpage"
+                   data-click="fun_show_dcr_master">Retry</a>
+            </div>
+        </div>
+    </div>-->
+    <div id="dvDCRmasterView">
+        <div class="panel panel-custom">
+            <div class="panel-body">
+                <div class="row">
+                    <form id="form-dvdcr2">
+                        <div class="form-group col-xs-6 col-sm-6">
+                            <input type="hidden" value="1"
+                                   id="hdndcr_master_id" name="hdndcr_master_id" />
+                            <input type="hidden" value=""
+                                   id="hdn_dcr_selected_worked_with"
+                                   name="hdn_dcr_selected_worked_with" />
+                            <input type="hidden" value=""
+                                   id="hdn_dcr_selected_market_areas"
+                                   name="hdn_dcr_selected_market_areas" /> 
+                            <input type="hidden" value=""
+                                   id="hdn_dcr_category_id"
+                                   name="hdn_dcr_category_id" />
+
+                            <label class="control-label">Date</label>
+                            <input name="txtdcrdate" id="txtdcrdate" required disabled
+                                   value="" class="form-control"
+                                   onkeyup="return textinputlength(this.value, 10, this.id);" />
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6">
+                            <label class="control-label">Period</label>
+                            <select name="ddlactivityperiod" id="ddlactivityperiod"
+                                    class="dropdown-control" required></select>
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-6">
+                            <label class="control-label">Activity</label>
+                            <select name="ddlactivity" id="ddlactivity"
+                                    class="dropdown-control" required></select>
+                        </div>
+                        <div id="dvdcrmasterdata" style="display:none ">
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <label class="control-label">Category</label>
+                                <select name="ddlcategory" id="ddlcategory"
+                                        class="dropdown-control" required></select>
+                            </div>
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <label class="control-label">Mode</label>
+                                <select name="ddlmode" id="ddlmode"
+                                        class="dropdown-control" required></select>
+                            </div>
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <label class="control-label">SFC Route</label>
+                                <select name="ddlsfcroute" id="ddlsfcroute"
+                                        class="dropdown-control" required></select>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12" id="dvdcrworkwithmaster" style="display:none ">
+                            <label class="control-label">Work With</label>
+                            <div class="pull-right horange">Close</div>
+                            <select name="ddlworkwithmaster" id="ddlworkwithmaster"
+                                    multiple="multiple"
+                                    data-placeholder="Select Work With" required></select>
+                        </div>
+                        <div id="dvdcrmasterdata_ww" style="display:none ">
+                            <div class="form-group col-xs-12 col-sm-12">
+                                <div class="pull-right ">
+                                    <a class="btn btn-success btn-block "
+                                       data-bind="events: {click: fun_load_master_mj }">
+                                        Load Major Town
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12">
+                                <label class="control-label">Major Town</label>
+                                <div class="pull-right horange">Close</div>
+                                <select name="ddlmajortownmaster" id="ddlmajortownmaster"
+                                        multiple="multiple"
+                                        data-placeholder="Select Major Town" required></select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

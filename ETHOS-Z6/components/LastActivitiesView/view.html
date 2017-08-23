@@ -1,0 +1,49 @@
+<div id="LastActivitiesView" data-role="view" data-title="Last Activities"
+     data-layout="afterlogin"
+     data-model="app.LastActivitiesView.LastActivitiesViewModel"
+     data-bind="events: { show: onShow,afterShow:afterShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
+            <a class="btn btn-primary"
+               data-bind="events: {click: onRefresh }">
+                <i class="fa fa-refresh"></i> Refresh
+            </a>
+        </div>
+    </footer>
+    <div id="dvlastactivitiesview">
+        <!--Employee_Name
+        Designation_Name
+        HeadQuarter
+        DCRStatus
+        TourPlan_Date
+        ExpStatus-->
+        <div class="panel-body padding0">
+            <div data-role="listview" id="listview-lastactivities"></div>
+            <script type="text/x-kendo-tmpl" id="template-lastactivities">
+                <div class="row">
+                    <h4 class="horange">
+                        #: Employee_Name #
+                    </h4>
+                    <p>
+                        #: Designation_Name # - #: HeadQuarter #
+                    </p>
+                    <div class="text-center">
+                        <div class="col-xs-4">
+                            <i class="fa fa-motorcycle hgreen"></i>   #: TourPlan_Date #  &nbsp;
+                        </div>
+                        <div class="col-xs-4">
+                            <i class="fa fa-calendar-check-o hgreen "></i>  #: DCRStatus #   &nbsp;
+                        </div>
+                        <div class="col-xs-4">
+                            <i class="fa fa-calendar-minus-o hgreen"></i> #: ExpStatus #
+                        </div>
+                    </div>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>

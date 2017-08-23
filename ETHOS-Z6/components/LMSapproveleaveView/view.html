@@ -7,13 +7,12 @@
         <div class="btn-group btn-group-justified">
             <a class="btn btn-danger" data-role="button"
                data-click="app.navigation.back">
-                Back
+                <i class="fa fa-arrow-left"></i> Back
             </a>
-            <div class="btn btn-primary"
-                 data-role="button"
-                 data-click="app.navigation.navigateholidays">
-                <i class="fa fa-calendar"> </i> Holidays
-            </div>
+            <a class="btn btn-primary"
+               data-bind="events: {click: onRefresh }">
+                <i class="fa fa-refresh"></i> Refresh
+            </a>
         </div>
     </footer>
     <div id="dvapproveleaveView">

@@ -1,0 +1,57 @@
+<div id="DCRreportView" data-role="view" data-title="DCR View"
+     data-layout="afterlogin"
+     data-model="app.DCRreportView.DCRreportViewModel"
+     data-bind="events: { show: onShow,afterShow:afterShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
+            <a data-role="button" class="btn btn-yellow"
+               data-bind="events: {click: ScrollTop }">
+                <i class="fa fa-arrow-up"></i> Top
+            </a>
+        </div>
+    </footer>
+    <div id="dvDCRreportView">
+        <div id="dvdcrreportview_manager" class="panel-heading text-center"
+             background-color:#fff!important ">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        <input id="dcrreportview_txtauocmpemployeelist" class="form-control">
+                        <span class="input-group-addon" data-bind="events: {click: fun_close_dcrreportview_txtauocmpemployeelist }">
+                            <i class="fa fa-1-5x fa-close"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-headingcustom" id="dvdcrreportview_team">
+            <div class="panel-title text-uppercase "
+                 id="dcrreportview_teamname">
+                Team
+            </div>
+        </div>
+        <div class="panel-body padding0">
+            <div data-role="listview" id="listview-dcrreportdetails"></div>
+            <script type="text/x-kendo-tmpl" id="template-dcrreportdetails">
+                <div class="pull-left">
+                    <h4 class="horange">
+                        #: Activity #
+                    </h4>
+                    <p>
+                        #: Activity_Period  #   -   #: Mode # -  #: Category #
+                    </p>
+                    <p>
+                        #: Deviation_Reason # - #: Description #
+                    </p>
+                    <p>
+                        <i class="fa fa-calendar hgreen"></i>   #: DailyReport_Date #
+                    </p>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>

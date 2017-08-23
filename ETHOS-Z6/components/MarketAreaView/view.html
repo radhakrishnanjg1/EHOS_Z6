@@ -1,0 +1,58 @@
+<div id="MarketAreaView" data-role="view" data-title="Market Area"
+     data-layout="afterlogin"
+     data-model="app.MarketAreaView.MarketAreaViewModel"
+     data-bind="events: { show: onShow,afterShow:afterShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
+            <a data-role="button" class="btn btn-yellow"
+               data-bind="events: {click: ScrollTop }">
+                <i class="fa fa-arrow-up"></i> Top
+            </a>
+        </div>
+    </footer>
+    <div id="dvMarketAreaView">
+        <div class="panel-heading text-center" id="dvmarketareaview_manager"
+             style="background-color:#fff!important;display:none ">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        <input id="dvmarketareaview_txtauocmpemployeelist" class="form-control">
+                        <span class="input-group-addon" data-bind="events: {click: fun_close_dvmarketareaview_txtauocmpemployeelist }">
+                            <i class="fa fa-1-5x fa-close"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-headingsubcustom" id="dvmarketareaview_team">
+            <div class="panel-title text-uppercase"
+                 id="dvmarketareaview_teamname">
+                Team
+            </div>
+        </div>
+        <div class="panel-body padding0">
+            <!--Market_Area_Name	Sub_Territory_Name	Pin_Code Doctor_Count Chemist-->
+            <div data-role="listview" id="listview-marketareadetails"></div>
+            <script type="text/x-kendo-tmpl" id="template-marketareadetails">
+                <div class="row">
+                    <h4 class="horange">
+                        #: Market_Area_Name #
+                    </h4>
+                    <p>
+                        #: Pin_Code #
+                    </p>
+                    <div class="col-xs-6">
+                        <i class="fa fa-stethoscope hgreen"></i> Doctors -  #: Doctor_Count #
+                    </div>
+                    <div class="col-xs-6">
+                        <i class="fa fa-medkit hgreen "></i>  Chemists - #: Chemist_Count #
+                    </div> 
+                </div>
+            </script>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-<div id="MSLChemistView" data-role="view" data-title="Chemist MSL List"
+<div id="MSLChemistView" data-role="view" data-title="Chemist MSL"
      data-layout="afterlogin"
      data-model="app.MSLChemistView.MSLChemistViewModel"
      data-bind="events: { show: onShow,afterShow:afterShow }">
@@ -6,35 +6,56 @@
         <div class="btn-group btn-group-justified">
             <a class="btn btn-danger" data-role="button"
                data-click="app.navigation.back">
-                Back
+                <i class="fa fa-arrow-left"></i> Back
             </a>
-            <div class="btn btn-primary"
-                 data-role="button"
-                 data-click="app.navigation.homepage">
-                <i class="fa fa-home"> </i> Home
-            </div>
+            <a data-role="button" class="btn btn-yellow"
+               data-bind="events: {click: ScrollTop }">
+                <i class="fa fa-arrow-up"></i> Top
+            </a>
         </div>
     </footer>
-    <div id="dvmslchemistdetails" style="display:none">
+    <div id="dvMSLChemistView">
+        <div id="dvmslchemistview_manager" class="panel-heading text-center"
+             style="display:none; background-color:#fff!important ">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        <input id="mslchemistview_txtauocmpemployeelist" class="form-control">
+                        <span class="input-group-addon" data-bind="events: {click: fun_close_mslchemistview_txtauocmpemployeelist }">
+                            <i class="fa fa-1-5x fa-close"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-headingsubcustom" id="dvmslchemistview_team">
+            <div class="panel-title text-uppercase "
+                 id="dvmslchemistview_teamname">
+                Team
+            </div>
+        </div>
         <div class="panel-body padding0">
             <div data-role="listview" id="listview-chemistmsldetails"></div>
             <script type="text/x-kendo-tmpl" id="template-chemistmsldetails">
                 <div class="row">
                     <div class="col-xs-1">
                         <div class="pull-left" style="padding-top:20px !important">
-                            <h4 class="horange"> #= Chemist_MSL_Number #</h4>
+                            <h4 class="horange"> #: Chemist_MSL_Number #</h4>
                         </div>
                     </div>
                     <div class="col-xs-11" style="padding-left:15px !important">
                         <h4>
-                            #= Chemist_Name #
+                            #: Chemist_Name #
                         </h4>
                         <p>
-                            #= Market_Area_Name #
-                        </p>
+                            #: Market_Area_Name #
+                        </p> 
+                        <p>
+                            Last Visited : <i class="fa fa-calendar-check-o hgreen"></i>   #: Last_Visited #  
+                        </p> 
                     </div>
                 </div>
-            </script> 
+            </script>
         </div>
     </div>
 </div>

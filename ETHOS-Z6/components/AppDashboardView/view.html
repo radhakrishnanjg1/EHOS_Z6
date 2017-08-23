@@ -1,0 +1,69 @@
+<div id="AppDashboardView" data-role="view" data-title="Dashboard"
+     data-layout="afterlogin"
+     data-after-show="disableBackButton" data-before-hide="enableBackButton"
+     data-model="app.AppDashboardView.AppDashboardViewModel"
+     data-bind="events: { show: onShow }">
+    <div id="dvAppDashboardView">
+        <div class="panel panel-default">
+            <div class="panel-body padding0">
+
+                <div class="col-xs-12" id="dvmgt">
+                    <div data-role="button" class="roundtext"
+                         data-click="app.navigation.homepage">
+                        <i class="fa fa-bar-chart mgticon notyblack"></i>
+                        <br />
+                        Coverage
+                    </div>
+                    <div data-role="button" class="roundtext"
+                         data-click="app.navigation.navigateLMSleavemanagementView">
+                        <i class="fa fa-list-ol mgticon notygreen"></i>
+                        <br />
+                        Leave
+                    </div>
+                    <div data-role="button" class="roundtext"
+                         data-click="app.navigation.navigateMastermanagementView">
+                        <i class="fa fa-list-alt mgticon notyorange"></i>
+                        <br />
+                        Masters
+                    </div>
+                    <div data-role="button" class="roundtext"
+                         data-click="app.navigation.navigateTourplanmanagementView">
+                        <i class="fa fa-wpexplorer mgticon notyred"></i>
+                        <br />
+                        TP
+                    </div>
+                    <div data-role="button" class="roundtext"
+                         data-click="app.navigation.navigateDCRmanagementView">
+                        <i class="fa fa-calendar-check-o mgticon notyblue"></i>
+                        <br />
+                        DCR
+                    </div>
+                    <div data-role="button" class="roundtext"
+                         data-click="app.navigation.navigateLastActivitiesView">
+                        <i class="fa fa-history mgticon notypurple"></i>
+                        <br />
+                        Activities
+                    </div>
+                    <div data-role="button" class="roundtext"
+                         data-click="app.navigation.navigateholidays">
+                        <i class="fa fa-calendar mgticon notyblack"></i>
+                        <br />
+                        Holidays
+                    </div>
+                    <div data-role="button" class="roundtext"
+                         data-click="app.navigation.navigateProfile">
+                        <i class="fa fa-user mgticon notygreen"></i>
+                        <br />
+                        Profile
+                    </div>
+                    <div data-role="button" class="roundtext"
+                         data-click="app.navigation.navigatechangepassword">
+                        <i class="fa fa-key mgticon notyorange"></i>
+                        <br />
+                        Chg Pwd
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div> 

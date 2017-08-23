@@ -9,9 +9,20 @@
                 return app.navigation.navigateoffline("LMSleavehistoryView");
             }
             app.navigation.logincheck(); 
-            app.utils.loading(true); 
-            fun_db_APP_Get_Employee_CurrentYear_Leave_History(parseInt($('#hdnEmployee_ID').val())); 
-            //fun_db_APP_Get_Employee_CurrentYear_Leave_History(1900);
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var Employee_ID = parseInt(userdata.Employee_ID);
+            if (localStorage.getItem("LMSleavehistorydetails_live") == null ||
+               localStorage.getItem("LMSleavehistorydetails_live") != 1) {
+                app.utils.loading(true);
+                fun_db_APP_Get_Employee_CurrentYear_Leave_History(Employee_ID);
+            }
+
+        },
+        onRefresh: function () { 
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var Employee_ID = parseInt(userdata.Employee_ID);
+            app.utils.loading(true);
+            fun_db_APP_Get_Employee_CurrentYear_Leave_History(Employee_ID);
         },
     });
 
@@ -41,23 +52,20 @@ function fun_db_APP_Get_Employee_CurrentYear_Leave_History(Employee_ID) {
     datasource.fetch(function () {
         var data = this.data();
         app.utils.loading(false);
-        localStorage.setItem("leavehistorydetails", JSON.stringify(data)); 
-        loadleavehistory();
+       // localStorage.setItem("leavehistorydetails", JSON.stringify(data)); 
+        localStorage.setItem("LMSleavehistorydetails_live", 1);
+        loadleavehistory(JSON.stringify(data));
         $('#dvleavehistory').show();
     }); 
 }
-function loadleavehistory() {
-    var lvleavehistory = JSON.parse(Enumerable.From(JSON.parse(localStorage.getItem("leavehistorydetails")))
-        .ToJSON()); 
-    var dsleavehistory = new kendo.data.DataSource({
-        data: lvleavehistory,
-    });
+function loadleavehistory(records) {
+    var alldivision = JSON.parse(records); 
     $("#listview-leavehistory").kendoMobileListView({
-        dataSource: dsleavehistory, 
+        dataSource: alldivision,
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-leavehistory").append("<li>No leaves in this year!</li>");
+                $("#listview-leavehistory").append("<li>No Records Found!</li>");
             }
         },
         template: $("#template-leavehistory").html(), 

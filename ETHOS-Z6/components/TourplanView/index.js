@@ -16,8 +16,20 @@
             var userdata = JSON.parse(localStorage.getItem("userdata"));
             var Employee_ID = parseInt(userdata.Employee_ID);
             var Sub_Territory_ID = parseInt(userdata.Sub_Territory_ID); 
+            if (localStorage.getItem("tourplanviewdetails_live") == null ||
+                localStorage.getItem("tourplanviewdetails_live") != 1) {
+                app.utils.loading(true);
+                fun_db_APP_Get_Z6_Employee_TP_Details(Employee_ID, Sub_Territory_ID);
+           }
+        },
+
+        onRefresh: function () {
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var Employee_ID = parseInt(userdata.Employee_ID);
+            var Sub_Territory_ID = parseInt(userdata.Sub_Territory_ID);
             app.utils.loading(true);
-            fun_db_APP_Get_Employee_TourPlan_Details(Employee_ID, Sub_Territory_ID); 
+            fun_db_APP_Get_Z6_Employee_TP_Details(Employee_ID, Sub_Territory_ID);
+
         },
     });
 
@@ -25,11 +37,11 @@
 }());
 
 
-function fun_db_APP_Get_Employee_TourPlan_Details(Employee_ID, Sub_Territory_ID)                  {
+function fun_db_APP_Get_Z6_Employee_TP_Details(Employee_ID, Sub_Territory_ID)                  {
     var datasource = new kendo.data.DataSource({
         transport: {
             read: {
-                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Get_Employee_TourPlan_Details",
+                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Get_Z6_Employee_TP_Details",
                 type: "POST",
                 dataType: "json",
                 data: {
@@ -50,6 +62,7 @@ function fun_db_APP_Get_Employee_TourPlan_Details(Employee_ID, Sub_Territory_ID)
         var data = this.data();
         app.utils.loading(false);
         localStorage.setItem("tourplanviewdetails", JSON.stringify(data)); 
+        localStorage.setItem("tourplanviewdetails_live",1);
         $('#dvtourplanview').show();
         loadmonth_tourplan_calendar();
         var d = new Date();
@@ -87,7 +100,7 @@ function loadmonth_tourplan_calendar() {
     });
     function compareDates(date, dates) {
         for (var i = 0; i < dates.length; i++) {
-            var actualdate = todateddmmyyy(date); 
+            var actualdate = todateddmmyyy_hyphen(date);
             if (dates[i].HolidayDate == actualdate) {
                 return true;
             }
@@ -96,7 +109,7 @@ function loadmonth_tourplan_calendar() {
 }
 
 function load_tourplan_details_today(today) {
-    today = todateddmmyyy(today);
+    today = todateddmmyyy_hyphen(today);
     var records = JSON.parse(localStorage.getItem("tourplanviewdetails"));
     var lvmsldetails = JSON.parse(Enumerable.From(records)
        .Where("$.TourPlan_Date=='" + today + "'")
@@ -112,7 +125,7 @@ function load_tourplan_details_today(today) {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-tourplanldetailstoday").append("<li>No Records Found!</li>");
+                $("#listview-tourplanldetailstoday").append("<li>No records found!</li>");
             }
         },
         template: $("#template-tourplanldetailstoday").html(),
@@ -136,7 +149,7 @@ function load_tourplan_details_month(month) {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-tourplanldetailsmonth").append("<li>No Records Found!</li>");
+                $("#listview-tourplanldetailsmonth").append("<li>No records found!</li>");
             }
         },
         template: $("#template-tourplanldetailsmonth").html(),
@@ -145,5 +158,41 @@ function load_tourplan_details_month(month) {
     var months = ["January", "February", "March", "April", "May", "June",
                "July", "August", "September", "October", "November", "December"];
     $('#spanmonthtp').html(months[month - 1]);
+} 
+
+function fun_open_modalviewtourplanview(e) {
+    $("#modalview-tourplanview").kendoMobileModalView("open");
+    var data = e.button.data();
+    var TourPlan_Date = data.tourplan_date;
+
+    var ethosmastervaluesdata = JSON.parse(localStorage.getItem("tourplanviewdetails"));
+    var ethosmastervaluesrecords = JSON.parse(Enumerable.From(ethosmastervaluesdata)
+    .Where("$.TourPlan_Date=='" + TourPlan_Date+"'")
+        .ToJSON());
+
+    var dataSource = new kendo.data.DataSource({
+        data: ethosmastervaluesrecords,
+        batch: true,
+        schema: {
+            model: { 
+                fields: {
+                    Institution_Name: { type: "string", editable: false },
+                    Name_of_Key_Decision_Maker: { type: "string", editable: false },
+                    
+                }
+            }
+        }
+    });
+    $("#tourplan-inskdmlist").kendoGrid({
+        dataSource: dataSource,
+        columns: [
+             { enabled: false, title: "Institution", field: "Institution_Name", editable: false, },
+           { enabled: false, title: "KDM", field: "Name_of_Key_Decision_Maker", editable: false, },
+            ],
+        editable: true
+    });
 }
- 
+
+function fun_close_modalviewtourplanview() {
+    $("#modalview-tourplanview").kendoMobileModalView("close");
+}

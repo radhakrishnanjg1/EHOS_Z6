@@ -8,6 +8,16 @@ function textinputlength(val, max, id) {
     //    $("#" + id).val(val);
     //}
 }
+// pass 3 parameters - seperated values, single value and delitmier
+function check_isexist(actualstring, single_value,delim) {
+    var splitString = actualstring.split(delim); 
+    for (var i = 0; i < splitString.length; i++) {
+        var stringPart = splitString[i];
+        if (stringPart != single_value) continue; 
+        return false;
+    }
+    return true;
+}
 
 function todateddmmyyy(dateObject) {
     var d = new Date(dateObject);

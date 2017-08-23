@@ -24,7 +24,9 @@
         navigateAuthentication: function () {
             return app.mobileApp.navigate('components/authenticationView/view.html');
         },
-        //right side menu start
+        navigateAppDashboardView: function () {
+            return app.mobileApp.navigate('components/AppDashboardView/view.html');
+        },
         navigatedashboard: function () {
             return app.mobileApp.navigate('components/dashboardView/view.html');
         },
@@ -49,21 +51,27 @@
         },
         navigateLMSapproveleavecancelView: function () {
             return app.mobileApp.navigate('components/LMSapproveleavecancelView/view.html');
+        }, 
+        navigateTeamAbsensesView: function () {
+            return app.mobileApp.navigate('components/TeamAbsensesView/view.html');
         },
         //LMS start end
 
         //DCR start
+        navigateDCRmanagementView: function () {
+            return app.mobileApp.navigate('components/DCRmanagementView/view.html');
+        },
         navigateDCRstartView: function () {
             return app.mobileApp.navigate('components/DCRstartView/view.html');
         },
         navigateDCRmasterView: function () {
             return app.mobileApp.navigate('components/DCRmasterView/view.html');
         },
-        navigateDCRinstitutionView: function () {
-            return app.mobileApp.navigate('components/DCRinstitutionView/view.html');
+        navigateDCRlistedMSLView: function () {
+            return app.mobileApp.navigate('components/DCRlistedMSLView/view.html');
         },
-        navigateDCRunlistedinstitutionView: function () {
-            return app.mobileApp.navigate('components/DCRunlistedinstitutionView/view.html');
+        navigateDCRunlistedMSLView: function () {
+            return app.mobileApp.navigate('components/DCRunlistedMSLView/view.html');
         },
         navigateDCRfinaentryView: function () {
             return app.mobileApp.navigate('components/DCRfinaentryView/view.html');
@@ -71,18 +79,49 @@
         navigateDCRpreviewView: function () {
             return app.mobileApp.navigate('components/DCRpreviewView/view.html');
         },
+        navigateDCRreportView: function () {
+            return app.mobileApp.navigate('components/DCRreportView/view.html');
+        },
         //DCR end  
         navigateGPSworklocationsView: function () {
             return app.mobileApp.navigate('components/GPSworklocationsView/view.html');
         },
+        
+        navigateLastActivitiesView: function () {
+            return app.mobileApp.navigate('components/LastActivitiesView/view.html');
+        },
+
+        //Master Start 
+
+        navigateMastermanagementView: function () {
+            return app.mobileApp.navigate('components/MastermanagementView/view.html');
+        },
         navigateMSLView: function () {
             return app.mobileApp.navigate('components/MSLView/view.html');
+        },
+        navigateMSLDoctorView: function () {
+            return app.mobileApp.navigate('components/MSLDoctorView/view.html');
         },
 
         navigateMSLChemistView: function () {
             return app.mobileApp.navigate('components/MSLChemistView/view.html');
         },
+        navigateMarketAreaView: function () {
+            return app.mobileApp.navigate('components/MarketAreaView/view.html');
+        },
+        navigateMyTeamView: function () {
+            return app.mobileApp.navigate('components/MyTeamView/view.html');
+        },
+        navigateMasterPromoBalanceView: function () {
+            return app.mobileApp.navigate('components/MasterPromoBalanceView/view.html');
+        },
+        //Master End 
 
+        //TP Start 
+
+        navigateTourplanmanagementView: function () {
+            return app.mobileApp.navigate('components/TourplanmanagementView/view.html');
+        },
         navigateTourplanEntryView: function () {
             return app.mobileApp.navigate('components/TourplanEntryView/view.html');
         },
@@ -92,9 +131,10 @@
         navigateTourplanView: function () {
             return app.mobileApp.navigate('components/TourplanView/view.html');
         },
-        navigateTeamAbsensesView: function () {
-            return app.mobileApp.navigate('components/TeamAbsensesView/view.html');
-        }, 
+        //TP end  
+
+        
+
         navigateholidays: function () {
             return app.mobileApp.navigate('components/holidaysView/view.html');
         },

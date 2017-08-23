@@ -3,21 +3,24 @@
      data-layout="afterlogin"
      data-model="app.TourplanEntryView.TourplanEntryViewModel"
      data-show="app.TourplanEntryView.TourplanEntryViewModel.onShow"
-     data-after-show="app.TourplanEntryView.TourplanEntryViewModel.afterShow"> 
+     data-after-show="app.TourplanEntryView.TourplanEntryViewModel.afterShow">
     <footer data-role="footer">
         <div class="btn-group btn-group-justified">
-            <a class="btn btn-primary" 
-               data-role="button" 
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
+            <a data-role="button" class="btn btn-primary"
                data-bind="events: {click: save_tourplan_details }">
                 Next <i class="fa fa-arrow-right"></i>
-            </a> 
+            </a>
         </div>
-    </footer> 
+    </footer>
     <div id="dvTourplanEntryView">
         <div class="panel panel-custom">
             <div class="panel-body">
                 <div class="row">
-                    <form id="form-dvdcr2">
+                    <div id="dv_tourplan_entry_mainscreen">
                         <div class="form-group col-xs-6 col-sm-6">
                             <label class="control-label">Date</label>
                             <input name="txt_lasttp_date" id="txt_lasttp_date" required disabled
@@ -34,53 +37,56 @@
                             <select name="ddlactivity_tp" id="ddlactivity_tp"
                                     class="dropdown-control" required></select>
                         </div>
-                        <div class="form-group col-xs-6 col-sm-6">
-                            <label class="control-label">Category</label>
-                            <select name="ddlcategory_tp" id="ddlcategory_tp"
-                                    class="dropdown-control" required></select>
-                        </div>
-                        <div class="form-group col-xs-6 col-sm-6">
-                            <label class="control-label">Mode</label>
-                            <select name="ddlmode_tp" id="ddlmode_tp"
-                                    class="dropdown-control" required></select>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12">
-                            <label class="control-label">Work With</label>
-                            <div class="pull-right horange">Close</div>
-                            <select name="ddlworkwithmaster_tp" id="ddlworkwithmaster_tp"
-                                    multiple="multiple"
-                                    data-placeholder="Select Work With" required></select>
-                        </div>
-                        <div class="form-group col-xs-12 col-sm-12">
-                            <div class="pull-right ">
-                                <a class="btn btn-success btn-block "
-                                   data-bind="events: {click: fun_load_master_tourplan_mj }">
-                                    Load Major Town
-                                </a>
+                        <div id="dv_tourplan_entry_master_details" style="display:none">
+
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <label class="control-label">Category</label>
+                                <select name="ddlcategory_tp" id="ddlcategory_tp"
+                                        class="dropdown-control" required></select>
                             </div>
-                        </div>
-                        <div id="dv_tourplan_entry_mj_details" style="display:none">
-
-
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <label class="control-label">Mode</label>
+                                <select name="ddlmode_tp" id="ddlmode_tp"
+                                        class="dropdown-control" required></select>
+                            </div>
                             <div class="form-group col-xs-12 col-sm-12">
-                                <label class="control-label">Major Town</label>
+                                <label class="control-label">Work With</label>
                                 <div class="pull-right horange">Close</div>
-                                <select name="ddlmajortownmaster_tp" id="ddlmajortownmaster_tp"
+                                <select name="ddlworkwithmaster_tp" id="ddlworkwithmaster_tp"
                                         multiple="multiple"
-                                        data-placeholder="Select Major Town" required></select>
+                                        data-placeholder="Select Work With" required></select>
                             </div>
                             <div class="form-group col-xs-12 col-sm-12">
-                                <label class="control-label">Contact</label>
-                                <textarea class="form-control" rows="5" id="txtcontact_tp"
-                                          onkeyup="return textinputlength(this.value, 1000, this.id);"></textarea>
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-12">
-                                <label class="control-label">Specific Objective / Remarks</label>
-                                <textarea class="form-control" rows="5" id="txtspecificobjective"
-                                          onkeyup="return textinputlength(this.value, 1000, this.id);"></textarea>
+                                <div class="pull-right ">
+                                    <a class="btn btn-success btn-block "
+                                       data-bind="events: {click: fun_load_master_tourplan_mj }">
+                                        Load Major Town
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <div id="dv_tourplan_entry_mj_details" style="display:none">
+                        <div class="form-group col-xs-12 col-sm-12">
+                            <label class="control-label">Major Town</label>
+                            <div class="pull-right horange">Close</div>
+                            <select name="ddlmajortownmaster_tp" id="ddlmajortownmaster_tp"
+                                    multiple="multiple"
+                                    data-placeholder="Select Major Town" required></select>
+                        </div>
+                    </div> 
+                    <div id="dv_tourplan_entry_specific_details">
+                        <div class="form-group col-xs-12 col-sm-12">
+                            <label class="control-label">Contact</label>
+                            <textarea class="form-control" rows="5" id="txtcontact_tp"
+                                      onkeyup="return textinputlength(this.value, 1000, this.id);"></textarea>
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12">
+                            <label class="control-label">Specific Objective / Remarks</label>
+                            <textarea class="form-control" rows="5" id="txtspecificobjective"
+                                      onkeyup="return textinputlength(this.value, 1000, this.id);"></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,43 @@
+<div id="MyTeamView" data-role="view" data-title="My Team"
+     data-layout="afterlogin"
+     data-model="app.MyTeamView.MyTeamViewModel"
+     data-bind="events: { show: onShow,afterShow:afterShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
+            <a class="btn btn-primary"
+               data-bind="events: {click: onRefresh }">
+                <i class="fa fa-refresh"></i> Refresh
+            </a>
+        </div>
+    </footer>
+    <div id="dvMyTeamView">
+        <!--Employee_Name,	Email	,Mobile-->
+        <div class="panel-body padding0">
+            <div data-role="listview" id="listview-teammembersdetails"></div>
+            <script type="text/x-kendo-tmpl" id="template-teammembersdetails">
+                <div class="row">
+                    <h4 class="horange">
+                        #: Employee_Name #
+                    </h4>
+                    <p>
+                        <i class="fa fa-envelope hgreen"></i> 
+                        <a  
+                           href="mailto:${Email}">
+                            #: Email # 
+                        </a>
+                    </p>  
+                    <p>
+                        <i class="fa fa-phone hgreen"></i> 
+                        <a href="tel:${Mobile}">
+                            #: Mobile #
+                        </a> 
+                    </p> 
+                </div>
+            </script>
+        </div>
+    </div>
+</div>

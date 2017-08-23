@@ -11,7 +11,10 @@
             app.navigation.logincheck();  
             var userdata = JSON.parse(localStorage.getItem("userdata"));
             if (userdata.IsManager == 0) {
-                $("#dvaccess_approval").hide();
+                $(".dvaccess_approval").hide();
+            }
+            else {
+                $(".dvaccess_approval").show();
             }
         },
 

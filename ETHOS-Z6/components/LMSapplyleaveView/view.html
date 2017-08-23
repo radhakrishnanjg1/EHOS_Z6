@@ -7,18 +7,17 @@
         <div class="btn-group btn-group-justified">
             <a class="btn btn-danger" data-role="button"
                data-click="app.navigation.back">
-                Back
+                <i class="fa fa-arrow-left"></i> Back
             </a>
-            <div class="btn btn-primary"
-                 data-role="button" 
-                 data-click="app.navigation.navigateholidays">
-                <i class="fa fa-calendar"> </i> Holidays
-            </div>
+            <a class="btn btn-primary"
+               data-bind="events: {click: fun_applyleavesaveleavedetails }">
+                <i class="fa fa-save"></i> Save
+            </a>
         </div> 
     </footer>
     <div id="dvapplyleaveview">
         <div class="panel panel-custom">
-            <div class="panel-headingcustom">
+            <div class="panel-headingsubcustom">
                 <span class="panel-title text-uppercase ">
                     Details of event
                 </span>
@@ -99,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer">
+                <!--<div class="panel-footer">
                     <div class="pull-right">
                         <a class="btn btn-danger" data-role="button"
                            data-click="app.navigation.navigateLMSleavemanagementView">
@@ -111,7 +110,7 @@
                         </a>
                     </div>
                     <div class="clearfix"></div>
-                </div>
+                </div>-->
             </form>
             <div class="panel-headingsubcustom">
                 <span class="panel-title text-uppercase ">

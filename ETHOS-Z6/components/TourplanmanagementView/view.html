@@ -1,0 +1,33 @@
+<div id="TourplanmanagementView" data-role="view" data-title="Tourplan System"
+     data-layout="afterlogin"
+     data-model="app.TourplanmanagementView.TourplanmanagementViewModel"
+     data-bind="events: { show: onShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
+        </div>
+    </footer>
+    <div id="dvTourplanmanagementView">
+        <div class="panel panel-default">
+            <div class="panel-body padding0">
+                <div class="col-xs-12" id="dvmgt">
+                    <div data-role="button" class="roundtext"
+                         data-click="app.navigation.navigateTourplanEntryView">
+                        <i class="fa fa-plus-circle mgticon notyblack"></i>
+                        <br />
+                        Entry
+                    </div>
+                    <div data-role="button" class="roundtext"
+                         data-click="app.navigation.navigateTourplanView">
+                        <i class="fa fa-wpexplorer mgticon notygreen"></i>
+                        <br />
+                        View
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

@@ -10,20 +10,29 @@
                 return app.navigation.navigateoffline("LMSapproveleaveView");
             }
             app.navigation.logincheck();
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var Employee_ID = parseInt(userdata.Employee_ID);
+            if (localStorage.getItem("LMSapproveleavedetails_live") == null ||
+               localStorage.getItem("LMSapproveleavedetails_live") != 1) {
+                app.utils.loading(true);
+                fun_db_APP_Get_Ethos_Leave_Approve(Employee_ID);
+            }
+        },
+        onRefresh: function () {
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var Employee_ID = parseInt(userdata.Employee_ID);
             app.utils.loading(true);
-            fun_db_APP_Get_Ethos_Leave_Approve(parseInt($('#hdnEmployee_ID').val()));
-            $('#hdnaprvleave_ethos_leave_master_id').val('0');
-            //fun_db_APP_Get_Ethos_Leave_Approve(2478); 
-        },  
+            fun_db_APP_Get_Ethos_Leave_Approve(Employee_ID);
+        },
     });
 
     view.set('LMSapproveleaveViewModel', LMSapproveleaveViewModel);
 }());
 
- 
 
-function load_leave_approve_details(records) { 
-    var alldivision = JSON.parse(records);  
+
+function load_leave_approve_details(records) {
+    var alldivision = JSON.parse(records);
     $("#listview-leaveapprovedetail").kendoMobileListView({
         dataSource: alldivision,
         dataBound: function (e) {
@@ -32,7 +41,7 @@ function load_leave_approve_details(records) {
                 $("#listview-leaveapprovedetail").append("<li>No records found!</li>");
             }
         },
-        template: $("#template-leaveapprovedetail").html(), 
+        template: $("#template-leaveapprovedetail").html(),
     });
 }
 
@@ -41,7 +50,7 @@ function fun_leave_approve(e) {
     var ethos_leave_master_id = data.ethos_leave_master_id;
     var remarks = "";
     var employee_id = data.employee_id;
-    var leave_type_id = data.leave_type_id; 
+    var leave_type_id = data.leave_type_id;
     var confirmation = "Are you sure you want to approve?";
     app.notify.confirmation(confirmation, function (confirm) {
         if (!confirm) {
@@ -55,7 +64,7 @@ function fun_leave_approve(e) {
 
 function fun_leave_reject(e) {
     var data = e.button.data();
-    $('#hdnaprvleave_ethos_leave_master_id').val(data.ethos_leave_master_id);  
+    $('#hdnaprvleave_ethos_leave_master_id').val(data.ethos_leave_master_id);
     $("#modalview-approveleave").kendoMobileModalView("open");
 }
 
@@ -73,10 +82,9 @@ function fun_leave_reject_submit() {
                 parseInt($("#hdnLogin_ID").val()), parseInt($("#hdnLogin_ID").val()));
         }
     }
-    else
-    {
+    else {
         app.notify.error('Enter the remarks to proceed!');
-    } 
+    }
 }
 
 function fun_db_APP_Get_Ethos_Leave_Approve(Employee_ID) {
@@ -101,6 +109,8 @@ function fun_db_APP_Get_Ethos_Leave_Approve(Employee_ID) {
 
     datasource.fetch(function () {
         var data = this.data();
+        localStorage.setItem("LMSapproveleavedetails_live", 1);
+
         load_leave_approve_details(JSON.stringify(data));
         app.utils.loading(false);
     });
@@ -120,7 +130,7 @@ function fun_db_APP_Update_Ethos_Leave_Approval(Ethos_leave_master_id, Remarks, 
                     "Ethos_leave_master_id": Ethos_leave_master_id, "Remarks": Remarks, "Employee_ID": Employee_ID,
                     "Leave_Type_ID": Leave_Type_ID, "isapproved": isapproved, "approved_by": approved_by,
                     "last_modified_by": last_modified_by
-                } 
+                }
             }
         },
         schema: {
@@ -138,7 +148,7 @@ function fun_db_APP_Update_Ethos_Leave_Approval(Ethos_leave_master_id, Remarks, 
         var data = this.data();
         app.utils.loading(false);
         if (data[0].Output_ID == 1) {
-            app.notify.success(data[0].Output_Message); 
+            app.notify.success(data[0].Output_Message);
             app.navigation.navigateLMSleavemanagementView();
         }
         else {
@@ -158,7 +168,7 @@ function fun_db_APP_Update_Ethos_Leave_Rejected(Ethos_leave_master_id, Remarks, 
                 dataType: "json",
                 data: {
                     "Ethos_leave_master_id": Ethos_leave_master_id, "Remarks": Remarks, "isrejected": isrejected,
-                    "rejected_by": rejected_by,"last_modified_by": last_modified_by
+                    "rejected_by": rejected_by, "last_modified_by": last_modified_by
                 }
             }
         },

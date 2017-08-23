@@ -7,8 +7,10 @@ app.holidaysView = kendo.observable({
         }
         app.navigation.logincheck();
         if (localStorage.getItem("holidaydetails_live") == null || localStorage.getItem("holidaydetails_live") != 1) {
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var Employee_ID = parseInt(userdata.Employee_ID);
             app.utils.loading(true);
-            fun_db_APP_Get_Field_Permited_Holiday_Master($('#hdnEmployee_ID').val());
+            fun_db_APP_Get_Field_Permited_Holiday_Master(Employee_ID);
            // fun_db_APP_Get_Permited_Holiday_Master(2756);
         } 
     }, 
@@ -36,20 +38,12 @@ function fun_db_APP_Get_Field_Permited_Holiday_Master(Employee_ID) {
 
     datasource.fetch(function () {
         var data = this.data(); 
-        app.utils.loading(false);
-        if (data[0].SNO > 0) {
-            localStorage.setItem("holidaydetails", JSON.stringify(data)); // holiday  details 
-            localStorage.setItem("holidaydetails_live", 1);  
-            loaddropdownlist();
-            loadcontrols();
-            $('#dvholidaysummary').show(); 
-            app.utils.loading(false);
-
-        }
-        else {
-            //app.notify.error(data[0][0].Output_Message);
-            app.utils.loading(false);
-        }
+        app.utils.loading(false); 
+        localStorage.setItem("holidaydetails", JSON.stringify(data)); // holiday  details 
+        localStorage.setItem("holidaydetails_live", 1);
+        loaddropdownlist();
+        loadcontrols();
+        $('#dvholidaysummary').show();
     });
 
 }
@@ -162,7 +156,7 @@ function loadmonthcalendar(currentdivision, currentstate,currentyear) {
     });
     function compareDates(date, dates) { 
         for (var i = 0; i < dates.length; i++) { 
-            var actualdate = todateddmmyyy(date);
+            var actualdate = todateddmmyyy_hyphen(date);
             if (dates[i].HolidayDate == actualdate) {
                 return true;
             } 

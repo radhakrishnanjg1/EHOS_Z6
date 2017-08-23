@@ -83,7 +83,7 @@ label, span, div, table, th, td, .km-flat {
 /* Custome rk tag and class start */
 .mandatory {
     color: #cc4141 !important;
-    font-size: 1em !important;
+    font-size: small !important;
 }
 
 .padding0 {
@@ -223,10 +223,12 @@ mark, .mark {
 
 .panel {
     background-color: #fafbf9 !important;
+    border: none;
+    box-shadow: none;
 }
 
 .km-navbar {
-    background-color: #ff6600 !important;
+    background-color: #006666 !important;
     color: #fff !important;
 }
 
@@ -243,7 +245,7 @@ mark, .mark {
 .km-flat .km-button {
     border: 0px !important;
     background: rgba(0,0,0,0);
-    /*background-color :transparent*/ 
+    /*background-color :transparent*/
 }
 
 .km-flat .km-loader:before {
@@ -297,15 +299,15 @@ label {
 
 .nav > li {
     background: #fafbf9 !important;
-    color: #151615 !important;
+    color: #000 !important;
     position: relative;
     display: block;
     text-align: left;
-    font-size: 1.2em !important;
+    font-size: 1.1em !important;
 }
 
     .nav > li.km-button {
-        margin-bottom: 3px !important;
+        margin-bottom: 1px !important;
         box-shadow: 0px 3px 3px #ECEFF1 !important;
         -moz-box-shadow: 0px 3px 3px #ECEFF1 !important;
         -webkit-box-shadow: 0px 3px 3px #ECEFF1 !important;
@@ -444,12 +446,23 @@ footer .btn {
     .btn-danger:hover {
         background-color: #2a2b29 !important;
     }
+
 .btn-red {
-    background-color: #D05252!important;
+    background-color: #D97474 !important;
     border: 0px !important;
-} 
+}
+
     .btn-red:hover {
         background-color: #cc4141 !important;
+    }
+
+.btn-yellow {
+    background-color: #D9AE61 !important;
+    border: 0px !important;
+}
+
+    .btn-yellow:hover {
+        background-color: #C69F59 !important;
     }
 
 .btn-leave {
@@ -464,14 +477,14 @@ footer .btn {
     }
 
 .btn-leave1 {
-    background-color: forestgreen !important;
-    color: #fff !important;
+    background-color: #4eb77d !important;
+    color: #000 !important;
     border: 0;
-    width: 32%;
+    text-transform: uppercase;
 }
 
     .btn-leave1:hover {
-        background-color: green !important;
+        background-color: #4e7b7d !important;
     }
 
 .param {
@@ -519,7 +532,7 @@ footer .btn {
 
 .panel {
     margin-bottom: 0px !important;
-    box-shadow: 0 1px 1px rgba(0,0,0,.00);
+    box-shadow: 0 1px 1px rgba(0,0,0,.00) !important;
 }
 
 .panel-headingcustom {
@@ -531,18 +544,34 @@ footer .btn {
 }
 
 .panel-headingsubcustom {
-    background-color: #d3d3d3 !important;
+    background-color: #BCB8B9 !important;
     color: #000 !important;
     border: 0px !important;
     padding: 10px 15px !important;
     text-transform: uppercase;
 }
 
-.panel-headingmodal {
-    background-color: #5ca4a9 !important;
+.panel-heading-action {
+    background-color: #FF812E !important;
     color: #fff !important;
     border: 0px !important;
-    padding: 10px 15px !important;
+    padding: 5px 7px !important;
+    text-transform: uppercase;
+}
+
+.panel-headingmodal {
+    background-color: #006666 !important;
+    color: #fff !important;
+    border: 0px !important;
+    padding: 5px 15px !important;
+}
+
+.panel-headingmodal-subheader {
+    background-color: #EBE3E3 !important;
+    color: #000 !important;
+    border: 0px !important;
+    padding: 5px 7px !important;
+    text-transform: uppercase;
 }
 
 .panel-headingcustomquestion {
@@ -644,9 +673,19 @@ footer .btn {
     height: 54px !important;
 }
 
-#dvsignin .btn-signin {
-    background-color: #f05922 !important;
+#dvsignin .input-group .input-group-addon i {
+    color: #458F8F !important;
 }
+
+#dvsignin .btn-signin {
+    /*background-color: #f05922 !important;*/
+    background-color: #458F8F !important;
+}
+
+    #dvsignin .btn-signin:hover {
+        /*background-color: #f05922 !important;*/
+        background-color: #006666 !important;
+    }
 
 #dvsignin .btn-forgotpass {
     color: #2a2b29 !important;
@@ -909,23 +948,24 @@ footer .btn {
 /* Tabs panel start*/
 .tabbable-panel {
     border: 1px solid #eee;
-    padding: 0px; 
+    padding: 0px;
 }
 
 /* Default mode */
 .tabbable-line > .nav-tabs {
     border: none;
-    margin: 0px; 
+    margin: 0px;
 }
 
     .tabbable-line > .nav-tabs > li {
-        margin-right: 2px;
+        margin-right: 2px; 
+                
     }
 
         .tabbable-line > .nav-tabs > li > a {
             border: 0;
             margin-right: 0;
-            color: #737373;
+            color: #a6a6a6;
         }
 
             .tabbable-line > .nav-tabs > li > a > i {
@@ -966,19 +1006,66 @@ footer .btn {
 
 .tabbable-line > .tab-content {
     margin-top: -3px;
-    background-color: #fff;
     border: 0;
     border-top: 1px solid #eee;
-    padding: 15px 0;  
+    padding: 5px 0;
 }
 
 .portlet .tabbable-line > .tab-content {
-    padding-bottom: 0; 
+    padding-bottom: 0;
 }
 
 /* Tabs panel end*/
 
-.km-filter-form
-{
-    padding:0px!important;
+.km-filter-form {
+    padding: 0px !important;
 }
+
+/*icons start*/
+#dvmgt {
+    font-size: 16px;
+}
+
+    #dvmgt .roundtext {
+        width: 30%;
+        /*height:90px;*/
+        /*background-color: #dedede;*/
+        color: #498ECD !important;
+        border: 1px solid #ccc !important;
+        border-radius: 5px !important;
+        font-size: 11px;
+        text-transform: uppercase;
+        margin: 3px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    #dvmgt .mgticon {
+        font-size: 40px !important;
+    }
+/*icons end*/
+
+
+.notyblack {
+    color: #073B4C !important;
+}
+
+.notygreen {
+    color: #06D6A0 !important;
+}
+
+.notyorange {
+    color: #FFD166 !important;
+}
+
+.notyred {
+    color: #EF476F !important;
+} 
+.notyblue {
+    color: #118AB2 !important;
+}
+
+.notypurple {
+    color: #B48BFB !important;
+}
+  

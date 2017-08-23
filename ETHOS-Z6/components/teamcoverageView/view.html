@@ -5,9 +5,13 @@
      data-bind="events: { show: onShow }">
     <footer data-role="footer">
         <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
             <a class="btn btn-primary"
                data-bind="events: {click: onRefresh }">
-                <i class="fa fa-2x fa-refresh"></i>
+                <i class="fa fa-refresh"></i> Refresh
             </a>
         </div>
     </footer>
@@ -26,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="panel-headingcustom">
+            <div class="panel-headingsubcustom">
                 <div class="panel-title text-uppercase " 
                      id="dvteamename">
                     Team

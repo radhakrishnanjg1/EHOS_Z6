@@ -1,21 +1,19 @@
 <div id="TourplanView" data-role="view" data-title="TourPlan Details"
      data-layout="afterlogin"
      data-model="app.TourplanView.TourplanViewModel"
-     data-bind="events: { show: onShow,afterShow:afterShow }"
-     data-reload="true">
+     data-bind="events: { show: onShow,afterShow:afterShow }" >
     <footer data-role="footer">
         <div class="btn-group btn-group-justified">
             <a class="btn btn-danger" data-role="button"
                data-click="app.navigation.back">
-                Back
+                <i class="fa fa-arrow-left"></i> Back
             </a>
-            <div class="btn btn-primary"
-                 data-role="button"
-                 data-click="app.navigation.homepage">
-                <i class="fa fa-home"> </i> Home
-            </div>
+            <a class="btn btn-primary"
+               data-bind="events: {click: onRefresh }">
+                <i class="fa fa-refresh"></i> refresh
+            </a>
         </div>
-    </footer> 
+    </footer>
     <div id="dvtourplanview" style="display:none">
         <div class="panel-body padding0">
             <!--TourPlan_Details_ID
@@ -26,7 +24,7 @@
                     Market_Area_Name	Sub_Territory_Name
                 -->
             <div class="panel-body">
-                <div  id="tourplan-details-calendar" style="width:100% !important"></div>
+                <div id="tourplan-details-calendar" style="width:100% !important"></div>
             </div>
             <div class="panel-headingsubcustom">
                 <div class="row">
@@ -39,18 +37,15 @@
                 <div data-role="listview" id="listview-tourplanldetailstoday"></div>
                 <script type="text/x-kendo-tmpl" id="template-tourplanldetailstoday">
                     <div class="row">
-                        <div class="col-xs-3">
-                            <div class="pull-left" style="padding-top:20px !important">
-                                <h4 class="horange"> #: TourPlan_Date #</h4>
-                            </div>
-                        </div>
-                        <div class="col-xs-9">
-                            <h4>
-                                #: Activity_Period # -  #: Activity #
-                            </h4>
+                        <div  style="text-align:left !important ">
+                            <h4 class="horange"> #: TourPlan_Date #</h4>
                             <p>
-                                #: Worked_With_Details #
-                                <br />
+                                #: Activity_Period # -  #: Activity #
+                            </p>
+                            <p>
+                                #: Worked_With_Details # 
+                            </p>
+                            <p>
                                 #: Market_Area_Name #
                             </p>
                         </div>
@@ -71,26 +66,24 @@
                 <div class="panel-body" style="padding:0">
                     <div data-role="listview" id="listview-tourplanldetailsmonth"></div>
                     <script type="text/x-kendo-tmpl" id="template-tourplanldetailsmonth">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <div class="pull-left" style="padding-top:20px !important">
-                                    <h4 class="horange"> #: TourPlan_Date #</h4>
-                                </div>
-                            </div>
-                            <div class="col-xs-9">
-                                <h4>
+                        <div class="row" >
+                            <div   style="text-align:left !important ">
+                                <h4 class="horange"> #: TourPlan_Date #</h4>
+                                <p>
                                     #: Activity_Period # -  #: Activity #
-                                </h4>
+                                </p>
                                 <p>
                                     #: Worked_With_Details #
-                                    <br />
+                                </p>
+                                <p>
                                     #: Market_Area_Name #
                                 </p>
                             </div>
                         </div>
                     </script>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
+ 

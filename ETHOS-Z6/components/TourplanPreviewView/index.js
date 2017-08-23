@@ -13,6 +13,7 @@
         },
         afterShow: function () {
             fun_get_tour_all_details();
+            $(".km-scroll-container").css("transform", "none");
             var render_dcrmaster = function (tx, rs) {
                 $("#dvtourplanmaster_date").html(rs.rows.item(0).tp_date);
                 $("#hdntourplanmaster_periodid").val(rs.rows.item(0).activity_peroid_id);
@@ -28,7 +29,17 @@
                 $("#dvtourplanmaster_tp_contact").html(rs.rows.item(0).tp_contact);
                 $("#dvtourplanmaster_tp_objective").html(rs.rows.item(0).tp_objective);
                 fun_load_tourplan_master_ww(1);
-                fun_load_tourplan_master_mj(1);
+                fun_load_tourplan_master_mj(1);  
+                var ddlactivity_tp = rs.rows.item(0).activity_id;
+                // 237,238,242,1131,243,244 Sunday,Casual Leave,Sick Leave,Earned Leave,LTA
+                if (ddlactivity_tp == "237" || ddlactivity_tp == "238"
+              || ddlactivity_tp == "242" || ddlactivity_tp == "1131"
+              || ddlactivity_tp == "243" || ddlactivity_tp == "244") {
+                    $('#dv_tourplan_preview_master_details').hide();
+                }
+                else {
+                    $('#dv_tourplan_preview_master_details').show();
+                }
             }
             app.select_tourplan_master(render_dcrmaster);
         },
@@ -45,7 +56,7 @@
                 if (!confirm) {
                     return;
                 }
-                fun_save_dcr_all_details();
+                fun_save_tp_all_details();
             })
         },
 
@@ -55,9 +66,9 @@
                 if (!confirm) {
                     return;
                 }
-                fun_delete_all_dcrrecords();
-                fun_set_dcr_fields();
-                app.navigation.navigateDCRstartView();
+                fun_clear_tp_entry_all_details();
+                fun_delete_existing_tourplan_details();
+                app.navigation.navigateTourplanEntryView();
             })
         },
     });
@@ -65,13 +76,21 @@
     view.set('TourplanPreviewViewModel', TourplanPreviewViewModel);
 }());
 
-function fun_save_dcr_all_details() {
+function fun_save_tp_all_details() {
 
     var userdata = JSON.parse(localStorage.getItem("userdata"));
     var Login_ID = parseInt(userdata.Login_ID);
     var Employee_ID = parseInt(userdata.Employee_ID);
     var Sub_Territory_ID = parseInt(userdata.Sub_Territory_ID);
-
+    var Category_ID = 0;
+    if ($("#hdntourplanmaster_categoryid").val() != '')
+    {
+        Category_ID = $("#hdntourplanmaster_categoryid").val()
+    }
+    var Mode_ID = 0;
+    if ($("#hdntourplanmaster_modeid").val() != '') {
+        Mode_ID = $("#hdntourplanmaster_modeid").val()
+    }
     app.utils.loading(true);
     var Activity_ID = parseInt($("#hdnactivity_id").val());
     fun_db_APP_Insert_Z6_TP_Details(Login_ID,
@@ -81,27 +100,28 @@ $("#dvtourplanmaster_date").html(),
 $("#hdntourplanmaster_periodid").val(),
 
 $("#hdntourplanmaster_activityid").val(),
-$("#hdntourplanmaster_categoryid").val(),
-$("#hdntourplanmaster_modeid").val(),
+Category_ID,
+Mode_ID,
 $("#dvtourplanmaster_tp_contact").html(),
 $("#dvtourplanmaster_tp_objective").html(),
 
 $("#hdntourplan_master_string").val(),
 $("#hdntourplan_master_ww_details_string").val(),
-$("#hdntourplan_master_mj_details_string").val()
+$("#hdntourplan_master_mj_details_string").val() 
     );
 }
 function fun_get_tour_all_details() {
     fun_get_tourplan_master_data();
     fun_get_tourplan_master_ww_data();
-    fun_get_tourplan_master_mj_data();
+    fun_get_tourplan_master_mj_data();  
 }
 
 
 function fun_clear_tp_entry_all_details() {
     $("#hdntourplan_master_string").val('');
     $("#hdntourplan_master_ww_details_string").val('');
-    $("#hdntourplan_master_mj_details_string").val('');
+    $("#hdntourplan_master_mj_details_string").val(''); 
+
 
     $("#hdntourplanmaster_periodid").val('');
     $("#hdntourplanmaster_activityid").val('');
@@ -141,6 +161,8 @@ function fun_get_tourplan_master_mj_data() {
     }
     app.select_tourplan_master_mj_details(renderstr);
 }
+
+ 
 
 function fun_load_tourplan_master_ww(hdntourplan_master_id) {
     var render_control = function (tx1, rs1) {
@@ -182,13 +204,13 @@ function fun_load_tourplan_master_mj(hdntourplan_master_id) {
         });
     }
     app.select_tourplan_master_mj_details(render_control, hdntourplan_master_id);
-}
+} 
  
-function fun_db_APP_Insert_Z6_TP_Details(Login_ID, Employee_ID, Sub_Territory_ID,
+ function fun_db_APP_Insert_Z6_TP_Details(Login_ID, Employee_ID, Sub_Territory_ID,
     TourPlan_Date, Activity_Period_ID, Activity_ID,
         Mode_ID, Category_ID, Contact_Details,
         Specific_Objective, TP_Master_String, TP_Master_WW_Details_String,
-        TP_Master_MJ_Details_String
+        TP_Master_MJ_Details_String 
         ) {
     var datasource = new kendo.data.DataSource({
         transport: {
@@ -202,7 +224,7 @@ function fun_db_APP_Insert_Z6_TP_Details(Login_ID, Employee_ID, Sub_Territory_ID
                     "Mode_ID": Mode_ID, "Category_ID": Category_ID, "Contact_Details": Contact_Details,
                     "Specific_Objective": Specific_Objective, "TP_Master_String": TP_Master_String,
                     "TP_Master_WW_Details_String": TP_Master_WW_Details_String,
-                    "TP_Master_MJ_Details_String": TP_Master_MJ_Details_String
+                    "TP_Master_MJ_Details_String": TP_Master_MJ_Details_String 
                 }
             }
         },
@@ -222,7 +244,7 @@ function fun_db_APP_Insert_Z6_TP_Details(Login_ID, Employee_ID, Sub_Territory_ID
         app.utils.loading(false);
         if (data[0].Output_ID == 1) {
             app.notify.success(data[0].Output_Message);
-            fun_clear_tp_entry_all_details();  
+            fun_clear_tp_entry_all_details();
             fun_delete_existing_tourplan_details();
             app.navigation.navigateTourplanEntryView();
         }

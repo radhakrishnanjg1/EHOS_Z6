@@ -1,0 +1,57 @@
+<div id="MasterPromoBalanceView" data-role="view" data-title="Promo Balance"
+     data-layout="afterlogin"
+     data-model="app.MasterPromoBalanceView.MasterPromoBalanceViewModel"
+     data-bind="events: { show: onShow,afterShow:afterShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
+            <a data-role="button" class="btn btn-yellow"
+               data-bind="events: {click: ScrollTop }">
+                <i class="fa fa-arrow-up"></i> Top
+            </a>
+        </div>
+    </footer>
+    <div id="dvMasterPromoBalanceView">
+        <div id="dvMasterPromoBalanceView_manager" class="panel-heading text-center"
+             style="display:none; background-color:#fff!important ">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        <input id="MasterPromoBalanceView_txtauocmpemployeelist" class="form-control">
+                        <span class="input-group-addon" data-bind="events: {click: fun_close_MasterPromoBalanceView_txtauocmpemployeelist }">
+                            <i class="fa fa-1-5x fa-close"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-headingsubcustom" id="dvMasterPromoBalanceView_team">
+            <div class="panel-title text-uppercase "
+                 id="dvMasterPromoBalanceView_teamname">
+                Team
+            </div>
+        </div>
+        <div class="panel-body padding0">
+            <div data-role="listview" id="listview-promobalancedetails"></div>
+            <script type="text/x-kendo-tmpl" id="template-promobalancedetails">
+                <div class="row">
+                    <h4 class="${Product_Type}">
+                        #: Collaterals #
+                    </h4>
+                    <div class="col-xs-6">
+                        <i class="fa fa-info hgreen"></i>   #: Collaterals_Code #
+                    </div>
+                    <div class="col-xs-3">
+                        <i class="fa fa-info-circle hgreen "></i>  #: Collaterals_Short_Name #
+                    </div>
+                    <div class="col-xs-3">
+                        <i class="fa ${Quantity_Css} hgreen"></i> #: Balance_Quantity #
+                    </div> 
+                </div>
+            </script>
+        </div>
+    </div>
+</div>

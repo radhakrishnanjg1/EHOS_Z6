@@ -4,22 +4,26 @@
 (function () {
     var view = app.dashboardView = kendo.observable();
     var dashboardViewModel = kendo.observable({
-        onShow: function () {
-            app_db_init();
+        onShow: function () { 
             if (!app.utils.checkinternetconnection()) {
                 return app.navigation.navigateoffline("dashboardView");
             }
             app.navigation.logincheck();
             if (localStorage.getItem("ethosinscoveragedetails_live") == null || localStorage.getItem("ethosinscoveragedetails_live") != 1) {
+                 
+                var userdata = JSON.parse(localStorage.getItem("userdata"));
+                var Employee_ID = parseInt(userdata.Employee_ID);
                 app.utils.loading(true);
-                fun_db_APP_Get_MSL_Coverage_Details_Z6_Employee($('#hdnEmployee_ID').val());
+                fun_db_APP_Get_MSL_Coverage_Details_Z6_Employee(Employee_ID); 
             }
             var user = JSON.parse(localStorage.getItem("userdata"));
             $('#dvemployeename').html(user.Employee_Name);
         },
         onRefresh: function () {
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var Employee_ID = parseInt(userdata.Employee_ID);
             app.utils.loading(true);
-            fun_db_APP_Get_Current_MSL_Coverage_Details_Z6_Employee($('#hdnEmployee_ID').val());
+            fun_db_APP_Get_Current_MSL_Coverage_Details_Z6_Employee(Employee_ID);
         },
     });
 

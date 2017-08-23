@@ -17,8 +17,10 @@
             //if ($('#dvteamename').html().trim() != 'Team')
             //{
                 $('#dvteamename').html('Team');
+                var userdata = JSON.parse(localStorage.getItem("userdata"));
+                var Employee_ID = parseInt(userdata.Employee_ID);
                 app.utils.loading(true);
-                fun_db_APP_Get_MSL_Coverage_Details_Z6_Employee_Team($('#hdnEmployee_ID').val());
+                fun_db_APP_Get_MSL_Coverage_Details_Z6_Employee_Team(Employee_ID);
             //} 
         },
         fun_close_txtauocmpemployeelist: function () {
@@ -49,14 +51,18 @@
                 fun_db_APP_Get_Current_MSL_Coverage_Details_Z6_Employee_TeamByEmployeeid(empid);
             } 
             else if (value == 'ALL') {
-                $('#dvteamename').html('Team');
+                $('#dvteamename').html('Team'); 
+                var userdata = JSON.parse(localStorage.getItem("userdata"));
+                var Employee_ID = parseInt(userdata.Employee_ID);
                 app.utils.loading(true);
-                fun_db_APP_Get_Current_MSL_Coverage_Details_Z6_Employee_Team($('#hdnEmployee_ID').val());
+                fun_db_APP_Get_Current_MSL_Coverage_Details_Z6_Employee_Team(Employee_ID);
             }
             else {
                 $('#dvteamename').html('Team');
+                var userdata = JSON.parse(localStorage.getItem("userdata"));
+                var Employee_ID = parseInt(userdata.Employee_ID);
                 app.utils.loading(true);
-                fun_db_APP_Get_Current_MSL_Coverage_Details_Z6_Employee_Team($('#hdnEmployee_ID').val());
+                fun_db_APP_Get_Current_MSL_Coverage_Details_Z6_Employee_Team(Employee_ID);;
             } 
         },
     });
@@ -268,7 +274,7 @@ function fun_db_APP_Get_MSL_Coverage_Details_Z6_Employee_Team(Employee_ID) {
             localStorage.setItem("ethosinsteamcoveragedetails", JSON.stringify(data[0])); // coverage details 
             // localStorage.setItem("teamcoveragedetails_live", 1);
 
-            localStorage.setItem("ethosinssubordinatesdetails", JSON.stringify(data[1])); // coverage details 
+            //localStorage.setItem("ethosinssubordinatesdetails", JSON.stringify(data[1])); // coverage details 
             $('#dvteamcoveragedetails').show();
             teamloadchart(1);
             teamloadcurrentmonthdatafa(1);

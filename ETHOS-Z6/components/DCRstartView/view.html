@@ -1,0 +1,113 @@
+<div id="DCRstartView" data-role="view" data-title="Daily Call Report"
+     data-before-hide="enableBackButton"
+     data-layout="afterlogin"
+     data-model="app.DCRstartView.DCRstartViewModel"
+     data-show="app.DCRstartView.DCRstartViewModel.onShow"
+     data-after-show="app.DCRstartView.DCRstartViewModel.afterShow">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.navigateDCRmanagementView">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
+            <a data-role="button" class="btn btn-primary"
+               data-bind="events: {click: redirecttocontinuedcr }">
+                Next <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </footer>
+    <input type="hidden" value="0"
+           id="hdn_old_dcr_master_id" name="hdn_old_dcr_master_id" />
+    <input type="hidden" value="0"
+           id="hdn_old_activity_id" name="hdn_old_activity_id" />
+    <input type="hidden" value="0"
+           id="hdn_old_activity_period_id" name="hdn_old_activity_period_id" />
+    <input type="hidden" value=""
+           id="hdn_dcr_selected_worked_with"
+           name="hdn_dcr_selected_worked_with" />
+    <input type="hidden" value=""
+           id="hdn_dcr_selected_market_areas"
+           name="hdn_dcr_selected_market_areas" />
+    <input type="hidden" value=""
+           id="hdn_dcr_category_id"
+           name="hdn_dcr_category_id" />
+
+    <div id="dvDCRstartView_offgps" style="display:none">
+        <div class="col-xs-12 col-sm-12 full-height"
+             align="center">
+            <div class="middle-align">
+                <i class="fa fa-5x fa-map-marker" id="fa-map-marker"></i>
+                <p class="horange">
+                    You seem to be GPS Offline. <br>
+                    Switch on the GPS location in your phone device
+                </p>
+                <a data-role="button" class="btn btn-success"
+                   id="currentpage"
+                   data-click="fun_show_dcr_startView">Retry</a>
+            </div>
+        </div>
+    </div>
+    <div id="dvDCRstartView" > <!--style="display:none"-->
+        <img src="images/start.png" id="spandcrstartpage"
+             data-role="button"
+             data-bind="events: {click: redirecttocontinuedcr }"
+             style="border:0px !important;padding:0px !important;width:99%;height:100%;" />
+    </div> 
+</div>
+
+
+<div data-role="modalview" id="modalview-dcr-selected-workwith" style="height:auto;width:90%!important ">
+    <div data-role="header" class="panel-headingmodal">
+        <div class="row">
+            <div class="panel-title" style="padding-left:10px !important ; ">
+                Selected Worked With <a data-click="closemodalview_dcr_selected_workwith"
+                                        data-role="button" class="pull-right"
+                                        style="padding : 0 10px 0 0; ">
+                    <i class="fa fa-close"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-custom">
+        <div class="panel-body padding0" style="background-color:#fff !important">
+            <div data-role="listview" id="listview-dcr-selected-worked-with"></div>
+            <script type="text/x-kendo-tmpl" id="template-dcr-selected-worked-with">
+                <div class="pull-left">
+                    #: ww_name #
+                </div>
+            </script>
+
+            <!--<div class="col-xs-10">
+                #: ww_name #
+            </div>
+            <div class="col-xs-1">
+                <a class="btn btn-red" data-role="button"
+                   data-dcr_master_ww_detail_temp_institution_id="${dcr_master_ww_detail_temp_institution_id}"
+                   data-click="fun_delete_dcr_listedinstutition_ww_temp"><i class="fa fa-trash"></i></a>
+            </div>-->
+        </div>
+    </div>
+</div>
+<div data-role="modalview" id="modalview-dcr-selected-market-areas" style="height:auto;width:90%!important ">
+    <div data-role="header" class="panel-headingmodal">
+        <div class="row">
+            <div class="panel-title" style="padding-left:10px !important ; ">
+                Selected Market Areas <a data-click="closemodalview_dcr_selected_market_areas"
+                                         data-role="button" class="pull-right"
+                                         style="padding : 0 10px 0 0; ">
+                    <i class="fa fa-close"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-custom">
+        <div class="panel-body padding0" style="background-color:#fff !important">
+            <div data-role="listview" id="listview-dcr-selected-market-areas"></div>
+            <script type="text/x-kendo-tmpl" id="template-dcr-selected-market-areas">
+                <div class="pull-left">
+                    #: mj_name #
+                </div>
+            </script>
+        </div>
+    </div>
+</div>

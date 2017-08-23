@@ -9,10 +9,21 @@
                 return app.navigation.navigateoffline("LMSapproveleavecancelView");
             }
             app.navigation.logincheck();
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var Employee_ID = parseInt(userdata.Employee_ID);
+            if (localStorage.getItem("LMSapproveleavecanceldetails_live") == null ||
+               localStorage.getItem("LMSapproveleavecanceldetails_live") != 1) {
+                app.utils.loading(true);
+                fun_db_APP_Get_Ethos_Leave_Cancel_Approve(Employee_ID);
+            }
+        },
+        onRefresh: function () {
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var Employee_ID = parseInt(userdata.Employee_ID);
             app.utils.loading(true);
-            fun_db_APP_Get_Ethos_Leave_Cancel_Approve(parseInt($('#hdnEmployee_ID').val())); 
-        },  
-    }); 
+            fun_db_APP_Get_Ethos_Leave_Cancel_Approve(Employee_ID);
+        },
+    });
     view.set('LMSapproveleavecancelViewModel', LMSapproveleavecancelViewModel);
 }());
 
@@ -30,12 +41,12 @@ function fun_load_leave_cancel_details(records) {
         template: $("#template-leavecancelapproval").html(),
     });
 }
- 
+
 function fun_leavecancelapprove(e) {
     var data = e.button.data();
     var ethos_leave_master_id = data.ethos_leave_master_id;
     var employee_id = data.employee_id;
-    var leave_type_id = data.leave_type_id;  
+    var leave_type_id = data.leave_type_id;
     var confirmation = "Are you sure you want to approve?";
     app.notify.confirmation(confirmation, function (confirm) {
         if (!confirm) {
@@ -46,7 +57,7 @@ function fun_leavecancelapprove(e) {
        employee_id, leave_type_id);
     });
 }
- 
+
 
 function fun_db_APP_Get_Ethos_Leave_Cancel_Approve(Employee_ID) {
     var datasource = new kendo.data.DataSource({
@@ -71,6 +82,7 @@ function fun_db_APP_Get_Ethos_Leave_Cancel_Approve(Employee_ID) {
     datasource.fetch(function () {
         var data = this.data();
         fun_load_leave_cancel_details(JSON.stringify(data));
+        localStorage.setItem("LMSapproveleavecanceldetails_live", 1);
         app.utils.loading(false);
     });
 
