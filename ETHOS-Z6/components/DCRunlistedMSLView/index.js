@@ -22,7 +22,7 @@
                 var Designation_ID = user.Designation_ID;
                 var Division_ID = user.Division_ID;
                 app.utils.loading(true);
-                fun_db_APP_Get_Z6_DCR_UnListed_MSL_Information(Employee_ID, Sub_Territory_ID,
+                fun_db_APP_Get_Z6_DCR_UnListed_MSL_Information(Sub_Territory_ID,Employee_ID ,
                     Designation_ID, Division_ID);
             //}
             //else {
@@ -122,6 +122,14 @@
                     fun_save_dcrmaster_unlistedmsl_doctor();
                     fun_unlistedmsl_doctor_clearcontrols();
                     app.notify.success('Unlisted doctor details saved successfully.');
+                    $("#collapse-dcr-unlisteddoctor-brandremainer").
+                    removeClass("in");
+                    $("#collapse-dcr-unlisteddoctor-brandremainer").
+                        addClass("collapse");
+                    $("#collapse-dcr-unlisteddoctor-sample").
+                    removeClass("in");
+                    $("#collapse-dcr-unlisteddoctor-sample").
+                        addClass("collapse");
                 }
             }
             else if (tabpanelunlistedmsl == "tabpanelunlistedmsl-chemist") {
@@ -180,6 +188,10 @@
                     fun_save_dcrmaster_unlistedmsl_chemist();
                     fun_dcr_unlistedmsl_chemist_clearcontrols();
                     app.notify.success('Unlisted chemist details saved successfully.');
+                    $("#collapse-dcr-unlistedchemist-brandremainer").
+                    removeClass("in");
+                    $("#collapse-dcr-unlistedchemist-brandremainer").
+                        addClass("collapse"); 
                 }
             }
             $(".km-scroll-container").css("transform", "none");

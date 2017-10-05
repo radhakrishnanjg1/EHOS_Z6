@@ -111,6 +111,14 @@
                     fun_save_dcr_listedmsl_doctor();
                     fun_dcr_listedmsl_doctor_clearcontrols();
                     app.notify.success('Doctor details saved successfully.');
+                    $("#collapse-dcr-listeddoctor-brandremainer").
+                    removeClass("in");
+                    $("#collapse-dcr-listeddoctor-brandremainer").
+                        addClass("collapse");
+                    $("#collapse-dcr-listeddoctor-sample").
+                    removeClass("in");
+                    $("#collapse-dcr-listeddoctor-sample").
+                        addClass("collapse");
                 }
             }
             else if (tabpanellistedmsl == "tabpanellistedmsl-chemist") {
@@ -168,6 +176,10 @@
                     fun_save_dcr_listedmsl_chemist();
                     fun_dcr_listedmsl_chemist_clearcontrols();
                     app.notify.success('Chemist details saved successfully.');
+                    $("#collapse-dcr-chemist-brandremainer").
+                    removeClass("in");
+                    $("#collapse-dcr-chemist-brandremainer").
+                        addClass("collapse");
                 }
             }
             $(".km-scroll-container").css("transform", "none");

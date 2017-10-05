@@ -438,6 +438,15 @@ footer .btn {
 /*.btn-info {
     background-color: #6aacb0 !important; 
 }*/
+
+.btn-success {
+    background-color: #006666 !important;
+    border: 0px !important;
+}
+
+    .btn-success:hover {
+        background-color: #08a4a5 !important;
+    }
 .btn-danger {
     background-color: #545652 !important;
     border: 0px !important;
@@ -1023,11 +1032,11 @@ footer .btn {
 
 /*icons start*/
 #dvmgt {
-    font-size: 16px;
+    font-size: 18px;
 }
 
     #dvmgt .roundtext {
-        width: 30%;
+        width: 47%;
         /*height:90px;*/
         /*background-color: #dedede;*/
         color: #498ECD !important;
@@ -1041,7 +1050,7 @@ footer .btn {
     }
 
     #dvmgt .mgticon {
-        font-size: 40px !important;
+        font-size: 50px !important;
     }
 /*icons end*/
 

@@ -42,7 +42,7 @@
         <div class="panel-body padding0">
             <div data-role="listview" id="listview-doctormsldetails"></div>
             <script type="text/x-kendo-tmpl" id="template-doctormsldetails">
-                <div class="row">
+                <div class="row" >
                     <div class="col-xs-1">
                         <div class="pull-left" style="padding-top:20px !important">
                             <h4 class="horange"> #: Doctor_MSL_Number #</h4>
@@ -54,13 +54,43 @@
                         </h4>
                         <p> 
                             #: Market_Area_Name #
-                        </p> 
-                        <p>
-                            Last Visited : <i class="fa fa-calendar-check-o hgreen"></i>   #: Last_Visited #
-                        </p>
+                        </p>  
+                        <div data-role="button"
+                             data-DailyReport_Doctor_Id="${DailyReport_Doctor_Id}"
+                             data-click="fun_msldoctor_last_products_modelopen">
+                             Last Visited
+                              <i class="fa fa-calendar-check-o hgreen"></i>   #: Last_Visited #
+                        </div>
                     </div>
                 </div>
             </script> 
+        </div>
+    </div>
+
+    <div data-role="modalview" id="modalview-msldoctor_last_products"
+         style="height:70%!important ; width:90%!important ">
+        <div data-role="header" class="panel-headingmodal">
+            <div class="row">
+                <div class="panel-title" style="padding-left:10px !important ; ">
+                    Product Details<a data-click="fun_msldoctor_last_products_modelclose"
+                                                 data-role="button" class="pull-right"
+                                                 style="padding : 0 10px 0 0; ">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-custom">
+            <div class="panel-body" style="padding-top:0px;background-color:#fff !important">
+                <div class="row"> 
+                    <div class="panel-body padding0">
+                        <div id="grid_msldoctor_last_products_brandremainer"></div>
+                    </div> 
+                    <div class="panel-body padding0">
+                        <div id="grid_msldoctor_last_products_sample"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

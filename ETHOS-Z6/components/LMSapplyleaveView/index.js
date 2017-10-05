@@ -119,6 +119,23 @@ function fun_applyleave_txttochange() {
     } else {
         $("#txtdays").val(days);
     }
+    //var leavetype = parseInt($("#ddlleavetype").val());
+    //if (leavetype == 865) { 
+    //    var startDate = new Date(start);
+    //    var endDate = new Date(end);
+    //    var totalSundays = 0; 
+    //    for (var i = startDate; i <= endDate;) {
+    //        if (i.getDay() == 0) {
+    //            totalSundays++;
+    //        }
+    //    }
+    //    days = days - totalSundays;
+    //    if (days < 0) {
+    //        $("#txtdays").val(0);
+    //    } else {
+    //        $("#txtdays").val(days);
+    //    }
+    //}
 }
 
 function fun_applyleave_leavetypechange(leavetype) {

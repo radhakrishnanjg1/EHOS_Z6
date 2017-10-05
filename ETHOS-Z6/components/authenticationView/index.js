@@ -32,12 +32,16 @@
             displayName: '',
             //username: '',
             //password: '',
-            username: 'ZE-Imphal1', //field
-            password: 'dilip',
+            //username: 'ze-surat3',
+            //password: 'rahul',
+            username: 'ZE-RM-SURAT2',
+            password: '9138',
+            //username: 'ZE-Imphal1', //field
+            //password: 'dilip',
             //username: 'ZR-MANGALDOI1', //field
             //password: 'pankaj',
-            //username: 'ZE-RM-GUWAHATI1', //rm
-            //password: 'himalaya',
+            ////username: 'ZE-RM-GUWAHATI1', //rm
+            ////password: 'himalaya',
 
             //username: 'ZE-ZM-GUWAHATI1', //zm
             //password: 'emp73',
@@ -106,9 +110,9 @@ function fun_db_APP_Verify_Field_Z6_User_Authentication(username, password, devi
             localStorage.setItem("userdata", JSON.stringify(data[0][0])); // userdata details 
 
             localStorage.setItem("ethosmastervalues", JSON.stringify(data[1])); // ethosmastervalues details 
-            app_db_init();
+            app_db_init(); 
             app.navigation.navigateAppDashboardView();  //navigateAppDashboardView
-            app.utils.loading(false);
+            app.utils.loading(false); 
             if (data[0][0].IsManager == 1) {
                 localStorage.setItem("ethosinssubordinatesdetails", JSON.stringify(data[3])); // coverage details 
             }

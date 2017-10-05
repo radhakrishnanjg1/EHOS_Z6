@@ -10,31 +10,33 @@
         profile: null,
         uploader: null,
         photoChanged: false,
-        onShow: function () { 
+        onShow: function () {
             if (!app.utils.checkinternetconnection()) {
                 return app.navigation.navigateoffline("updateprofileView");
             }
             app.navigation.logincheck();
             var userdata = JSON.parse(localStorage.getItem("userdata"));
-                var profile = kendo.observable({
-                    Email: userdata.Email,
-                    Mobile: userdata.Mobile,
-                    Username: userdata.Username,
-                    Birthday: userdata.Birthday,
-                    Designation: userdata.Designation,
-                    Image_Path: userdata.Image_Path == null ? "../../images/Temp.png" : userdata.ImagePath,
-                    //DisplayName: "Ram", 
-                    //Birthday: "1965-12-12",
-                    ////Gender: "1", 
-                });
-                this.set('profile', profile);
-                var cameratakephoto = new cameraApp();
-                cameratakephoto.run();
+            var userimage = userdata.Image_Path == null ? "images/Temp.png" : userdata.Image_Path;
+            var profile = kendo.observable({
+                Email: userdata.Email,
+                Mobile: userdata.Mobile,
+                Username: userdata.Username,
+                Birthday: userdata.Birthday,
+                Designation: userdata.Designation,
+                Image_Path: userimage,
+                //DisplayName: "Ram", 
+                //Birthday: "1965-12-12",
+                ////Gender: "1", 
+            }); 
+            $("#img_user_profile").attr('src', userimage); 
+            this.set('profile', profile);
+            var cameratakephoto = new cameraApp();
+            cameratakephoto.run();
         },
         onHide: function () {
 
         },
-        updateProfile: function () { 
+        updateProfile: function () {
             var profile = this.profile;
             var user = JSON.parse(localStorage.getItem("userdata"));
             var model = {
@@ -57,7 +59,7 @@
             }
             else {
                 app.notify.error('Change the email or mobile!');
-            } 
+            }
         }
     });
 
@@ -77,7 +79,7 @@ function fun_db_APP_Change_Profile_Image_Details(Login_ID, Employee_ID, Email, M
                     "Employee_ID": Employee_ID,
                     "Email": Email,
                     "Mobile": Mobile,
-                    "Image_Path": "http://himalayasql.cloudapp.net/EthosFilesUpload/UploadedFiles/Ethos_App/profile_images/"+Login_ID+".png",
+                    "Image_Path": "http://himalayasql.cloudapp.net/EthosFilesUpload/UploadedFiles/Ethos_App/profile_images/" + Login_ID + ".png",
                 }
             }
         },

@@ -135,7 +135,19 @@ function load_msldoctorview(records) {
     });
     $("#listview-doctormsldetails").data("kendoMobileListView").setDataSource(dsmsldetails);
 }
- 
+
+function fun_msldoctor_last_products_modelopen(e) {
+    var data = e.button.data();
+    var DailyReport_Doctor_Id = parseInt(data.dailyreport_doctor_id);
+    app.utils.loading(true);
+    fun_db_APP_Get_Doctor_Gift_Sample_Details_By_DailyReport_Doctor_Id(DailyReport_Doctor_Id);
+    $("#modalview-msldoctor_last_products").kendoMobileModalView("open");
+}
+
+function fun_msldoctor_last_products_modelclose()  
+{
+    $("#modalview-msldoctor_last_products").kendoMobileModalView("close");
+}
 function fun_db_APP_Get_Doctor_MSL_Details_By_Employee_ID(Employee_ID, Sub_Territory_ID) {
     var datasource = new kendo.data.DataSource({
         transport: {
@@ -171,6 +183,60 @@ function fun_db_APP_Get_Doctor_MSL_Details_By_Employee_ID(Employee_ID, Sub_Terri
            .ToJSON());
             $('#msldoctorview_teamname').html(ethosmastervaluesrecords[0].Employee_Name.split("|")[0]);
         }
+    });
+}
+
+function fun_db_APP_Get_Doctor_Gift_Sample_Details_By_DailyReport_Doctor_Id(DailyReport_Doctor_Id) {
+    var datasource = new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Get_Doctor_Gift_Sample_Details_By_DailyReport_Doctor_Id",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "DailyReport_Doctor_Id": DailyReport_Doctor_Id,
+                }
+            }
+        },
+        schema: {
+            parse: function (response) {
+                var getdata = response.Result.Data;
+                return getdata;
+            }
+        }
+    });
+
+    datasource.fetch(function () {
+        var data = this.data();
+        app.utils.loading(false);
+         
+        var dataSource = new kendo.data.DataSource({
+            data: data[0] 
+        });
+        $("#grid_msldoctor_last_products_brandremainer").kendoGrid({
+            dataSource: dataSource,
+            columns: [
+               { enabled: false, title: "Brand Reminder Product", field: "Product_Name", editable: false },
+               { width: 50, enabled: false, title: "Qty", field: "Quantity", editable: false, },
+            ],
+            noRecords: {
+                template: "No records found!"
+            },
+        });
+
+        var dataSource1 = new kendo.data.DataSource({
+            data: data[1], 
+        });
+        $("#grid_msldoctor_last_products_sample").kendoGrid({
+            dataSource: dataSource1,
+            columns: [
+               { enabled: false, title: "Sample Product", field: "Product_Name", editable: false },
+               { width: 50, enabled: false, title: "Qty", field: "Quantity", editable: false, },
+            ],
+            noRecords: {
+                template: "No records found!"
+            },
+        });
     });
 }
 
