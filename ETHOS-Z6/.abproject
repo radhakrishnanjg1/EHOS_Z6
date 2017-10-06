@@ -24,10 +24,7 @@
   "Framework": "Cordova",
   "WP8TileTitle": "",
   "WP8Publisher": "",
-  "WP8Capabilities": [
-    "ID_CAP_NETWORKING",
-    "ID_CAP_WEBBROWSERCOMPONENT"
-  ],
+  "WP8Capabilities": [],
   "WP8Requirements": [],
   "WP8PublisherID": "{b7c5130e-a868-4dde-9c7d-201a673b524a}",
   "WP8ProductID": "{d3a32670-b672-499d-886b-309144ee2441}",
@@ -54,6 +51,7 @@
     "cordova-plugin-device",
     "cordova-plugin-device-orientation",
     "cordova-plugin-dialogs",
+    "cordova-plugin-network-information",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "cordova-plugin-whitelist"
