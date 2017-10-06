@@ -9,7 +9,7 @@
                 app.utils.loading(true);
                 var user = JSON.parse(localStorage.getItem("userdata"));
                 fun_db_APP_User_Logout(user.Login_ID, user.Employee_ID, app.utils.deviceinformation('Logout'));
-                 
+
             }
             if (app.user != null) {
                 return app.navigation.navigatedashboard();
@@ -31,29 +31,11 @@
         user: {
             displayName: '',
             //username: '',
-            //password: '',
-            //username: 'ze-surat3',
-            //password: 'rahul',
-            username: 'ZE-RM-SURAT2',
-            password: '9138',
-            //username: 'ZE-Imphal1', //field
-            //password: 'dilip',
-            //username: 'ZR-MANGALDOI1', //field
-            //password: 'pankaj',
+            //password: '', 
+            username: 'ZE-Imphal1', //field
+            password: 'dilip',
             ////username: 'ZE-RM-GUWAHATI1', //rm
-            ////password: 'himalaya',
-
-            //username: 'ZE-ZM-GUWAHATI1', //zm
-            //password: 'emp73',
-            //username: 'ZE-SM-KOLKATA1', //sm
-            //password: 'emp66',
-            // vacant credentials 
-            //username: 'VACANT(ze-ALIGARH3)', //field
-            //password: 'NEW',
-
-            //username: 'VACANT(ZE-RM-INDORE1)', //rm
-            //password: 'VACANT(ZE-RM-INDORE1)',
-
+            ////password: 'himalaya', 
             //email: ''
         },
         loginValidator: null,
@@ -110,27 +92,12 @@ function fun_db_APP_Verify_Field_Z6_User_Authentication(username, password, devi
             localStorage.setItem("userdata", JSON.stringify(data[0][0])); // userdata details 
 
             localStorage.setItem("ethosmastervalues", JSON.stringify(data[1])); // ethosmastervalues details 
-            app_db_init(); 
+            app_db_init();
             app.navigation.navigateAppDashboardView();  //navigateAppDashboardView
-            app.utils.loading(false); 
+            app.utils.loading(false);
             if (data[0][0].IsManager == 1) {
                 localStorage.setItem("ethosinssubordinatesdetails", JSON.stringify(data[3])); // coverage details 
-            }
-            //if (data[0][0].IsManager == 0) {
-            //    $('#dvindvcoverage').show();
-            //    //$('#lifieldlocator').hide(); 
-            //    //redirect dashboard/indiviual  page 
-            //    app.navigation.navigateAppDashboardView();//navigateEDetailingView,
-            //    //navigateMSLView, navigatedashboard
-            //    app.utils.loading(false);
-            //}
-            //else if (data[0][0].IsManager == 1) {
-            //    $('#dvteamcoverage').show();
-            //    //$('#lifieldlocator').show(); 
-            //    //redirect dashboard/team coverage page 
-            //    app.navigation.navigateAppDashboardView();//navigateEDetailingView, navigateTeamAbsensesView,navigateteamcoverage
-            //    app.utils.loading(false);
-            //}
+            } 
         }
         else {
             app.notify.error(data[0][0].Output_Message);

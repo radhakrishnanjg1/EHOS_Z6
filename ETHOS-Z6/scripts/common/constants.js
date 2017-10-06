@@ -1,6 +1,6 @@
 (function () {
     app.constants = { 
-        appname: 'App Name:ETHOS-Z6',
+        appname: 'App Name:ETHOS-GP',
         appversion: 'App Version:1.0.1', //app.constants.appname
         appmode: 'App Mode:Debug',
         authenticationModeSignin: 'signin',
