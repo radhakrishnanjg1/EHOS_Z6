@@ -400,19 +400,19 @@ function fun_save_dcrmaster_otherflow() {
 }
 
 function fun_update_dcr_master_geo() {
-    var options = {
-        enableHighAccuracy: false,
-        timeout: 10000
-    };
-    var geolo = navigator.geolocation.getCurrentPosition(function () {
-        app.update_dcr_master_geo(1,
-                JSON.stringify(arguments[0].coords.latitude),
-                JSON.stringify(arguments[0].coords.longitude));
-    }, function () {
-        app.update_dcr_master_geo(1,
-                "",
-                "");
-    }, options);
+    //var options = {
+    //    enableHighAccuracy: false,
+    //    timeout: 10000
+    //};
+    //var geolo = navigator.geolocation.getCurrentPosition(function () {
+    //    app.update_dcr_master_geo(1,
+    //            JSON.stringify(arguments[0].coords.latitude),
+    //            JSON.stringify(arguments[0].coords.longitude));
+    //}, function () {
+    //    app.update_dcr_master_geo(1,
+    //            "",
+    //            "");
+    //}, options);
 }
 
 function fun_dcr_load_activityperiod() {
@@ -557,22 +557,7 @@ function fun_dcr_master_chiefs() {
     ddlworkwithmaster.setDataSource(ethosmastervaluesrecords);
     ddlworkwithmaster.refresh();
 }
-
-function fun_show_dcr_master() {
-    app.utils.loading(true);
-    var options = {
-        enableHighAccuracy: false,
-        timeout: 10000
-    };
-    var geolo = navigator.geolocation.getCurrentPosition(function () {
-        $("#dvDCRmasterView").show();
-        $("#dvDCRmasterView_offgps").hide();
-    }, function () {
-        $("#dvDCRmasterView_offgps").show();
-        $("#dvDCRmasterView").hide();
-    }, options);
-    app.utils.loading(false);
-}
+ 
 function load_promo_balance_details(data)
 {
     app.delete_dcr_promo_balance_details();

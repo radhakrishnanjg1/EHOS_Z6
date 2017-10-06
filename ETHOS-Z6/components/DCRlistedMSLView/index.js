@@ -307,18 +307,20 @@ function fun_save_dcr_listedmsl_doctor() {
     if (isNaN(pob)) {
         pob = 0;
     }
-    var options = {
-        enableHighAccuracy: true,
-        timeout: 10000
-    };
-    var geolo = navigator.geolocation.getCurrentPosition(function () {
-        app.addto_dcr_doctor_master(dcr_master_id, doctor_id,doctor_msl_id, doctor_name, doctor_number, pob,
-            JSON.stringify(arguments[0].coords.latitude),
-            JSON.stringify(arguments[0].coords.longitude));
-    }, function () {
-        app.addto_dcr_doctor_master(dcr_master_id, doctor_id,doctor_msl_id, doctor_name, doctor_number, pob,
+    //var options = {
+    //    enableHighAccuracy: true,
+    //    timeout: 10000
+    //};
+    //var geolo = navigator.geolocation.getCurrentPosition(function () {
+    //    app.addto_dcr_doctor_master(dcr_master_id, doctor_id,doctor_msl_id, doctor_name, doctor_number, pob,
+    //        JSON.stringify(arguments[0].coords.latitude),
+    //        JSON.stringify(arguments[0].coords.longitude));
+    //}, function () {
+    //    app.addto_dcr_doctor_master(dcr_master_id, doctor_id,doctor_msl_id, doctor_name, doctor_number, pob,
+    //        "", "");
+    //}, options);
+    app.addto_dcr_doctor_master(dcr_master_id, doctor_id, doctor_msl_id, doctor_name, doctor_number, pob,
             "", "");
-    }, options);
 
     var hdndcr_doctor_master_id = parseInt($("#hdndcr_doctor_master_id").val());
 
@@ -584,19 +586,20 @@ function fun_save_dcr_listedmsl_chemist() {
     if (isNaN(pob)) {
         pob = 0;
     }
-    var options = {
-        enableHighAccuracy: true,
-        timeout: 10000
-    };
-    var geolo = navigator.geolocation.getCurrentPosition(function () {
-        app.addto_dcr_chemist_master(dcr_master_id, chemist_id,chemist_msl_id, chemist_name, chemist_number, pob,
-            JSON.stringify(arguments[0].coords.latitude),
-            JSON.stringify(arguments[0].coords.longitude));
-    }, function () {
-        app.addto_dcr_chemist_master(dcr_master_id, chemist_id,chemist_msl_id, chemist_name, chemist_number, pob,
+    //var options = {
+    //    enableHighAccuracy: true,
+    //    timeout: 10000
+    //};
+    //var geolo = navigator.geolocation.getCurrentPosition(function () {
+    //    app.addto_dcr_chemist_master(dcr_master_id, chemist_id,chemist_msl_id, chemist_name, chemist_number, pob,
+    //        JSON.stringify(arguments[0].coords.latitude),
+    //        JSON.stringify(arguments[0].coords.longitude));
+    //}, function () {
+    //    app.addto_dcr_chemist_master(dcr_master_id, chemist_id,chemist_msl_id, chemist_name, chemist_number, pob,
+    //        "", "");
+    //}, options);
+    app.addto_dcr_chemist_master(dcr_master_id, chemist_id, chemist_msl_id, chemist_name, chemist_number, pob,
             "", "");
-    }, options);
-
     var hdndcr_chemist_master_id = parseInt($("#hdndcr_chemist_master_id").val());
 
     //Add to Brand Reminder details  

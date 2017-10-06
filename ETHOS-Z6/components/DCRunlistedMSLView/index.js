@@ -468,28 +468,34 @@ function fun_save_dcrmaster_unlistedmsl_doctor() {
     var pob = $("#txtunlisteddoctorpobsingle").val();
 
 
-    var options = {
-        enableHighAccuracy: true,
-        timeout: 10000
-    };
-    var geolo = navigator.geolocation.getCurrentPosition(function () {
-        app.addto_dcr_unlisted_doctor_master(dcr_master_id, doctor_name, sex_id, sex_name, registration_number,
-        qualification1, qualification1_name, qualification2, qualification2_name, qualification3,
-        qualification3_name, other_qualification, other_qualification_name, speciality, speciality_name,
-        city_id, city_name, state_id, state_name, mj_id,
-        mj_name, address, pincode, phone, mobile,
-        email, pob,
-        JSON.stringify(arguments[0].coords.latitude), JSON.stringify(arguments[0].coords.longitude));
-    }, function () {
-        app.addto_dcr_unlisted_doctor_master(dcr_master_id, doctor_name, sex_id, sex_name, registration_number,
+    //var options = {
+    //    enableHighAccuracy: true,
+    //    timeout: 10000
+    //};
+    //var geolo = navigator.geolocation.getCurrentPosition(function () {
+    //    app.addto_dcr_unlisted_doctor_master(dcr_master_id, doctor_name, sex_id, sex_name, registration_number,
+    //    qualification1, qualification1_name, qualification2, qualification2_name, qualification3,
+    //    qualification3_name, other_qualification, other_qualification_name, speciality, speciality_name,
+    //    city_id, city_name, state_id, state_name, mj_id,
+    //    mj_name, address, pincode, phone, mobile,
+    //    email, pob,
+    //    JSON.stringify(arguments[0].coords.latitude), JSON.stringify(arguments[0].coords.longitude));
+    //}, function () {
+    //    app.addto_dcr_unlisted_doctor_master(dcr_master_id, doctor_name, sex_id, sex_name, registration_number,
+    //    qualification1, qualification1_name, qualification2, qualification2_name, qualification3,
+    //    qualification3_name, other_qualification, other_qualification_name, speciality, speciality_name,
+    //    city_id, city_name, state_id, state_name, mj_id,
+    //    mj_name, address, pincode, phone, mobile,
+    //    email, pob,
+    //  "", "");
+    //}, options);
+    app.addto_dcr_unlisted_doctor_master(dcr_master_id, doctor_name, sex_id, sex_name, registration_number,
         qualification1, qualification1_name, qualification2, qualification2_name, qualification3,
         qualification3_name, other_qualification, other_qualification_name, speciality, speciality_name,
         city_id, city_name, state_id, state_name, mj_id,
         mj_name, address, pincode, phone, mobile,
         email, pob,
       "", "");
-    }, options);
-
     var hdndcr_unlisted_doctor_master_id = parseInt($("#hdndcr_unlisted_doctor_master_id").val());
 
     //work with details  
@@ -734,23 +740,28 @@ function fun_save_dcrmaster_unlistedmsl_chemist() {
     var pob = $("#txtunlistedchemistpobsingle").val();
 
 
-    var options = {
-        enableHighAccuracy: true,
-        timeout: 10000
-    };
-    var geolo = navigator.geolocation.getCurrentPosition(function () {
-        app.addto_dcr_unlisted_chemist_master(dcr_master_id, chemist_name, contact_person_name, drug_license_no, vat_no,
-        city_id, city_name, state_id, state_name, mj_id,
-        mj_name, address, pincode, phone, mobile, email,
-        pob,
-        JSON.stringify(arguments[0].coords.latitude), JSON.stringify(arguments[0].coords.longitude));
-    }, function () {
-        app.addto_dcr_unlisted_chemist_master(dcr_master_id, chemist_name, contact_person_name, drug_license_no, vat_no,
+    //var options = {
+    //    enableHighAccuracy: true,
+    //    timeout: 10000
+    //};
+    //var geolo = navigator.geolocation.getCurrentPosition(function () {
+    //    app.addto_dcr_unlisted_chemist_master(dcr_master_id, chemist_name, contact_person_name, drug_license_no, vat_no,
+    //    city_id, city_name, state_id, state_name, mj_id,
+    //    mj_name, address, pincode, phone, mobile, email,
+    //    pob,
+    //    JSON.stringify(arguments[0].coords.latitude), JSON.stringify(arguments[0].coords.longitude));
+    //}, function () {
+    //    app.addto_dcr_unlisted_chemist_master(dcr_master_id, chemist_name, contact_person_name, drug_license_no, vat_no,
+    //    city_id, city_name, state_id, state_name, mj_id,
+    //    mj_name, address, pincode, phone, mobile, email,
+    //    pob,
+    //  "", "");
+    //}, options);
+    app.addto_dcr_unlisted_chemist_master(dcr_master_id, chemist_name, contact_person_name, drug_license_no, vat_no,
         city_id, city_name, state_id, state_name, mj_id,
         mj_name, address, pincode, phone, mobile, email,
         pob,
       "", "");
-    }, options);
     var hdndcr_unlisted_chemist_master_id = parseInt($("#hdndcr_unlisted_chemist_master_id").val()); 
     
     //work with details

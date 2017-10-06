@@ -113,29 +113,21 @@ function fun_applyleave_txttochange() {
     var end = $("#txtto").data("kendoDatePicker").value();
     var diff_date = end - start;
     //var days = (Math.floor(((diff_date % 31536000000) % 2628000000) / 86400000)) + 1;
-    var days = ((end - start) / 1000 / 60 / 60 / 24) + 1;
+    var days = parseInt((end - start) / 1000 / 60 / 60 / 24) + 1;
     if (days < 0) {
         $("#txtdays").val(0);
     } else {
         $("#txtdays").val(days);
     }
-    //var leavetype = parseInt($("#ddlleavetype").val());
-    //if (leavetype == 865) { 
-    //    var startDate = new Date(start);
-    //    var endDate = new Date(end);
-    //    var totalSundays = 0; 
-    //    for (var i = startDate; i <= endDate;) {
-    //        if (i.getDay() == 0) {
-    //            totalSundays++;
-    //        }
-    //    }
-    //    days = days - totalSundays;
-    //    if (days < 0) {
-    //        $("#txtdays").val(0);
-    //    } else {
-    //        $("#txtdays").val(days);
-    //    }
-    //}
+    var leavetype = parseInt($("#ddlleavetype").val());
+    if (leavetype == 865 && $("#txtfrom").val().length == 10 && $("#txtto").val().length == 10) {
+        var user = JSON.parse(localStorage.getItem("userdata"));
+        var Division_ID = parseInt(user.Division_ID);
+        var State_ID = parseInt(user.State_ID);
+        app.utils.loading(true);
+        fun_db_APP_Get_Employee_Sunday_Holiday_Count(Division_ID, State_ID,
+            $("#txtfrom").val(), $("#txtto").val());
+    }
 }
 
 function fun_applyleave_leavetypechange(leavetype) {
@@ -560,7 +552,12 @@ function fun_db_APP_Get_Employee_Leave_Details(leavetype, Employee_ID) {
                 $('#hdnisconfirmed').val(empelleavedata[0]["isconfirmed"]);
                 // not required in 
                 //$('#hdndcrdate').val(empelleavedata[0]["isconfirmed"]);
-            } 
+            }
+            //leavetype == 865 && 
+            if ($("#txtfrom").val().length == 10 && $("#txtto").val().length == 10)
+            {
+                fun_applyleave_txttochange();
+            }
         }
         else {
             app.utils.loading(false);
@@ -626,6 +623,47 @@ function fun_db_APP_Insert_Ethos_Leave_Master(Employee_ID, Leave_Type_ID, Openin
         }
         else {
             app.notify.error(data[0].Output_Message);
+        }
+    });
+}
+
+
+
+function fun_db_APP_Get_Employee_Sunday_Holiday_Count(Division_ID, State_ID, FROMDATE, TODATE) {
+    var datasource = new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Get_Employee_Sunday_Holiday_Count",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "Division_ID" : Division_ID,
+                    "State_ID" : State_ID,
+                    "FROMDATE" : FROMDATE,
+                    "TODATE" : TODATE
+                }
+            }
+        },
+        schema: {
+            parse: function (response) {
+                var getdata = response.Result.Data[0];
+                return getdata;
+            }
+        },
+        error: function (e) {
+            app.utils.loading(false); // alert(e);
+            app.notify.error('Error loading data please try again later!');
+        }
+    });
+    datasource.fetch(function () {
+        var data = this.data();
+        app.utils.loading(false);
+        if (data[0].H_Count > 0) {
+            app.utils.loading(false);
+            $("#txtdays").val(data[0].H_Count);
+        }
+        else {
+            app.utils.loading(false);
         }
     });
 }

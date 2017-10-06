@@ -79,7 +79,7 @@ function get_dcr_master_category_id() {
 
 function get_dcr_master_values() {
     // $("#spandcrstartpage").html('start');
-    $("#spandcrstartpage").attr('src', "images/start.png");
+    $("#spandcrstartpage").attr('src', "images/start.jpg");
     var render_dcr_master_id = function (tx, rs) {
         if (rs.rows.length > 0) {
             $("#hdn_old_dcr_master_id").val(rs.rows.item(0).dcr_master_id);
@@ -87,7 +87,7 @@ function get_dcr_master_values() {
             $("#hdn_old_activity_id").val(rs.rows.item(0).activity_id);
             $("#hdn_dcr_category_id").val(rs.rows.item(0).category_id);
             $("#spandcrstartpage").html('continue');
-            $("#spandcrstartpage").attr('src', "images/continue.png");
+            $("#spandcrstartpage").attr('src', "images/continue.jpg");
         }
     }
     app.select_old_dcr_master(render_dcr_master_id);
@@ -211,17 +211,17 @@ function fun_set_all_dcr_fields() {
 }
 
 function fun_show_dcr_startView() {
-    app.utils.loading(true);
-    var options = {
-        enableHighAccuracy: false,
-        timeout: 5000
-    };
-    var geolo = navigator.geolocation.getCurrentPosition(function () {
-        $("#dvDCRstartView").show();
-        $("#dvDCRstartView_offgps").hide();
-    }, function () {
-        $("#dvDCRstartView_offgps").show();
-        $("#dvDCRstartView").hide();
-    }, options);
-    app.utils.loading(false);
+    //app.utils.loading(true);
+    //var options = {
+    //    enableHighAccuracy: false,
+    //    timeout: 5000
+    //};
+    //var geolo = navigator.geolocation.getCurrentPosition(function () {
+    //    $("#dvDCRstartView").show();
+    //    $("#dvDCRstartView_offgps").hide();
+    //}, function () {
+    //    $("#dvDCRstartView_offgps").show();
+    //    $("#dvDCRstartView").hide();
+    //}, options);
+    //app.utils.loading(false);
 }
