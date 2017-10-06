@@ -2,10 +2,10 @@
   "ProjectName": "ETHOS-Z6",
   "ProjectGuid": "9335f0c3-ce70-4936-b067-61998ed8590f",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.ETHOSZ6",
+  "AppIdentifier": "com.telerik.ETHOSGP",
   "DisplayName": "ETHOS-GP",
   "Author": "Radhakrishnan and Doss",
-  "Description": "ETHOS-Z6",
+  "Description": "ETHOS-GP",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
