@@ -342,7 +342,7 @@ function fun_save_dcrmaster_secondflow() {
         category_id, category_name, mode_id, mode_name, sfcroute_id,
         sfcroute_place, deviation_reason, deviation_description,
         "", "");
-    setTimeout(fun_update_dcr_master_geo, 1000);
+    //setTimeout(fun_update_dcr_master_geo, 1000);
     // get_dcr_master_id();
     var dcr_master_id = $("#hdndcr_master_id").val();
     var ddlwwrecords = $("#ddlworkwithmaster")
@@ -369,7 +369,7 @@ function fun_save_dcrmaster_secondflow() {
     });
     $("#hdn_dcr_selected_market_areas").val(mj_ids);
 
-    setTimeout(fun_update_dcr_master_geo, 1000);
+    //setTimeout(fun_update_dcr_master_geo, 1000);
 }
 
 function fun_save_dcrmaster_otherflow() {
@@ -396,7 +396,7 @@ function fun_save_dcrmaster_otherflow() {
         category_id, category_name, mode_id, mode_name, sfcroute_id,
         sfcroute_place, deviation_reason, deviation_description,
         "", "");
-    setTimeout(fun_update_dcr_master_geo, 1000);
+    //setTimeout(fun_update_dcr_master_geo, 1000);
 }
 
 function fun_update_dcr_master_geo() {
