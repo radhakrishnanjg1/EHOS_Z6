@@ -3,14 +3,13 @@
   "ProjectGuid": "9335f0c3-ce70-4936-b067-61998ed8590f",
   "projectVersion": 1,
   "AppIdentifier": "com.telerik.ETHOSZ6",
-  "DisplayName": "ETHOS-Z6",
+  "DisplayName": "ETHOS-GP",
   "Author": "Radhakrishnan and Doss",
   "Description": "ETHOS-Z6",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
-    "1",
-    "2"
+    "1"
   ],
   "iOSBackgroundMode": [],
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
