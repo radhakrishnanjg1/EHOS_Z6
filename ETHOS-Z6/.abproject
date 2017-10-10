@@ -44,14 +44,13 @@
     }
   },
   "CorePlugins": [
+    "com.phonegap.plugins.PushPlugin@3.3.0",
     "com.telerik.LivePatch",
+    "com.telerik.plugin.telerikanalytics@3.4.1",
     "cordova-plugin-camera",
     "cordova-plugin-device-orientation",
     "cordova-plugin-dialogs",
     "cordova-plugin-splashscreen",
-    "cordova-plugin-statusbar",
-    "cordova-plugin-whitelist",
-    "com.phonegap.plugins.PushPlugin@3.3.0",
-    "com.telerik.plugin.telerikanalytics@3.4.1"
+    "cordova-plugin-statusbar"
   ]
 }
