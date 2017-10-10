@@ -49,6 +49,7 @@
     "com.telerik.plugin.telerikanalytics@3.4.1",
     "cordova-plugin-camera",
     "cordova-plugin-dialogs",
+    "cordova-plugin-network-information",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "cordova-plugin-whitelist"
