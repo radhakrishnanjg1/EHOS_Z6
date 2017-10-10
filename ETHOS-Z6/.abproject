@@ -13,13 +13,13 @@
   ],
   "iOSBackgroundMode": [],
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
-  "FrameworkVersion": "5.0.0",
+  "FrameworkVersion": "6.4.0",
   "AndroidPermissions": [],
   "DeviceOrientations": [
     "Portrait",
     "Landscape"
   ],
-  "AndroidHardwareAcceleration": "True",
+  "AndroidHardwareAcceleration": "true",
   "iOSStatusBarStyle": "Default",
   "Framework": "Cordova",
   "WP8TileTitle": "",
