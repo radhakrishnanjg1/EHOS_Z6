@@ -19,7 +19,7 @@
     "Portrait",
     "Landscape"
   ],
-  "AndroidHardwareAcceleration": "False",
+  "AndroidHardwareAcceleration": "True",
   "iOSStatusBarStyle": "Default",
   "Framework": "Cordova",
   "WP8TileTitle": "",
