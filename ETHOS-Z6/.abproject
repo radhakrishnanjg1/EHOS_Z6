@@ -14,7 +14,9 @@
   "iOSBackgroundMode": [],
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
   "FrameworkVersion": "5.0.0",
-  "AndroidPermissions": [],
+  "AndroidPermissions": [
+    "android.permission.ACCESS_NETWORK_STATE"
+  ],
   "DeviceOrientations": [
     "Portrait",
     "Landscape"
