@@ -13,13 +13,13 @@
   ],
   "iOSBackgroundMode": [],
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
-  "FrameworkVersion": "6.4.0",
+  "FrameworkVersion": "5.0.0",
   "AndroidPermissions": [],
   "DeviceOrientations": [
     "Portrait",
     "Landscape"
   ],
-  "AndroidHardwareAcceleration": "True",
+  "AndroidHardwareAcceleration": "true",
   "iOSStatusBarStyle": "Default",
   "Framework": "Cordova",
   "WP8TileTitle": "",
@@ -44,14 +44,14 @@
     }
   },
   "CorePlugins": [
-    "com.phonegap.plugins.PushPlugin@3.3.0",
     "com.telerik.LivePatch",
-    "com.telerik.plugin.telerikanalytics@3.4.1",
     "cordova-plugin-camera",
     "cordova-plugin-dialogs",
     "cordova-plugin-network-information",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    "com.phonegap.plugins.PushPlugin@3.3.0",
+    "com.telerik.plugin.telerikanalytics@3.4.1"
   ]
 }

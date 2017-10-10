@@ -1,1 +1,20 @@
-{}
+{
+  "CorePlugins": [
+    "com.telerik.LivePatch",
+    "cordova-plugin-camera",
+    "cordova-plugin-dialogs",
+    "cordova-plugin-network-information",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "cordova-plugin-whitelist",
+    "com.phonegap.plugins.PushPlugin@3.3.0",
+    "com.telerik.plugin.telerikanalytics@3.4.1"
+  ],
+  "CordovaPluginVariables": {
+    "com.telerik.plugin.telerikanalytics": {
+      "AUTO_TRACK_EXCEPTIONS": "True",
+      "AUTO_TRACK_KENDO_EVENTS": "True",
+      "PRODUCT_ID": "dfce908ac12649a3a567f9593e0548c7"
+    }
+  }
+}
