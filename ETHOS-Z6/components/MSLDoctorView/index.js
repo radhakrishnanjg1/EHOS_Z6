@@ -9,7 +9,10 @@
                 return app.navigation.navigateoffline("MSLDoctorView");
             }
             app.navigation.logincheck();
-            
+            $('#msldoctorview_txtauocmpemployeelist').val('');
+            $("#msldoctorview_txtauocmpemployeelist").kendoAutoComplete({
+                clearButton: false
+            });
         }, 
         afterShow: function () {
             var userdata = JSON.parse(localStorage.getItem("userdata"));
@@ -31,11 +34,7 @@
                 $("#dvmsldoctorview_manager").hide();
                 $("#msldoctorview_team").hide();  
             }
-            $('#msldoctorview_teamname').html(Employee_Name);
-            $('#msldoctorview_txtauocmpemployeelist').val('');
-            $("#msldoctorview_txtauocmpemployeelist").kendoAutoComplete({
-                clearButton: false
-            })
+            $('#msldoctorview_teamname').html(Employee_Name); 
         },
 
         ScrollTop: function () {

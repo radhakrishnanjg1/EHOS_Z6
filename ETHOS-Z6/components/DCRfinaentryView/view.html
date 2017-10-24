@@ -5,10 +5,10 @@
      data-bind="events: { show: onShow ,afterShow: afterShow }">
     <footer data-role="footer">
         <div class="btn-group btn-group-justified">
-            <div data-role="button" class="btn btn-primary"
-                 data-bind="events: {click: savefinalentrydetails }">
+            <a class="btn btn-primary"
+               data-bind="events: {click: savefinalentrydetails }">
                 <i class="fa fa-check-square"> </i> Preview
-            </div> 
+            </a>
         </div>
     </footer>
     <div id="dvDCRfinaentryView">
@@ -30,7 +30,7 @@
 
                         <div class="form-group col-xs-12 col-sm-12">
                             <label class="control-label">Deviation Reason</label>
-                             <textarea class="form-control" rows="5" id="txtdeviationreason"
+                            <textarea class="form-control" rows="5" id="txtdeviationreason"
                                       onkeyup="return textinputlength(this.value, 1000, this.id);"></textarea>
                         </div>
                         <div class="form-group col-xs-12 col-sm-12">

@@ -34,8 +34,8 @@
             //password: '', 
             username: 'ZE-Imphal1', //field
             password: 'dilip',
-            ////username: 'ZE-RM-GUWAHATI1', //rm
-            ////password: 'himalaya', 
+            //username: 'ZE-RM-GUWAHATI1', //rm
+            //password: 'himalaya', 
             //email: ''
         },
         loginValidator: null,

@@ -196,6 +196,13 @@
             }
             $(".km-scroll-container").css("transform", "none");
         },
+
+        navigateDCRlistedMSLView: function () {
+            app.navigation.navigateDCRlistedMSLView();
+        },
+        navigateDCRfinaentryView: function () {
+            app.navigation.navigateDCRfinaentryView();
+        },
     });
 
     view.set('DCRunlistedMSLViewModel', DCRunlistedMSLViewModel);

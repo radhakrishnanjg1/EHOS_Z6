@@ -1,7 +1,7 @@
 <div id="DCRmanagementView" data-role="view" data-title="DCR System"
      data-layout="afterlogin"
      data-model="app.DCRmanagementView.DCRmanagementViewModel"
-     data-bind="events: { show: onShow }">
+     data-bind="events: { show: onShow,afterShow:afterShow }">
     <footer data-role="footer">
         <div class="btn-group btn-group-justified">
             <a class="btn btn-danger" data-role="button"
@@ -14,7 +14,7 @@
         <div class="panel panel-default">
             <div class="panel-body padding0">
                 <div class="col-xs-12" id="dvmgt">
-                    <div data-role="button" class="roundtext"
+                    <div data-role="button" class="roundtext" id="dvnavigatedcrstartview"
                          data-click="app.navigation.navigateDCRstartView">
                         <i class="fa fa-plus-circle mgticon notyblack"></i>
                         <br />

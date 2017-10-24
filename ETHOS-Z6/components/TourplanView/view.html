@@ -8,7 +8,7 @@
                data-click="app.navigation.back">
                 <i class="fa fa-arrow-left"></i> Back
             </a>
-            <a data-role="button" class="btn btn-yellow"
+            <a class="btn btn-primary"
                data-bind="events: {click: ScrollTop }">
                 <i class="fa fa-arrow-up"></i> Top
             </a>
@@ -36,9 +36,9 @@
         </div>
         <div class="panel-body padding0">
             <div data-role="listview" id="listview-tpdetails"></div>
-            <script type="text/x-kendo-tmpl" id="template-tpdetails">
-                <div class="row">
-                    <div style="text-align:left !important ">
+            <div class="row">
+                <script type="text/x-kendo-tmpl" id="template-tpdetails">
+                    <div class="pull-left">
                         <h4 class="horange"> #: TourPlan_Date #</h4>
                         <p>
                             #: Activity_Period # -  #: Activity #
@@ -49,9 +49,23 @@
                         <p>
                             #: Market_Area_Name #
                         </p>
-                    </div>
-                </div>
-            </script>
+                    </div> 
+                </script>
+            </div>
         </div>
     </div>
 </div>
+<!--<div class="row">
+    <div style="text-align:left !important ">
+        <h4 class="horange"> #: TourPlan_Date #</h4>
+        <p>
+            #: Activity_Period # -  #: Activity #
+        </p>
+        <p>
+            #: Worked_With_Details #
+        </p>
+        <p>
+            #: Market_Area_Name #
+        </p>
+    </div>
+</div>-->

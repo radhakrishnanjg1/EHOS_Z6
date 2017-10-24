@@ -64,13 +64,10 @@
 
     if (window.cordova) {
         document.addEventListener('deviceready', function () {
-            if (navigator && navigator.splashscreen) {
-                navigator.splashscreen.hide();
-                StatusBar.overlaysWebView(false); //Turns off web view overlay.
-            }
-            //if (device.platform === 'iOS' && parseFloat(device.version) >= 7.0) {
-            //    document.body.style.marginTop = "20px";
-            //} 
+             if (navigator && navigator.splashscreen) {
+                 navigator.splashscreen.hide();
+                 //StatusBar.overlaysWebView(false); //Turns off web view overlay.
+             } 
             bootstrap();
             checkpushnotification();
 

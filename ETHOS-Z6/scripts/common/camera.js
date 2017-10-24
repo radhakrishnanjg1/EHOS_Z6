@@ -120,7 +120,7 @@ cameraApp.prototype={
                     suc = "Code = " + r.responseCode;
                     suc = suc +" <br> Response = " + r.response;
                     suc = suc + " <br> Sent = " + r.bytesSent;
-                    //app.notify.success("Profile image upload successfully.");
+                   // app.notify.success("Profile image upload successfully.");
                 }
 
                 function onError(error) {

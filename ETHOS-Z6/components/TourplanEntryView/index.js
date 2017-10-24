@@ -10,6 +10,7 @@
             app.navigation.logincheck();
         },
         afterShow: function () {
+            disableBackButton();
             $(".km-scroll-container").css("transform", "none");
             $("#dv_tourplan_entry_mainscreen").show();
             $("#dv_tourplan_entry_mj_details").hide();  

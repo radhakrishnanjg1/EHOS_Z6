@@ -9,7 +9,10 @@
                 return app.navigation.navigateoffline("TourplanView");
             }
             app.navigation.logincheck();
-
+            $('#TourplanView_txtauocmpemployeelist').val('');
+            $("#TourplanView_txtauocmpemployeelist").kendoAutoComplete({
+                clearButton: false
+            });
         },
         afterShow: function () {
             var userdata = JSON.parse(localStorage.getItem("userdata"));
@@ -32,10 +35,7 @@
                 $("#dvTourplanView_team").hide();
             }
             $('#TourplanView_teamname').html(Employee_Name);
-            $('#TourplanView_txtauocmpemployeelist').val('');
-            $("#TourplanView_txtauocmpemployeelist").kendoAutoComplete({
-                clearButton: false
-            })
+            
         },
 
         ScrollTop: function () {

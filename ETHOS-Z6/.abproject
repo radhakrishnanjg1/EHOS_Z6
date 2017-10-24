@@ -6,8 +6,8 @@
   "DisplayName": "ETHOS-GP",
   "Author": "Radhakrishnan and Doss",
   "Description": "ETHOS-GP",
-  "BundleVersion": "1.0",
-  "AndroidVersionCode": "1",
+  "BundleVersion": "1.0.3",
+  "AndroidVersionCode": "3",
   "iOSDeviceFamily": [
     "1"
   ],
@@ -47,12 +47,13 @@
   },
   "CorePlugins": [
     "com.phonegap.plugins.PushPlugin@3.3.0",
-    "com.telerik.LivePatch",
     "com.telerik.plugin.telerikanalytics@3.4.1",
     "cordova-plugin-camera",
     "cordova-plugin-console",
     "cordova-plugin-device",
     "cordova-plugin-dialogs",
+    "cordova-plugin-file",
+    "cordova-plugin-file-transfer",
     "cordova-plugin-network-information",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",

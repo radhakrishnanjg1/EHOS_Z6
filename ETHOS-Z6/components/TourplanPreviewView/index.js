@@ -16,8 +16,8 @@
             $(".km-scroll-container").css("transform", "none");
             var render_dcrmaster = function (tx, rs) {
                 $("#dvtourplanmaster_date").html(rs.rows.item(0).tp_date);
-                $("#hdntourplanmaster_periodid").val(rs.rows.item(0).activity_peroid_id);
-                $("#dvtourplanmaster_period").html(rs.rows.item(0).activity_peroid_name);
+                $("#hdntourplanmaster_periodid").val(rs.rows.item(0).activity_period_id);
+                $("#dvtourplanmaster_period").html(rs.rows.item(0).activity_period_name);
                 $("#hdntourplanmaster_activityid").val(rs.rows.item(0).activity_id);
                 $("#dvtourplanmaster_activity").html(rs.rows.item(0).activity_name);
 
@@ -61,7 +61,7 @@
         },
 
         cleardcrdetails: function () {
-            var confirmation = "Are you sure you want to clear the enteries?";
+            var confirmation = "Are you sure you want to clear the entries?";
             app.notify.confirmation(confirmation, function (confirm) {
                 if (!confirm) {
                     return;

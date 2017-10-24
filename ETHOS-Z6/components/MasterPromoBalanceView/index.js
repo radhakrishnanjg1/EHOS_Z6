@@ -9,7 +9,10 @@
                 return app.navigation.navigateoffline("MasterPromoBalanceView");
             }
             app.navigation.logincheck();
-
+            $('#MasterPromoBalanceView_txtauocmpemployeelist').val('');
+            $("#MasterPromoBalanceView_txtauocmpemployeelist").kendoAutoComplete({
+                clearButton: false
+            });
         },
         afterShow: function () {
             var userdata = JSON.parse(localStorage.getItem("userdata"));
@@ -32,10 +35,7 @@
                 $("#dvMasterPromoBalanceView_team").hide();
             }
             $('#dvMasterPromoBalanceView_teamname').html(Employee_Name);
-            $('#MasterPromoBalanceView_txtauocmpemployeelist').val('');
-            $("#MasterPromoBalanceView_txtauocmpemployeelist").kendoAutoComplete({
-                clearButton: false
-            })
+           
         },
 
         ScrollTop: function () {

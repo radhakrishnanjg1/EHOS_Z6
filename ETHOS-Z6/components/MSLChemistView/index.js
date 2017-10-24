@@ -9,7 +9,10 @@
                 return app.navigation.navigateoffline("MSLChemistView");
             }
             app.navigation.logincheck();
-
+            $('#mslchemistview_txtauocmpemployeelist').val('');
+            $("#mslchemistview_txtauocmpemployeelist").kendoAutoComplete({
+                clearButton: false
+            });
         },
         afterShow: function () {
             var userdata = JSON.parse(localStorage.getItem("userdata"));
@@ -32,10 +35,7 @@
                 $("#dvmslchemistview_team").hide();
             }
             $('#dvmslchemistview_teamname').html(Employee_Name);
-            $('#mslchemistview_txtauocmpemployeelist').val('');
-            $("#mslchemistview_txtauocmpemployeelist").kendoAutoComplete({
-                clearButton: false
-            })
+            
         },
 
         ScrollTop: function () {

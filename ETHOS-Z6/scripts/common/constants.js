@@ -1,8 +1,8 @@
 (function () {
     app.constants = { 
         appname: 'App Name:ETHOS-GP',
-        appversion: 'App Version:1.0.1', //app.constants.appname
-        appmode: 'App Mode:Debug',
+        appversion: 'App Version:1.0.3', //app.constants.appname
+        appmode: 'App Mode:Release',//Debug
         authenticationModeSignin: 'signin',
         authenticationModeRegister: 'register',
         userprofilePicture: 'images/employee/',

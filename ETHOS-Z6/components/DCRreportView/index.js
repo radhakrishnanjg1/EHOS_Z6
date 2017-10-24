@@ -8,8 +8,11 @@
             if (!app.utils.checkinternetconnection()) {
                 return app.navigation.navigateoffline("DCRreportView");
             }
-            app.navigation.logincheck();
-
+            app.navigation.logincheck(); 
+            $('#dcrreportview_txtauocmpemployeelist').val('');
+            $("#dcrreportview_txtauocmpemployeelist").kendoAutoComplete({
+                clearButton: false
+            });
         }, 
         afterShow: function () {
             var userdata = JSON.parse(localStorage.getItem("userdata"));
@@ -34,10 +37,7 @@
                 $("#dvdcrreportview_team").hide();  
             }
             $('#dcrreportview_teamname').html(Employee_Name);
-            $('#dcrreportview_txtauocmpemployeelist').val('');
-            $("#dcrreportview_txtauocmpemployeelist").kendoAutoComplete({
-                clearButton: false
-            })
+            
         },
 
         ScrollTop: function () {

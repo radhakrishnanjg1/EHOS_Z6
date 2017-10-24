@@ -1,5 +1,4 @@
 
-
 @font-face {
     font-family: "HimalayaFont";
     /*src: url("Font/OpenSans-Light.ttf") format("truetype");*/
@@ -218,13 +217,12 @@ mark, .mark {
 
 .km-flat, .km-flat .k-toolbar, .km-flat .km-content, .km-flat .km-detail
 /*,.km-flat .km-navbar*/ {
-    background-color: #fafbf9 !important;
+    background-color: #fff !important;
 }
 
 .panel {
     background-color: #fafbf9 !important;
     border: none;
-    box-shadow: none;
 }
 
 .km-navbar {
@@ -245,16 +243,21 @@ mark, .mark {
 .km-flat .km-button {
     border: 0px !important;
     background: rgba(0,0,0,0);
-    /*background-color :transparent*/
-}
-
+    /*background-color :transparent*/ 
+} 
 .km-flat .km-loader:before {
-    border-radius: 50% !important;
-    background-color: #c1b098 !important;
+    background-color: #003333 !important;
+    width: 120%;
+    height: 105%;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    overflow-y: hidden;
+    border-bottom: 2px solid #ff6600;
 }
 
 .km-flat .km-loader:after {
-    content: "Please wait...";
+    content: "PLEASE WAIT...";
     display: block;
     position: absolute;
     margin-top: -2em;
@@ -263,7 +266,7 @@ mark, .mark {
     height: 4em;
     top: 60%;
     left: 47%;
-    color: #c1b098 !important;
+    color: #fff !important;
     font-size: larger !important;
     font-weight: 800 !important;
 }
@@ -293,9 +296,6 @@ label {
     color: #3F3F3F;
 }
 
-#left-drawer {
-    background-color: #fafbf9 !important;
-}
 
 .nav > li {
     background: #fafbf9 !important;
@@ -332,6 +332,7 @@ label {
     width: 16em;
     font-size: smaller;
     text-align: left;
+    background-color: #fafbf9 !important;
 }
 
     #left-drawer header {
@@ -349,6 +350,9 @@ label {
         text-align: center !important;
     }
 
+    #right-drawer .fa{ 
+        color: #424242 !important;
+    }
 @media(min-height : 480px ) {
     #login-form {
         padding-top: 30% !important;
@@ -398,15 +402,7 @@ label {
     text-align: center;
 }*/
 
-.horange {
-    color: #ff6600 !important;
-    font-weight: 800 !important;
-}
 
-.hgreen {
-    color: #006666 !important;
-    font-weight: 800 !important;
-}
 
 #dashboard-view .container-fluid {
     padding: 0;
@@ -417,11 +413,7 @@ footer .btn {
     color: #fff !important;
     font-size: 1.3em;
     line-height: 1.6em;
-}
-/*.btn-group 
-    {
-         color:#151615 !important;
-    }*/
+} 
 .btn {
     color: #fff !important;
 }
@@ -447,13 +439,16 @@ footer .btn {
     .btn-success:hover {
         background-color: #08a4a5 !important;
     }
+
 .btn-danger {
-    background-color: #545652 !important;
+    background-color: #dcdddc !important;
     border: 0px !important;
+    color: #424242 !important;
 }
 
     .btn-danger:hover {
-        background-color: #2a2b29 !important;
+        background-color: #cbcccb !important;
+        color: #424242 !important;
     }
 
 .btn-red {
@@ -561,7 +556,7 @@ footer .btn {
 }
 
 .panel-heading-action {
-    background-color: #FF812E !important;
+    background-color: #006666 !important;
     color: #fff !important;
     border: 0px !important;
     padding: 5px 7px !important;
@@ -683,7 +678,7 @@ footer .btn {
 }
 
 #dvsignin .input-group .input-group-addon i {
-    color: #458F8F !important;
+    color: #424242 !important;
 }
 
 #dvsignin .btn-signin {
@@ -967,8 +962,7 @@ footer .btn {
 }
 
     .tabbable-line > .nav-tabs > li {
-        margin-right: 2px; 
-                
+        margin-right: 2px;
     }
 
         .tabbable-line > .nav-tabs > li > a {
@@ -982,7 +976,7 @@ footer .btn {
             }
 
         .tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
-            border-bottom: 4px solid #fbcdcf;
+            border-bottom: 4px solid #fbcdcd;
         }
 
             .tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
@@ -1000,7 +994,7 @@ footer .btn {
             }
 
         .tabbable-line > .nav-tabs > li.active {
-            border-bottom: 4px solid #ff6600;
+            border-bottom: 4px solid #006666;
             position: relative;
         }
 
@@ -1036,45 +1030,68 @@ footer .btn {
 }
 
     #dvmgt .roundtext {
-        width: 47%;
-        /*height:90px;*/
-        /*background-color: #dedede;*/
-        color: #498ECD !important;
-        border: 1px solid #ccc !important;
+        width: 30%; 
         border-radius: 5px !important;
-        font-size: 11px;
+        font-size: 12px;
         text-transform: uppercase;
-        margin: 3px;
-        font-weight: 600;
+        margin: 1%;
+        font-weight: 200;
         letter-spacing: 1px;
     }
 
     #dvmgt .mgticon {
         font-size: 50px !important;
+        color: #424242 !important;
     }
 /*icons end*/
 
 
 .notyblack {
-    color: #073B4C !important;
+    color: #969696 !important;
 }
 
 .notygreen {
-    color: #06D6A0 !important;
+    color: #969696 !important;
 }
 
 .notyorange {
-    color: #FFD166 !important;
+    color: #969696 !important;
 }
 
 .notyred {
-    color: #EF476F !important;
-} 
+    color: #969696 !important;
+}
+
 .notyblue {
-    color: #118AB2 !important;
+    color: #969696 !important;
 }
 
 .notypurple {
-    color: #B48BFB !important;
+    color: #969696 !important;
 }
-  
+
+li .fa {
+    color: #424242 !important;
+} 
+
+.fa-bars, .fa-cog ,.fa-save,.fa-refresh{
+    color: #fff !important;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.km-text {
+    color: #4F4F4C !important;
+}
+.horange {
+    color: #ff6600 !important;
+    font-weight: 800 !important;
+}
+
+.hgreen {
+    color: #006666 !important;
+    font-weight: 800 !important;
+}

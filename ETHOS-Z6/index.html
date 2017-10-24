@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>ETHOS APP</title>
@@ -12,6 +12,8 @@
     <link href="kendo/styles/kendo.common.min.css" rel="stylesheet" />
     <link href="kendo/styles/kendo.default.min.css" rel="stylesheet" />
     <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="styles/line-awesome/css/line-awesome-font-awesome.min.css" rel="stylesheet" />
+
 
     <link href="styles/rkcustom.css" rel="stylesheet" />
     <script src="cordova.js"></script>
@@ -20,7 +22,7 @@
     <script src="scripts/kendo.all.min.js"></script>
     <script src="scripts/kendo.timezones.min.js"></script>
     <!--bower components-->
-    
+
     <script src="bower_components/everlive/src/everlive.all.js"></script>
     <script src="bower_components/lodash/dist/lodash.min.js"></script>
     <script src="bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"></script>
@@ -35,14 +37,14 @@
     <script src="scripts/common/settings.js"></script>
     <script src="scripts/common/validate.js"></script>
     <script src="scripts/common/constants.js"></script>
-    <script src="scripts/common/utils.js"></script> 
-    <script src="scripts/common/camera.js"></script> 
+    <script src="scripts/common/utils.js"></script>
+    <script src="scripts/common/camera.js"></script>
     <script src="scripts/rkutilities.js"></script>
     <script src="scripts/linq.min.js"></script>
     <!--data provider-->
     <script src="dataProviders/defaultProvider.js"></script>
     <!--new pages scripts-->
-    <!--left menu start--> 
+    <!--left menu start-->
     <script src="components/AppDashboardView/index.js"></script>
     <script src="components/authenticationView/index.js"></script>
     <script src="components/dashboardView/index.js"></script>
@@ -53,47 +55,40 @@
     <script src="components/LMScancelleaveView/index.js"></script>
     <script src="components/LMSleavehistoryView/index.js"></script>
     <script src="components/LMSapproveleaveView/index.js"></script>
-    <script src="components/LMSapproveleavecancelView/index.js"></script> 
+    <script src="components/LMSapproveleavecancelView/index.js"></script>
     <script src="components/TeamAbsensesView/index.js"></script>
     <!--Leave Management end-->
-
-    
-
     <!--Master Start-->
     <script src="components/MastermanagementView/index.js"></script>
-    <script src="components/MarketAreaView/index.js"></script> 
-    <script src="components/MSLDoctorView/index.js"></script> 
-    <script src="components/MSLChemistView/index.js"></script> 
-    <script src="components/MyTeamView/index.js"></script> 
-    <script src="components/MasterPromoBalanceView/index.js"></script> 
+    <script src="components/MarketAreaView/index.js"></script>
+    <script src="components/MSLDoctorView/index.js"></script>
+    <script src="components/MSLChemistView/index.js"></script>
+    <script src="components/MyTeamView/index.js"></script>
+    <script src="components/MasterPromoBalanceView/index.js"></script>
     <!--Master end-->
 
 
-    <script src="components/LastActivitiesView/index.js"></script> 
+    <script src="components/LastActivitiesView/index.js"></script>
     <script src="components/holidaysView/index.js"></script>
 
     <!--Leave Management end-->
-
-    <!--DCR start--> 
+    <!--DCR start-->
     <script src="components/DCRmanagementView/index.js"></script>
     <script src="components/DCRstartView/index.js"></script>
-    <script src="components/DCRmasterView/index.js"></script> 
+    <script src="components/DCRmasterView/index.js"></script>
     <script src="components/DCRlistedMSLView/index.js"></script>
-    <script src="components/DCRunlistedMSLView/index.js"></script> 
+    <script src="components/DCRunlistedMSLView/index.js"></script>
     <script src="components/DCRfinaentryView/index.js"></script>
-    <script src="components/DCRpreviewView/index.js"></script> 
+    <script src="components/DCRpreviewView/index.js"></script>
     <script src="components/DCRreportView/index.js"></script>
     <!--<script src="components/GPSworklocationsView/index.js"></script>-->
-
     <!--DCR end-->
-
     <!--Tp Management Start-->
     <script src="components/TourplanmanagementView/index.js"></script>
     <script src="components/TourplanEntryView/index.js"></script>
     <script src="components/TourplanPreviewView/index.js"></script>
     <script src="components/TourplanView/index.js"></script>
     <!--Tp Management end-->
-
     <!--left menu end-->
     <!--right menu start-->
     <script src="components/updateprofileView/index.js"></script>
@@ -102,7 +97,7 @@
     <!--right menu end-->
     <!--common -->
     <script src="components/offlineView/index.js"></script>
-    <script src="components/EDetailingView/index.js"></script>
+    <!--<script src="components/EDetailingView/index.js"></script>-->
 </head>
 <body id="ethosapp">
 
@@ -147,74 +142,73 @@
          data-swipe-to-open-views="['AppDashboardView','dashboard-view','teamcoveragedetail-view',
          'LMSleavemanagementView','LMSapplyleaveView','LMScancelleaveView',
          'LMSleavehistoryView','LMSapproveleaveView','LMSapproveleavecancelView',
-         'TeamAbsensesView', 
+         'TeamAbsensesView',
          'GPSworklocationsView',
-         'supportView', 
+         'supportView',
          'MastermanagementView',
          'MSLDoctorView',
-         'MSLChemistView', 
-         'MarketAreaView',  
-         'MyTeamView',  
-         'MasterPromoBalanceView',  
+         'MSLChemistView',
+         'MarketAreaView',
+         'MyTeamView',
+         'MasterPromoBalanceView',
          'TourplanmanagementView',
          'TourplanEntryView',
-         'TourplanView', 
-         'TourplanPreviewView', 
+         'TourplanView',
+         'TourplanPreviewView',
          'DCRmanagementView',
          'DCRstartView',
-         'DCRreportView', 
+         'DCRreportView',
          'LastActivitiesView',
          'holidays-view','profile-view','changepassword-view']">
-        <header data-role="header">
-            <div>
-                <img src="images/H_logo.png" style="width:15em !important;">
-            </div>
-        </header>
-        <ul data-role="listview" class="nav" style="background-color:#fff !important">
-            <li data-role="button">
-                <span class="hgreen">Hi</span>  &nbsp; <span id="dvusername" class="hgreen">
-                </span>
+
+        <ul data-role="listview" class="nav" style="background-color:#fff !important; text-transform:uppercase;">
+            <li data-role="button" style="margin-left:-15px; margin-top:-15px; background-color:#006666 !important;
+                    color:#fff !important; border-bottom:2px solid #ff6600 !important;">
+                <H2 style="color:#fff !important;">Hi!</H2>
+                <h4>
+                    <div id="dvusername" style="color:#fff !important;">
+                        SYED MOHAMMED BIN KHALID TUGLAQ
+                    </div>
+                </h4>
+
+                <div style="font-size:10px; font-style:italic; padding-left:15px; color:#fff !important; color:#fff !important;">
+                    Your last visit was on &nbsp; <span id="dvlast_visited"> 18th october 1067</span>
+                </div>
                 <input type="hidden" id="hdnLogin_ID" value="0" />
                 <input type="hidden" id="hdnEmployee_ID" value="0" />
             </li>
+
             <li data-role="button" data-click="app.navigation.navigateAppDashboardView">
-                <i class="fa fa-1-5x fa-dashboard hgreen"></i> Dashboard
-            </li>
-            <!--<li data-role="button" data-click="app.navigation.navigatedashboard"
-                id="dvindvcoverage" style="display:none">
-                <i class="fa fa-1-5x fa-bar-chart"></i> Dashboard
-            </li>
-            <li data-role="button" data-click="app.navigation.navigateteamcoverage"
-                id="dvteamcoverage" style="display:none">
-                <i class="fa fa-1-5x fa-bar-chart "></i> Coverage Details
-            </li>-->
+                <!--<i class="fa fa-1-5x fa-dashboard hgreen"></i>--> Dashboard
+            </li> 
             <li data-role="button" data-click="app.navigation.navigateLMSleavemanagementView">
-                <i class="fa fa-1-5x fa-list-ol hgreen"></i> Leave Mgt. System
+                <!--<i class="fa fa-1-5x fa-list-ol hgreen"></i>--> Leave Managment
             </li>
             <li data-role="button" data-click="app.navigation.navigateMastermanagementView">
-                <i class="fa fa-1-5x fa-list hgreen"></i> Masters
-            </li> 
+                <!--<i class="fa fa-1-5x fa-list hgreen"></i>--> Masters
+            </li>
             <li data-role="button" data-click="app.navigation.navigateTourplanmanagementView">
-                <i class="fa fa-1-5x fa-wpexplorer hgreen"></i> TP Mgt. System
-            </li> 
+                <!--<i class="fa fa-1-5x fa-wpexplorer hgreen"></i>--> TourPlan
+            </li>
             <li data-role="button" data-click="app.navigation.navigateDCRmanagementView">
-                <i class="fa fa-1-5x fa-calendar-check-o hgreen"></i> DCR Mgt. System
+                <!--<i class="fa fa-1-5x fa-calendar-check-o hgreen"></i>--> Daily Call Report
             </li>
             <li data-role="button" data-click="app.navigation.navigateLastActivitiesView">
-                <i class="fa fa-1-5x fa-history hgreen"></i> Last Activities
-            </li> 
+                <!--<i class="fa fa-1-5x fa-history hgreen"></i>--> Last Activities
+            </li>
             <li data-role="button" data-click="app.navigation.navigateholidays">
-                <i class="fa fa-1-5x fa-calendar hgreen"></i> Field Holidays
+                <!--<i class="fa fa-1-5x fa-calendar hgreen"></i>--> Holidays
+            </li>
+            <li data-role="button" data-click="app.navigation.navigateMyTeamView">
+                <!--<i class="fa fa-1-5x fa-users hgreen"></i>--> My Team
             </li>
             <!--<li data-role="button" data-click="app.navigation.navigateEDetailingView">
                 <i class="fa fa-1-5x fa fa-product-hunt"></i> E - Detailing
             </li>-->
         </ul>
-        <footer data-role="footer" style="background:#fff!important;">
-            <div style="color:#666 !important; font-size:small;
-                    font-weight:bold;text-align:center ">
-                Last Visit - &nbsp; <span id="dvlast_visited" style="color:#006666">
-                </span>
+        <footer data-role="footer" style="background:#fff!important; padding:5%;">
+            <div>
+                <img src="images/H_logo.png" style="width:12em !important;">
             </div>
         </footer>
     </div>
@@ -224,28 +218,27 @@
          'LMSleavehistoryView','LMSapproveleaveView','LMSapproveleavecancelView',
          'TeamAbsensesView',
          'GPSworklocationsView',
-         'supportView', 
+         'supportView',
          'MastermanagementView',
          'MSLDoctorView',
          'MSLChemistView',
-         'MarketAreaView',   
+         'MarketAreaView',
          'MyTeamView',
-         'MasterPromoBalanceView',  
+         'MasterPromoBalanceView',
          'TourplanmanagementView',
          'TourplanEntryView',
-         'TourplanView', 
+         'TourplanView',
          'TourplanPreviewView',
          'DCRmanagementView',
          'DCRstartView',
-         'DCRreportView', 
+         'DCRreportView',
          'LastActivitiesView',
          'holidays-view','profile-view','changepassword-view']">
-        <ul data-role="listview" class="km-vertical-tabstrip nav" style="background-color:#fff !important">
+        <ul data-role="listview" class="km-vertical-tabstrip nav" 
+            style="background-color:#fff !important; text-transform:uppercase;">
             <li data-role="button" data-click="app.navigation.navigateProfile">
-                <a>
-                    <i class="fa fa-2x fa-user hgreen"></i>
-                    <br />Profile
-                </a>
+                <i class="fa fa-2x fa-user hgreen"></i>
+                <br />Profile
             </li>
             <li data-role="button" data-click="app.navigation.navigatechangepassword">
                 <a>
@@ -254,18 +247,14 @@
                 </a>
             </li>
             <li data-role="button" data-click="app.navigation.navigatesignout">
-                <a>
-                    <i class="fa fa-2x fa-sign-out hgreen"></i>
-                    <br />
-                    Log Out
-                </a>
+                <i class="fa fa-2x fa-sign-out hgreen"></i>
+                <br />
+                Log Out
             </li>
             <li data-role="button" data-click="app.navigation.navigatesupport">
-                <a>
-                    <i class="fa fa-2x fa-phone hgreen"></i>
-                    <br />
-                    Support
-                </a>
+                <i class="fa fa-2x fa-phone hgreen"></i>
+                <br />
+                Support
             </li>
         </ul>
     </div>

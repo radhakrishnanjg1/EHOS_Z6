@@ -1,4 +1,5 @@
 <div id="TourplanPreviewView" data-role="view" data-title="TourPlan Preview"
+     data-after-show="disableBackButton" data-before-hide="enableBackButton"
      data-layout="afterlogin"
      data-model="app.TourplanPreviewView.TourplanPreviewViewModel"
      data-bind="events: { show: onShow ,afterShow:afterShow}">
@@ -8,11 +9,11 @@
                data-click="app.navigation.back">
                 <i class="fa fa-arrow-left"></i> Back
             </a>
-            <a data-role="button" class="btn btn-red"
+            <a  class="btn btn-red"
                data-bind="events: {click: cleardcrdetails }">
                 <i class="fa fa-trash"> </i> Clear All
             </a>
-            <a data-role="button" class="btn btn-primary"
+            <a  class="btn btn-primary"
                data-bind="events: {click: submitdcrdetails }">
                 <i class="fa fa-save"> </i> Submit
             </a>

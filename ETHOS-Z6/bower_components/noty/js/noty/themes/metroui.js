@@ -115,7 +115,7 @@ $.noty.themes.metroui = {
         this.$buttons.css({borderTop: '1px solid #FA6800'});
         break;
       case 'error':
-          this.$bar.css({ backgroundColor: '#EF476F', border: 'none', color: '#fff' });
+          this.$bar.css({ backgroundColor: '#ff6600', border: 'none', color: '#fff' });
         this.$message.css({fontWeight: 'bold'});
         this.$buttons.css({borderTop: '1px solid #CE352C'});
         break;

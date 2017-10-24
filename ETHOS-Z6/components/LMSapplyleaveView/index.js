@@ -130,7 +130,7 @@ function fun_applyleave_txttochange() {
     }
 }
 
-function fun_applyleave_leavetypechange(leavetype) {
+function fun_applyleave_leavetypechange(leavetype,description) {
     $('#dvleavenorms div').hide();
     $('#dvaddress').hide();
     $('#dvpreviousltaperiod').hide();
@@ -143,12 +143,15 @@ function fun_applyleave_leavetypechange(leavetype) {
     if (leavetype == 865) {
         $('#dveldays').show();
         $('#dvleavenorms #paraCL').show();
+       // $('#dvleavenorms #paraCL').html('1. 15 days Casual Leave (CL) will be given per year.<br />2. Hard copy of leave application is not required for 1 or 2 days.<br />                            3. Holidays, other than weekly day of rest (Sunday),shall not be prefixed or suffixed.<br />Holidays intervening during the period of leave: A holiday including a weekly');
         $('#spanleavenorms').html('Casual Leave (CL) Norms');
+        $('#dvleavenorms #paraCL').html(description);
     }
     else if (leavetype == 866) {
         $('#dveldays').show();
         $('#dvleavenorms #paraSL').show();
         $('#spanleavenorms').html('Sick Leave (SL) Norms');
+        $('#dvleavenorms #paraSL').html(description);
     }
     else if (leavetype == 868) {
         $('#dvaddress').show();
@@ -157,17 +160,20 @@ function fun_applyleave_leavetypechange(leavetype) {
         $('#dvnextltaeligibility').show();
         $('#dvearneddays').show();
         $('#spanleavenorms').html('Leave Travel Allowance (LTA) Norms');
+        $('#dvleavenorms #paraLTA').html(description);
     }
     else if (leavetype == 867) {
         $('#dvleavenorms #paraEL').show();
         $('#dvearneddays').show();
         $('#spanleavenorms').html('Earned Leave (EL) Norms');
+        $('#dvleavenorms #paraEL').html(description);
     }
     else if (leavetype == 869) {
         $('#dveventdetailsforelencashment').show();
         $('#dvcommoneventdetails').hide();
         $('#dvleavenorms #paraEncashment').show();
         $('#spanleavenorms').html('Leave Encashment Norms');
+        $('#dvleavenorms #paraEncashment').html(description);
     }
     else if (leavetype == 2234) {
         $('#txtopeningbalance').val('0');
@@ -179,6 +185,7 @@ function fun_applyleave_leavetypechange(leavetype) {
         $('#spanleavenorms').html('Maternity Leave (ML) Norms');
         $('#dvcommoneventdetails').show();
         $('#dvearneddays').show();
+        $('#dvleavenorms #paraMaternity').html(description);
     }
     else if (leavetype == 2242) {
         $('#txtopeningbalance').val('0');
@@ -190,6 +197,7 @@ function fun_applyleave_leavetypechange(leavetype) {
         $('#spanleavenorms').html('Paternity Leave (PL) Norms');
         $('#dvcommoneventdetails').show();
         $('#dvearneddays').show();
+        $('#dvleavenorms #paraPaternity').html(description);
     }
     else {
         $('#dvleavenorms div').hide();
@@ -509,7 +517,6 @@ function fun_db_APP_Get_Employee_Leave_Details(leavetype, Employee_ID) {
         app.utils.loading(false);
         if (data[0].Leave_Type_ID > 0) {
             app.utils.loading(false);
-            fun_applyleave_leavetypechange(leavetype);
 
             if (!(leavetype == 2234 || leavetype == 2242)) {
                 if (leavetype == 868 || leavetype == 869) {
@@ -558,6 +565,11 @@ function fun_db_APP_Get_Employee_Leave_Details(leavetype, Employee_ID) {
             {
                 fun_applyleave_txttochange();
             }
+            var userdata = JSON.parse(localStorage.getItem("userdata"));
+            var baseleavetype = parseInt($("#ddlleavetype").val());
+            var Division_ID = parseInt(userdata.Division_ID);
+            app.utils.loading(true);
+            fun_db_APP_Get_Employee_Leave_Norms(baseleavetype, Division_ID);
         }
         else {
             app.utils.loading(false);
@@ -665,6 +677,37 @@ function fun_db_APP_Get_Employee_Sunday_Holiday_Count(Division_ID, State_ID, FRO
         else {
             app.utils.loading(false);
         }
+    });
+}
+
+function fun_db_APP_Get_Employee_Leave_Norms(Leave_Type_ID,Division_ID) {
+    var datasource = new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Get_Employee_Leave_Norms",
+                type: "POST",
+                dataType: "json",
+                data: { 
+                    "Leave_Type_ID": Leave_Type_ID,
+                    "Division_ID": Division_ID
+                }
+            }
+        },
+        schema: {
+            parse: function (response) {
+                var getdata = response.Result.Data[0];
+                return getdata;
+            }
+        },
+        error: function (e) {
+            app.utils.loading(false); // alert(e);
+            app.notify.error('Error loading data please try again later!');
+        }
+    });
+    datasource.fetch(function () {
+        var data = this.data();
+        app.utils.loading(false);
+        fun_applyleave_leavetypechange(Leave_Type_ID, data[0].Html_Description);
     });
 }
 
