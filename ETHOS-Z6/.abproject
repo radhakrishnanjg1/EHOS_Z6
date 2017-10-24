@@ -54,6 +54,7 @@
     "cordova-plugin-dialogs",
     "cordova-plugin-file",
     "cordova-plugin-file-transfer",
+    "cordova-plugin-inappbrowser",
     "cordova-plugin-network-information",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",

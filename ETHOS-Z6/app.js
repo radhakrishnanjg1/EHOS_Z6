@@ -54,7 +54,7 @@
         $(function () {
             app.mobileApp = new kendo.mobile.Application(document.body, {
                 //transition: 'slide',
-                layout: "tabstrip-layout",
+                //layout: "tabstrip-layout",
                 skin: 'flat',
                 initial: 'components/authenticationView/view.html',// DCRView approveleaveView
                 statusBarStyle: statusBarStyle,
