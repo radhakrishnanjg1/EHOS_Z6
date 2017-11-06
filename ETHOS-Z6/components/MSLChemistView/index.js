@@ -120,7 +120,7 @@ function init_mslchemistview() {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logics
-                $("#listview-chemistmsldetails").append("<li>No records found!</li>");
+                $("#listview-chemistmsldetails").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-chemistmsldetails").html()

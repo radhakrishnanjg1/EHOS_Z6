@@ -176,7 +176,7 @@ function fun_load_tourplan_master_ww(hdntourplan_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-tp_entrymasterww").append("<li>No records found!</li>");
+                    $("#listview-tp_entrymasterww").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-tp_entrymasterww").html(),
@@ -197,7 +197,7 @@ function fun_load_tourplan_master_mj(hdntourplan_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-tp_entrymastermj").append("<li>No records found!</li>");
+                    $("#listview-tp_entrymastermj").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-tp_entrymastermj").html(),

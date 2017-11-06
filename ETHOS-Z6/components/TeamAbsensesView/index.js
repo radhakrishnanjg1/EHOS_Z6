@@ -126,7 +126,7 @@ function load_absenses_details_today(today) {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-absensesldetailstoday").append("<li>No records found!</li>");
+                $("#listview-absensesldetailstoday").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-absensesldetailstoday").html(),
@@ -150,7 +150,7 @@ function load_absenses_details_week(WeekNumber) {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-absensesldetailsmonth").append("<li>No records found!</li>");
+                $("#listview-absensesldetailsmonth").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-absensesldetailsmonth").html(),

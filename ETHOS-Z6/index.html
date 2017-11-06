@@ -4,7 +4,8 @@
     <title>ETHOS APP</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: *; 
+          script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
 	style-src 'self' 'unsafe-inline' 'unsafe-eval'  *;media-src 'self'
 	'unsafe-inline' 'unsafe-eval' *;">
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -24,6 +25,8 @@
     <!--bower components-->
 
     <script src="bower_components/everlive/src/everlive.all.js"></script>
+    <!--<script src="https://bs-static.cdn.telerik.com/1.9.3/everlive.all.min.js"></script>-->
+    
     <script src="bower_components/lodash/dist/lodash.min.js"></script>
     <script src="bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js"></script>
     <script src="bower_components/noty/js/noty/layouts/bottom.js"></script>
@@ -81,6 +84,7 @@
     <script src="components/DCRfinaentryView/index.js"></script>
     <script src="components/DCRpreviewView/index.js"></script>
     <script src="components/DCRreportView/index.js"></script>
+    <script src="components/DCRreportdetailView/index.js"></script>
     <!--<script src="components/GPSworklocationsView/index.js"></script>-->
     <!--DCR end-->
     <!--Tp Management Start-->
@@ -172,7 +176,7 @@
                 </h4>
 
                 <div style="font-size:10px; font-style:italic; padding-left:15px; color:#fff !important; color:#fff !important;">
-                    Your last visit was on &nbsp; <span id="dvlast_visited"> 18th october 1067</span>
+                    Your last visit was on <br/> <span id="dvlast_visited"> 18th october 1067</span>
                 </div>
                 <input type="hidden" id="hdnLogin_ID" value="0" />
                 <input type="hidden" id="hdnEmployee_ID" value="0" />
@@ -182,13 +186,13 @@
                 <!--<i class="fa fa-1-5x fa-dashboard hgreen"></i>--> Dashboard
             </li> 
             <li data-role="button" data-click="app.navigation.navigateLMSleavemanagementView">
-                <!--<i class="fa fa-1-5x fa-list-ol hgreen"></i>--> Leave Managment
+                <!--<i class="fa fa-1-5x fa-list-ol hgreen"></i>--> Leave Management
             </li>
             <li data-role="button" data-click="app.navigation.navigateMastermanagementView">
                 <!--<i class="fa fa-1-5x fa-list hgreen"></i>--> Masters
             </li>
             <li data-role="button" data-click="app.navigation.navigateTourplanmanagementView">
-                <!--<i class="fa fa-1-5x fa-wpexplorer hgreen"></i>--> TourPlan
+                <!--<i class="fa fa-1-5x fa-wpexplorer hgreen"></i>--> Tour Plan
             </li>
             <li data-role="button" data-click="app.navigation.navigateDCRmanagementView">
                 <!--<i class="fa fa-1-5x fa-calendar-check-o hgreen"></i>--> Daily Call Report

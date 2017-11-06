@@ -120,7 +120,7 @@ function init_MasterPromoBalanceView() {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logics
-                $("#listview-promobalancedetails").append("<li>No records found!</li>");
+                $("#listview-promobalancedetails").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-promobalancedetails").html()

@@ -24,6 +24,10 @@
             app.utils.loading(true);
             fun_db_APP_Get_Ethos_Leave_Approve(Employee_ID);
         },
+
+        onSave: function () {
+            fun_leave_reject_submit();
+        },
     });
 
     view.set('LMSapproveleaveViewModel', LMSapproveleaveViewModel);
@@ -38,7 +42,7 @@ function load_leave_approve_details(records) {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-leaveapprovedetail").append("<li>No records found!</li>");
+                $("#listview-leaveapprovedetail").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-leaveapprovedetail").html(),

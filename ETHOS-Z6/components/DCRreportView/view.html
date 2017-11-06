@@ -8,7 +8,7 @@
                data-click="app.navigation.back">
                 <i class="fa fa-arrow-left"></i> Back
             </a>
-            <a data-role="button" class="btn btn-primary"
+            <a class="btn btn-primary"
                data-bind="events: {click: ScrollTop }">
                 <i class="fa fa-arrow-up"></i> Top
             </a>
@@ -16,7 +16,7 @@
     </footer>
     <div id="dvDCRreportView">
         <div id="dvdcrreportview_manager" class="panel-heading text-center"
-             background-color:#fff!important ">
+             style="background-color:#fff!important">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="input-group">
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel-headingcustom" id="dvdcrreportview_team">
+        <div class="panel-headingsubcustom" id="dvdcrreportview_team">
             <div class="panel-title text-uppercase "
                  id="dcrreportview_teamname">
                 Team
@@ -37,19 +37,22 @@
         <div class="panel-body padding0">
             <div data-role="listview" id="listview-dcrreportdetails"></div>
             <script type="text/x-kendo-tmpl" id="template-dcrreportdetails">
-                <div class="pull-left">
-                    <div class="pull-left">
-                        <h4 class="horange"> #: DailyReport_Date #</h4>
-                        <p>
-                            #: Activity_Period # -  #: Activity #
-                        </p>
-                        <p>
-                            #: Worked_With_Details #
-                        </p>
-                        <p>
-                            #: Market_Area_Name #
-                        </p>
-                    </div>  
+                <div class="pull-left"> 
+                        <div data-role="button" style="text-align:left"
+                             data-dailyreport_date="${DailyReport_Date}"
+                             data-DailyReport_Details_ID="${DailyReport_Details_ID}"
+                             data-click="redirecttodcrreportdetailview">
+                            <h4 class="horange"> #: DailyReport_Date #</h4>
+                            <p>
+                                #: Activity_Period # -  #: Activity #
+                            </p>
+                            <p>
+                                #: Worked_With_Details #
+                            </p>
+                            <p>
+                                #: Market_Area_Name #
+                            </p>
+                        </div> 
                 </div>
             </script>
         </div>

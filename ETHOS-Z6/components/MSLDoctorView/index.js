@@ -119,7 +119,7 @@ function init_msldoctorview() {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logics
-                $("#listview-doctormsldetails").append("<li>No records found!</li>");
+                $("#listview-doctormsldetails").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-doctormsldetails").html()

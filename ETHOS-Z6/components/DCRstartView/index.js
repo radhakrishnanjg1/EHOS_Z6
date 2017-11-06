@@ -79,7 +79,7 @@ function get_dcr_master_category_id() {
 
 function get_dcr_master_values() {
     // $("#spandcrstartpage").html('start');
-    $("#spandcrstartpage").attr('src', "images/start.jpg");
+    $("#spandcrstartpage").attr('src', "images/start.png");
     var render_dcr_master_id = function (tx, rs) {
         if (rs.rows.length > 0) {
             $("#hdn_old_dcr_master_id").val(rs.rows.item(0).dcr_master_id);
@@ -87,7 +87,7 @@ function get_dcr_master_values() {
             $("#hdn_old_activity_id").val(rs.rows.item(0).activity_id);
             $("#hdn_dcr_category_id").val(rs.rows.item(0).category_id);
             $("#spandcrstartpage").html('continue');
-            $("#spandcrstartpage").attr('src', "images/continue.jpg");
+            $("#spandcrstartpage").attr('src', "images/continue.png");
         }
     }
     app.select_old_dcr_master(render_dcr_master_id);
@@ -117,7 +117,7 @@ function get_list_dcr_selected_worked_with() {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr-selected-worked-with").append("<li>No records found!</li>");
+                    $("#listview-dcr-selected-worked-with").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr-selected-worked-with").html(),
@@ -150,7 +150,7 @@ function get_list_dcr_selected_market_areas_values() {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr-selected-market-areas").append("<li>No records found!</li>");
+                    $("#listview-dcr-selected-market-areas").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr-selected-market-areas").html(),

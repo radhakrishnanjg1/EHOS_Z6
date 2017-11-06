@@ -65,7 +65,7 @@ function loadleavehistory(records) {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-leavehistory").append("<li>No Records Found!</li>");
+                $("#listview-leavehistory").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-leavehistory").html(), 

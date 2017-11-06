@@ -56,6 +56,13 @@
 
     view.set('DCRreportViewModel', DCRreportViewModel);
 }());
+ 
+function redirecttodcrreportdetailview(e) {
+    var data = e.button.data();
+    var DailyReport_Details_ID = parseInt(data.dailyreport_details_id);
+    var DailyReport_Date = data.dailyreport_date;
+    return app.mobileApp.navigate('components/DCRreportdetailView/view.html?DailyReport_Details_ID=' + DailyReport_Details_ID + '&DailyReport_Date=' + DailyReport_Date);
+}
 
 function loadsubordinatesdetails_dcrreportview() {
     var localdata = JSON.parse(Enumerable.From(JSON.parse(localStorage.getItem("ethosinssubordinatesdetails")))
@@ -125,7 +132,7 @@ function init_dcrreportview() {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logics
-                $("#listview-dcrreportdetails").append("<li>No records found!</li>");
+                $("#listview-dcrreportdetails").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-dcrreportdetails").html()

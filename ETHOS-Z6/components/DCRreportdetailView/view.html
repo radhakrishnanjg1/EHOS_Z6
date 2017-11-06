@@ -1,0 +1,291 @@
+<div id="DCRreportdetailView" data-role="view" data-title="DCR Details"
+     data-layout="afterlogin"
+     data-model="app.DCRreportdetailView.DCRreportdetailViewModel"
+     data-bind="events: { show: onShow,afterShow:afterShow }">
+    <footer data-role="footer">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-danger" data-role="button"
+               data-click="app.navigation.back">
+                <i class="fa fa-arrow-left"></i> Back
+            </a>
+        </div>
+    </footer>
+    <div id="dvDCRreportdetailView">
+        <div class="panel-body padding0">
+            <div class="dv_sdf">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <!--<div class="panel-headingsubcustom">
+                            DCR Date : <span id="dcrreportdetailview_dcr_date">
+                            </span>
+                        </div>-->
+                        <div class="panel-headingsubcustom">
+                            Master Details
+                        </div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <td>
+                                        <div id="dcrreportdetailview_dcr_date"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Period
+                                    </th>
+                                    <td>
+                                        <div id="dcrreportdetailview_period"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Activity
+                                    </th>
+                                    <td>
+                                        <div id="dcrreportdetailview_dcr_activity"></div>
+                                    </td>
+                                </tr>
+                                <tr >
+                                    <th>
+                                        Category
+                                    </th>
+                                    <td>
+                                        <div id="dcrreportdetailview_dcr_category"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Mode
+                                    </th>
+                                    <td>
+                                        <div id="dcrreportdetailview_dcr_mode"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        SFC Route
+                                    </th>
+                                    <td>
+                                        <div id="dcrreportdetailview_dcr_sfcroute"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Worked With Details
+                                    </th>
+                                    <td>
+                                        <div id="dcrreportdetailview_dcr_workwith_details"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Worked With Employees
+                                    </th>
+                                    <td>
+                                        <div id="dcrreportdetailview_dcr_workwith_employee_details"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Market Area
+                                    </th>
+                                    <td>
+                                        <div id="dcrreportdetailview_dcr_market_area"></div>
+                                    </td>
+                                </tr> 
+                            </tbody>
+                        </table> 
+                        <div class="panel-headingsubcustom">
+                            Listed Doctor Details
+                        </div>
+                        <div class="panel-body padding0">
+                            <div data-role="listview" id="listview-dcrreportdetailview-listeddoctor"></div>
+                            <script type="text/x-kendo-tmpl" id="template-dcrreportdetailview-listeddoctor">
+                                <div style="padding:0px !important;text-align:left!important" data-role="button"
+                                     data-dailyreport_msl_doctor_id="${APP_SEE_ID}"
+                                     data-click="fun_dcrreportdetailview_listeddoctor_modelopen"
+                                     class="horange">
+                                    NAME:  #: APP_SEE_NAME #   <br />
+                                    POB&nbsp;&nbsp;: #: POB #
+                                </div>
+                            </script>
+                        </div>
+
+                        <div class="panel-headingsubcustom">
+                            UnListed Doctor Details
+                        </div>
+                        <div class="panel-body padding0">
+                            <div data-role="listview" id="listview-dcrreportdetailview-unlisteddoctor"></div>
+                            <script type="text/x-kendo-tmpl" id="template-dcrreportdetailview-unlisteddoctor">
+                                <div style="padding:0px !important;text-align:left!important" class="horange" data-role="button"
+                                     data-dailyreport_msl_doctor_id="${APP_SEE_ID}"
+                                     data-click="fun_dcrreportdetailview_unlisteddoctor_modelopen">
+                                    NAME:  #: APP_SEE_NAME #   <br />
+                                    POB&nbsp;&nbsp;: #: POB #
+                                </div>
+                            </script>
+                        </div>
+
+                        <div class="panel-headingsubcustom">
+                            Listed chemist Details
+                        </div>
+                        <div class="panel-body padding0">
+                            <div data-role="listview" id="listview-dcrreportdetailview-listedchemist"></div>
+                            <script type="text/x-kendo-tmpl" id="template-dcrreportdetailview-listedchemist">
+                                <div style="padding:0px !important;text-align:left!important" class="horange" data-role="button"
+                                     data-dailyreport_msl_chemist_id="${APP_SEE_ID}"
+                                     data-click="fun_dcrreportdetailview_listedchemist_modelopen">
+                                    NAME:  #: APP_SEE_NAME #   <br />
+                                    POB&nbsp;&nbsp;: #: POB #
+                                </div>
+                            </script>
+                        </div>
+
+                        <div class="panel-headingsubcustom">
+                            UnListed chemist Details
+                        </div>
+                        <div class="panel-body padding0">
+                            <div data-role="listview" id="listview-dcrreportdetailview-unlistedchemist"></div>
+                            <script type="text/x-kendo-tmpl" id="template-dcrreportdetailview-unlistedchemist">
+                                <div style="padding:0px !important;text-align:left!important" class="horange" data-role="button"
+                                     data-dailyreport_msl_chemist_id="${APP_SEE_ID}"
+                                     data-click="fun_dcrreportdetailview_unlistedchemist_modelopen">
+                                    NAME:  #: APP_SEE_NAME #   <br />
+                                    POB&nbsp;&nbsp;: #: POB #
+                                </div>
+                            </script>
+                        </div>
+                        <div class="panel-headingsubcustom">
+                            Deviation Details
+                        </div>
+                        <div class="panel-body padding0">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th style="width:50%">
+                                            Deviation Reason
+                                        </th>
+                                        <td class="text-left ">
+                                            <div id="dcrreportdetailview_dcr_deviationreason"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:50%">
+                                            Description/Feedback
+                                        </th>
+                                        <td class="text-left ">
+                                            <div id="dcrreportdetailview_dcr_description"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div> 
+            </div> 
+        </div>
+    </div>
+    <div data-role="modalview" id="modalview-dcrreportdetailview_listeddoctor"
+         style="height:70%!important ; width:90%!important ">
+        <div data-role="header" class="panel-headingmodal">
+            <div class="row">
+                <div class="panel-title" style="padding-left:10px !important ; ">
+                    Listed Doctor  Description<a data-click="fun_dcrreportdetailview_listeddoctor_modelclose"
+                                                 data-role="button" class="pull-right"
+                                                 style="padding : 0 10px 0 0; ">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-custom">
+            <div class="panel-body" style="padding-top:0px;background-color:#fff !important">
+                <div class="row">
+                    <div class="panel-body padding0">
+                        <div id="grid_dcrreportdetailview_listeddoctor_brandremainer"></div>
+                    </div>
+                    <div class="panel-body padding0">
+                        <div id="grid_dcrreportdetailview_listeddoctor_sample"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-role="modalview" id="modalview-dcrreportdetailview_unlisteddoctor"
+         style="height:70%!important ; width:90%!important ">
+        <div data-role="header" class="panel-headingmodal">
+            <div class="row">
+                <div class="panel-title" style="padding-left:10px !important ; ">
+                    Unlisted Doctor Description <a data-click="fun_dcrreportdetailview_unlisteddoctor_modelclose"
+                                                   data-role="button" class="pull-right"
+                                                   style="padding : 0 10px 0 0; ">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-custom">
+            <div class="panel-body" style="padding-top:0px;background-color:#fff !important">
+                <div class="row">
+                    <div class="panel-body padding0">
+                        <div id="grid_dcrreportdetailview_unlisteddoctor_brandremainer"></div>
+                    </div>
+                    <div class="panel-body padding0">
+                        <div id="grid_dcrreportdetailview_unlisteddoctor_sample"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="modalview" id="modalview-dcrreportdetailview_listedchemist"
+         style="height:70%!important ; width:90%!important ">
+        <div data-role="header" class="panel-headingmodal">
+            <div class="row">
+                <div class="panel-title" style="padding-left:10px !important ; ">
+                    Listed Chemist  Description<a data-click="fun_dcrreportdetailview_listedchemist_modelclose"
+                                                  data-role="button" class="pull-right"
+                                                  style="padding : 0 10px 0 0; ">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-custom">
+            <div class="panel-body" style="padding-top:0px;background-color:#fff !important">
+                <div class="row">
+                    <div class="panel-body padding0">
+                        <div id="grid_dcrreportdetailview_listedchemist_brandremainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-role="modalview" id="modalview-dcrreportdetailview_unlistedchemist"
+         style="height:70%!important ; width:90%!important ">
+        <div data-role="header" class="panel-headingmodal">
+            <div class="row">
+                <div class="panel-title" style="padding-left:10px !important ; ">
+                    Unlisted Chemist Description <a data-click="fun_dcrreportdetailview_unlistedchemist_modelclose"
+                                                    data-role="button" class="pull-right"
+                                                    style="padding : 0 10px 0 0; ">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-custom">
+            <div class="panel-body" style="padding-top:0px;background-color:#fff !important">
+                <div class="row">
+                    <div class="panel-body padding0">
+                        <div id="grid_dcrreportdetailview_unlistedchemist_brandremainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

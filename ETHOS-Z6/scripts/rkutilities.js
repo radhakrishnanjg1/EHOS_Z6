@@ -18,7 +18,32 @@ function check_isexist(actualstring, single_value,delim) {
     }
     return true;
 }
+// pass 3 parameters - seperated values, single value and delitmier
+function check_issunday(actualstring) {
+    actualstring = actualstring.split('-')[1] + '/' + actualstring.split('-')[0] +
+        '/' + actualstring.split('-')[2]; 
+    var date = new Date(actualstring); 
+    var day = parseInt(date.getDay()); 
+    if (day != 0) {
+        return false; 
+    }
+    return true;
+}
+function todatemmddyyy(dateObject) {
+    var d = new Date(dateObject);
+    var day = d.getDate();
+    var month = d.getMonth() + 1;
+    var year = d.getFullYear();
+    if (day < 10) {
+        day = "0" + day;
+    }
+    if (month < 10) {
+        month = "0" + month;
+    }
+    var date = month + "/" +day + "/"  + year;
 
+    return date;
+}
 function todateddmmyyy(dateObject) {
     var d = new Date(dateObject);
     var day = d.getDate();

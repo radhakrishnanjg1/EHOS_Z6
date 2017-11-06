@@ -130,7 +130,12 @@ function fun_applyleave_txttochange() {
     }
 }
 
-function fun_applyleave_leavetypechange(leavetype,description) {
+function fun_applyleave_leavetypechange(leavetype) {
+    var Normsdata = JSON.parse(Enumerable.From(JSON.parse(localStorage.getItem("lmsapplyleaveview_norms_details")))
+            .Where("$.Leave_Type_ID=="+leavetype+"")
+            .ToJSON());
+    var description = Normsdata[0].Html_Description;
+    //data[0].Html_Description
     $('#dvleavenorms div').hide();
     $('#dvaddress').hide();
     $('#dvpreviousltaperiod').hide();
@@ -565,11 +570,17 @@ function fun_db_APP_Get_Employee_Leave_Details(leavetype, Employee_ID) {
             {
                 fun_applyleave_txttochange();
             }
-            var userdata = JSON.parse(localStorage.getItem("userdata"));
-            var baseleavetype = parseInt($("#ddlleavetype").val());
-            var Division_ID = parseInt(userdata.Division_ID);
-            app.utils.loading(true);
-            fun_db_APP_Get_Employee_Leave_Norms(baseleavetype, Division_ID);
+            if (localStorage.getItem("lmsapplyleaveview_norms_details_live") == null ||
+               localStorage.getItem("lmsapplyleaveview_norms_details_live") != 1) {
+                var userdata = JSON.parse(localStorage.getItem("userdata"));
+                var Division_ID = parseInt(userdata.Division_ID);
+                app.utils.loading(true);
+                fun_db_APP_Get_Employee_Leave_Norms(Division_ID);
+            }
+            if (localStorage.getItem("lmsapplyleaveview_norms_details_live") == 1) {
+                var baseleavetype = parseInt($("#ddlleavetype").val());
+                fun_applyleave_leavetypechange(baseleavetype);
+            }
         }
         else {
             app.utils.loading(false);
@@ -680,7 +691,7 @@ function fun_db_APP_Get_Employee_Sunday_Holiday_Count(Division_ID, State_ID, FRO
     });
 }
 
-function fun_db_APP_Get_Employee_Leave_Norms(Leave_Type_ID,Division_ID) {
+function fun_db_APP_Get_Employee_Leave_Norms(Division_ID) {
     var datasource = new kendo.data.DataSource({
         transport: {
             read: {
@@ -688,7 +699,7 @@ function fun_db_APP_Get_Employee_Leave_Norms(Leave_Type_ID,Division_ID) {
                 type: "POST",
                 dataType: "json",
                 data: { 
-                    "Leave_Type_ID": Leave_Type_ID,
+                    //"Leave_Type_ID": Leave_Type_ID,
                     "Division_ID": Division_ID
                 }
             }
@@ -707,7 +718,10 @@ function fun_db_APP_Get_Employee_Leave_Norms(Leave_Type_ID,Division_ID) {
     datasource.fetch(function () {
         var data = this.data();
         app.utils.loading(false);
-        fun_applyleave_leavetypechange(Leave_Type_ID, data[0].Html_Description);
+        localStorage.setItem("lmsapplyleaveview_norms_details", JSON.stringify(data));
+        localStorage.setItem("lmsapplyleaveview_norms_details_live", 1);
+        var baseleavetype = parseInt($("#ddlleavetype").val());
+        fun_applyleave_leavetypechange(baseleavetype);
     });
 }
 

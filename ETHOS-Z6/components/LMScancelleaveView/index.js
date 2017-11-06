@@ -23,6 +23,9 @@
             app.utils.loading(true);
             fun_db_APP_Get_Ethos_Leave_Cancel(Employee_ID); 
         },
+        onSave: function () {
+            fun_leavecancel_savedetails();
+        }, 
     }); 
     view.set('LMScancelleaveViewModel', LMScancelleaveViewModel);
 }());
@@ -35,7 +38,7 @@ function fun_cancelleave_canceldetails(records) {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-leavecanceldetail").append("<li>No records found!</li>");
+                $("#listview-leavecanceldetail").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-leavecanceldetail").html(),

@@ -333,6 +333,7 @@ label {
     font-size: smaller;
     text-align: left;
     background-color: #fafbf9 !important;
+    letter-spacing: 1px;
 }
 
     #left-drawer header {
@@ -343,7 +344,8 @@ label {
 
 #right-drawer {
     width: 7em;
-    font-size: smaller;
+    font-size: smaller; 
+    letter-spacing: 1px;
 }
 
     #right-drawer li {
@@ -454,6 +456,7 @@ footer .btn {
 .btn-red {
     background-color: #D97474 !important;
     border: 0px !important;
+    color: #fff !important;
 }
 
     .btn-red:hover {
@@ -1074,10 +1077,12 @@ li .fa {
     color: #424242 !important;
 } 
 
-.fa-bars, .fa-cog ,.fa-save,.fa-refresh{
+.fa-bars, .fa-cog ,.fa-save,.fa-refresh,.fa-close{
     color: #fff !important;
 }
-
+.input-group i{
+    color: #424242 !important;
+}
 * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

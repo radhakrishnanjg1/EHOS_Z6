@@ -3,17 +3,19 @@
 (function () {
 
     var view = app.authenticationView = kendo.observable({
-        onShow: function (e) {
+        onShow: function (e) { 
+            //if (localStorage.getItem("authenticationviewloginmessage_live") == null ||
+            //   localStorage.getItem("authenticationviewloginmessage_live") != 1) {
+                var Mobile_APP_Name = app.constants.appname.split(':')[1];
+                app.utils.loading(true);
+                fun_db_APP_Get_Mobile_APP_Login_Message(Mobile_APP_Name);
+            //}
             var actionvalue = e.view.params.action;
             if (actionvalue == "logout") {
-                app.utils.loading(true);
+                app.utils.loading(true); 
                 var user = JSON.parse(localStorage.getItem("userdata"));
                 fun_db_APP_User_Logout(user.Login_ID, user.Employee_ID, app.utils.deviceinformation('Logout'));
-
-            }
-            if (app.user != null) {
-                return app.navigation.navigatedashboard();
-            }
+              } 
             if (!app.utils.checkinternetconnection()) {
                 return app.navigation.navigateoffline("authenticationView");
             }
@@ -30,12 +32,8 @@
     var vm = kendo.observable({
         user: {
             displayName: '',
-            //username: '',
-            //password: '', 
-            username: 'ZE-Imphal1', //field
-            password: 'dilip',
-            //username: 'ZE-RM-GUWAHATI1', //rm
-            //password: 'himalaya', 
+            username: '',
+            password: '',   
             //email: ''
         },
         loginValidator: null,
@@ -144,4 +142,32 @@ function fun_db_APP_User_Logout(Login_ID, Employee_ID, deviceinfo) {
     });
 
 }
+ 
+function fun_db_APP_Get_Mobile_APP_Login_Message(Mobile_APP_Name) {
+    var datasource = new kendo.data.DataSource({
+        transport: {
+            read: {
+                url: "https://api.everlive.com/v1/demtnkv7hvet83u0/Invoke/SqlProcedures/APP_Get_Mobile_APP_Login_Message",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "Mobile_APP_Name": Mobile_APP_Name 
+                }
+            }
+        },
+        schema: {
+            parse: function (response) {
+                var getdata = response.Result.Data[0];
+                return getdata;
+            }
+        }
+    }); 
+    datasource.fetch(function () {
+        var data = this.data();
+        app.utils.loading(false);
+        $('#h6appdescritpion').html(data[0].Login_Message);
+        localStorage.setItem("authenticationviewloginmessage_live", 1); 
+    }); 
+}
+
 

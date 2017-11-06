@@ -45,18 +45,18 @@
                         </div>
                         <div class="col-xs-1">
                             <div class="pull-right ">
-                                <a class="btn btn-success " data-role="button"
+                                <a class="btn btn-primary" data-role="button"
                                    data-ethos_leave_master_id="${Ethos_Leave_Master_ID}"
                                    data-employee_id="${employee_id}"
                                    data-leave_type_id="${Leave_Type_ID}"
                                    data-click="fun_leave_approve">
-                                    <i class="fa fa-2x fa-check fa-fw"></i>
+                                    <i class="fa fa-2x fa-check fa-fw" style="color: white!important "></i>
                                 </a>
                                 <br />
-                                <a class="btn btn-danger" data-role="button"
+                                <a class="btn btn-red" data-role="button"
                                    data-ethos_leave_master_id="${Ethos_Leave_Master_ID}"
                                    data-click="fun_leave_reject">
-                                <i class="fa fa-2x fa-close fa-fw"></i></a>
+                                <i class="fa fa-2x fa-close fa-fw " style="color: white!important "></i></a>
                             </div>
                         </div>
                     </div>
@@ -92,9 +92,9 @@
             </div>
             <div class="panel-footer">
                 <div class="pull-right">
-                    <a class="btn btn-danger" data-role="button"
-                       data-click="fun_leave_reject_submit">
-                        <span class="fa fa-close"></span> Reject
+                    <a class="btn btn-red"  
+                        data-bind="events: {click: onSave }" >
+                        <i class="fa fa-close"></i> Reject
                     </a> 
                 </div>
                 <div class="clearfix"></div>

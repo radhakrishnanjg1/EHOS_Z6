@@ -13,8 +13,21 @@
 
         },
         afterShow: function () {
-            disableBackButton(); 
+            disableBackButton();
+            var render_dcrmaster_doctor = function (tx, rs) {
+                $('#hdn_employee_repeat_doctor_count').val(rs.rows.item(0).doctor_master_count);
+            }
+            app.select_dcr_doctor_master_count(render_dcrmaster_doctor); 
+            fun_get_dcr_doctor_msl_ids();
+
+            var render_dcrmaster_chemist = function (tx, rs) {
+                $('#hdn_employee_repeat_chemist_count').val(rs.rows.item(0).chemist_master_count);
+            }
+            app.select_dcr_chemist_master_count(render_dcrmaster_chemist); 
+            fun_get_dcr_chemist_msl_ids();
+
             get_dcr_listedmsl_doctor_values();
+
             get_dcr_listedmsl_chemist_values(); 
             get_list_dcr_selected_worked_with();
             fun_load_listedmsl_page();
@@ -37,8 +50,9 @@
                 autocomplete.close();
             }, 1);
         },
-        savelisteddcrdetails: function () {
-
+        savelisteddcrdetails: function () { 
+            var msl_repeat_details = JSON.parse(Enumerable.From(JSON.parse(localStorage.getItem("dcr_repeat_listed_msl_count_details")))
+            .ToJSON());
             var tabpanellistedmsl = $("#tabpanellistedmsl").find('li.active').attr("id");
             if (tabpanellistedmsl == "tabpanellistedmsl-doctor") {
                 //alert(tabpanellistedmsl); 
@@ -48,15 +62,40 @@
                 var ethosmastervaluesdata = JSON.parse(localStorage.getItem("dcr_doctor_details"));
                 var ethosmastervaluesrecords = JSON.parse(Enumerable.From(ethosmastervaluesdata)
                .Where("$.Doctor_Name=='" + txtlisteddoctor + "'")
-               .ToJSON());
+               .ToJSON());  
                 if (ethosmastervaluesrecords.length == 0) {
                     app.notify.error("Select valid doctor in list!");
                     return false;
-                } 
-                else if (txtlisteddoctorpob < 0) {
+                }
+                else
+                {
+                    var doctor_msl_id = parseInt(ethosmastervaluesrecords[0].Doctor_MSL_ID);
+                     var doctor_msl_id_records = JSON.parse(Enumerable.From(JSON.parse($("#hdn_doctor_msl_ids").val()))
+                            .Where("$.doctor_msl_id==" + doctor_msl_id + "")
+                            .ToJSON());
+                     if (doctor_msl_id_records.length > 0) {
+                         app.notify.error("Doctor name already exist!");
+                         return false;
+                     }
+                     else if (msl_repeat_details[0].Doctor_Output_ID == 1) {
+                        var dcr_repeat_listed_msl_doctor_details = JSON.parse(Enumerable.From(JSON.parse(localStorage.getItem("dcr_repeat_listed_msl_doctor_details")))
+                       .Where("$.Doctor_MSL_ID=='" + doctor_msl_id + "'")
+                       .ToJSON());
+                        if (dcr_repeat_listed_msl_doctor_details.length > 0)
+                        {
+                            var Employee_Repeat_Doctor_Count = parseInt($("#hdn_employee_repeat_doctor_count").val());
+                            var Repeat_Doctor_Count = parseInt(msl_repeat_details[0].Repeat_Doctor_Count);
+                            if (Employee_Repeat_Doctor_Count > Repeat_Doctor_Count) {
+                                app.notify.error("Repeat msl count is exceed for this month");
+                                return false;
+                            }
+                        }
+                    } 
+                }
+                if (txtlisteddoctorpob < 0) {
                     app.notify.error("POB should not be less than zero!");
                     return false;
-                } 
+                }
                 else {
                     // check higher quantity
                     var checkflag_balancequantity_gift = true;
@@ -108,7 +147,20 @@
                         return false;
                     }
                     //save dcr listed details
+                    var doctor_msl_id = parseInt(ethosmastervaluesrecords[0].Doctor_MSL_ID);
+                    if (msl_repeat_details[0].Doctor_Output_ID == 1) {
+                        var dcr_repeat_listed_msl_doctor_details = JSON.parse(Enumerable.From(JSON.parse(localStorage.getItem("dcr_repeat_listed_msl_doctor_details")))
+                       .Where("$.Doctor_MSL_ID=='" + doctor_msl_id + "'")
+                       .ToJSON());
+                        if (dcr_repeat_listed_msl_doctor_details.length > 0) { 
+                            var abc = parseInt($("#hdn_employee_repeat_doctor_count").val());
+                            abc = abc + 1;
+                            $("#hdn_employee_repeat_doctor_count").val(abc);
+                        }
+                    }
                     fun_save_dcr_listedmsl_doctor();
+                    fun_get_dcr_doctor_msl_ids();
+                    //get_filter_except_listed_doctor_msl_data();
                     fun_dcr_listedmsl_doctor_clearcontrols();
                     app.notify.success('Doctor details saved successfully.');
                     $("#collapse-dcr-listeddoctor-brandremainer").
@@ -134,6 +186,31 @@
                     app.notify.error("Select valid chemist in list!");
                     return false;
                 }
+                else
+                {
+                    var chemist_msl_id = parseInt(ethosmastervaluesrecords[0].Chemist_MSL_ID);
+                    var chemist_msl_id_records = JSON.parse(Enumerable.From(JSON.parse($("#hdn_chemist_msl_ids").val()))
+                           .Where("$.chemist_msl_id==" + chemist_msl_id + "")
+                           .ToJSON());
+                    if (chemist_msl_id_records.length > 0) {
+                        app.notify.error("Chemist name already exist!");
+                        return false;
+                    }
+                    else if (msl_repeat_details[0].chemist_Output_ID == 1) {
+                        var dcr_repeat_listed_msl_chemist_details = JSON.parse(Enumerable.From(JSON.parse(localStorage.getItem("dcr_repeat_listed_msl_chemist_details")))
+                       .Where("$.Chemist_MSL_ID=='" + chemist_msl_id + "'")
+                       .ToJSON());
+                        if (dcr_repeat_listed_msl_chemist_details.length > 0)
+                        {
+                            var Employee_Repeat_chemist_Count = parseInt($("#hdn_employee_repeat_chemist_count").val());
+                            var Repeat_Chemist_Count = parseInt(msl_repeat_details[0].Repeat_chemist_Count);
+                            if (Employee_Repeat_chemist_Count > Repeat_Chemist_Count) {
+                                app.notify.error("Repeat msl count is exceed for this month");
+                                return false;
+                            }
+                        }
+                    } 
+                }
                 //else if (txtlistedchemistpob == "") {
                     //    app.notify.error("Select valid POB!");
                 //    return false;
@@ -141,8 +218,8 @@
                 //else if (isNaN(txtlistedchemistpob)) {
                     //    app.notify.error("Select valid POB!");
                 //    return false;
-                //}
-                else if (txtlistedchemistpob < 0) {
+                //}  
+                if (txtlistedchemistpob < 0) {
                     app.notify.error("POB should not be less than zero!");
                     return false;
                 } 
@@ -172,8 +249,20 @@
                         app.notify.error("Quantity must be less than or equal to balance quantity for brand reminder!");
                         return false;
                     }
-                    //save dcr listed details
+                    //save dcr listed details 
+                    var chemist_msl_id = parseInt(ethosmastervaluesrecords[0].Chemist_MSL_ID);
+                    if (msl_repeat_details[0].Chemist_Output_ID == 1) {
+                        var dcr_repeat_listed_msl_chemist_details = JSON.parse(Enumerable.From(JSON.parse(localStorage.getItem("dcr_repeat_listed_msl_chemist_details")))
+                       .Where("$.Chemist_MSL_ID=='" + chemist_msl_id + "'")
+                       .ToJSON());
+                        if (dcr_repeat_listed_msl_chemist_details.length > 0) {
+                            var abc = parseInt($("#hdn_employee_repeat_chemist_count").val());
+                            abc = abc + 1;
+                            $("#hdn_employee_repeat_chemist_count").val(abc);
+                        }
+                    }
                     fun_save_dcr_listedmsl_chemist();
+                    fun_get_dcr_chemist_msl_ids();
                     fun_dcr_listedmsl_chemist_clearcontrols();
                     app.notify.success('Chemist details saved successfully.');
                     $("#collapse-dcr-chemist-brandremainer").
@@ -194,6 +283,28 @@
     view.set('DCRlistedMSLViewModel', DCRlistedMSLViewModel);
 }());
 
+function fun_get_dcr_doctor_msl_ids() {
+    var renderstr = function (tx, rs) {
+        var valuedata = [];
+        for (var i = 0; i < rs.rows.length; i++) {
+            valuedata.push(rs.rows.item(i));
+        }
+        $("#hdn_doctor_msl_ids").val(JSON.stringify(valuedata));
+    }
+    app.select_dcr_doctor_master_doctor_msl_ids(renderstr);
+}
+
+function fun_get_dcr_chemist_msl_ids() {
+    var renderstr = function (tx, rs) {
+        var valuedata = [];
+        for (var i = 0; i < rs.rows.length; i++) {
+            valuedata.push(rs.rows.item(i));
+        }
+        $("#hdn_chemist_msl_ids").val(JSON.stringify(valuedata));
+    }
+    app.select_dcr_chemist_master_chemist_msl_ids(renderstr);
+}
+ 
 function openmodalview_dcr_selected_workwith() {
     $("#modalview-dcr-selected-workwith").kendoMobileModalView("open");
 }
@@ -263,8 +374,7 @@ function fun_load_dcr_listedmsl_doctors() {
     });
     var ethosmastervaluesdata = JSON.parse(localStorage.getItem("dcr_doctor_details"));
     var ethosmastervaluesrecords = JSON.parse(Enumerable.From(ethosmastervaluesdata)
-   .ToJSON());
-
+   .ToJSON()); 
     $("#txtlisteddoctor").kendoAutoComplete({
         dataSource: ethosmastervaluesrecords,
         dataTextField: "Doctor_Name",
@@ -396,6 +506,7 @@ function fun_save_dcr_listedmsl_doctor() {
 }
 
 function fun_dcr_listedmsl_doctor_clearcontrols() {
+    $("#hdn_doctor_msl_id_count").val('0');
     $('#txtlisteddoctor').val('');
     $('#txtlisteddoctorpob').val('');
     //$("#grid_listeddoctor_brandremainer").data("kendoGrid").dataSource.data([]);
@@ -771,11 +882,22 @@ function fun_db_APP_Get_Z6_DCR_Listed_MSL_Information(Own_Sub_Territory_ID, Empl
 
         localStorage.setItem("dcr_chemist_details", JSON.stringify(data[1])); // chemist details
 
+        localStorage.setItem("dcr_repeat_listed_msl_count_details", JSON.stringify(data[2])); // repeat list msl count details
+         
+        var sqllite_employee_repeat_doctor_count=parseInt($('#hdn_employee_repeat_doctor_count').val());
+        var sqldb_employee_repeat_doctor_count = parseInt(data[2][0].Employee_Repeat_Doctor_Count);
+        var total_doctor = sqllite_employee_repeat_doctor_count + sqldb_employee_repeat_doctor_count;
+        $('#hdn_employee_repeat_doctor_count').val(total_doctor);
+         
+        var sqllite_employee_repeat_chemist_count = parseInt($('#hdn_employee_repeat_chemist_count').val());
+        var sqldb_employee_repeat_chemist_count = parseInt(data[2][0].Employee_Repeat_Chemist_Count);
+        var total_chemist = sqllite_employee_repeat_chemist_count + sqldb_employee_repeat_chemist_count;
 
-        //localStorage.setItem("dcrs_listedmsl_details_live", 1);
-        // localStorage.setItem("dcrchiefdetails", JSON.stringify(data[2])); // chief details
+        $('#hdn_employee_repeat_chemist_count').val(total_chemist);
 
-        //localStorage.setItem("dcr_employee_gift_sample_details", JSON.stringify(data[2])); // product details
+        localStorage.setItem("dcr_repeat_listed_msl_doctor_details", JSON.stringify(data[3])); // repeat list msl doctor details
+
+        localStorage.setItem("dcr_repeat_listed_msl_chemist_details", JSON.stringify(data[4])); // repeat list msl chemist details
 
         fun_load_dcr_listedmsl_pageinit();
         fun_load_dcr_listedmsl_doctor_pageload();

@@ -45,7 +45,7 @@ function init_LastActivitiesView() {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logics
-                $("#listview-lastactivities").append("<li>No records found!</li>");
+                $("#listview-lastactivities").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-lastactivities").html()

@@ -8,10 +8,10 @@
     // using sql db for storing offline information 
     app.openDb = function () {
         if (window.sqlitePlugin !== undefined) {
-            app.db = window.sqlitePlugin.openDatabase("Ethos_Z6_27");
+            app.db = window.sqlitePlugin.openDatabase("Ethos_Z6_28");
         } else {
             // For debugging in simulator fallback to native SQL Lite
-            app.db = window.openDatabase("Ethos_Z6_27", "1.0", "Cordova Demo", 200000);
+            app.db = window.openDatabase("Ethos_Z6_28", "1.0", "Cordova Demo", 200000);
             //app.db = window.sqlitePlugin.openDatabase("EthosINS");
         }
     };
@@ -517,12 +517,21 @@
             tx.executeSql("SELECT dcr_doctor_master_id,dcr_master_id,doctor_id,doctor_msl_id, doctor_name, doctor_number,pob, latitude, longitude, added_on FROM dcr_doctor_master ", [], fn, app.onError);
         });
     };
-
+    app.select_dcr_doctor_master_doctor_msl_ids = function (fn) {
+        app.db.transaction(function (tx) {
+            tx.executeSql("SELECT doctor_msl_id  FROM dcr_doctor_master ", [], fn, app.onError);
+        });
+    };
+    app.select_dcr_doctor_master_count = function (fn) {
+        app.db.transaction(function (tx) {
+            tx.executeSql("SELECT count(doctor_msl_id) as doctor_master_count FROM dcr_doctor_master ", [], fn, app.onError);
+        });
+    };
     app.select_dcr_doctor_master_by_dcr_master_id = function (fn, dcr_master_id) {
         app.db.transaction(function (tx) {
             tx.executeSql("SELECT dcr_doctor_master_id,dcr_master_id,doctor_id,doctor_msl_id, doctor_name, doctor_number,pob, latitude, longitude  FROM dcr_doctor_master where dcr_master_id=?  ", [dcr_master_id], fn, app.onError);
         });
-    };
+    }; 
     app.delete_dcr_doctor_master = function () {
         app.db.transaction(function (tx) {
             tx.executeSql("delete from dcr_doctor_master ", [],
@@ -914,6 +923,16 @@
     app.select_dcr_chemist_master = function (fn) {
         app.db.transaction(function (tx) {
             tx.executeSql("SELECT * FROM dcr_chemist_master ", [], fn, app.onError);
+        });
+    };
+    app.select_dcr_chemist_master_chemist_msl_ids = function (fn) {
+        app.db.transaction(function (tx) {
+            tx.executeSql("SELECT chemist_msl_id  FROM dcr_chemist_master ", [], fn, app.onError);
+        });
+    };
+    app.select_dcr_chemist_master_count = function (fn) {
+        app.db.transaction(function (tx) {
+            tx.executeSql("SELECT count(chemist_msl_id) as chemist_master_count FROM dcr_chemist_master ", [], fn, app.onError);
         });
     };
     app.select_dcr_chemist_master_by_dcr_master_id = function (fn, dcr_master_id) {

@@ -34,7 +34,8 @@
             //}
         },
         saveunlistedscrdetails: function () {
-
+            var msl_repeat_details = JSON.parse(Enumerable.From(JSON.parse(localStorage.getItem("dcr_unlisted_msl_repeat_details")))
+            .ToJSON());
             var tabpanelunlistedmsl = $("#tabpanelunlistedmsl").find('li.active').attr("id");
             if (tabpanelunlistedmsl == "tabpanelunlistedmsl-doctor") {
                 //alert(tabpanelunlistedmsl);
@@ -50,6 +51,11 @@
                 var Own_Sub_Territory_ID = user.Sub_Territory_ID;
                 if (txtunlisteddoctorname == "") {
                     app.notify.error("Enter doctor name!");
+                    return false;
+                }
+                //Unlisted_Doctor_Output_ID	Unlisted_Doctor_Output_Message	Unlisted_Chemist_Output_ID	Unlisted_Chemist_Output_Message
+                else if (msl_repeat_details[0].Unlisted_Doctor_Output_ID == 0) {
+                    app.notify.error(msl_repeat_details[0].Unlisted_Doctor_Output_Message);
                     return false;
                 }
                 else if (txtunlisteddoctorregno == "") {
@@ -144,6 +150,11 @@
                 var Own_Sub_Territory_ID = user.Sub_Territory_ID;
                 if (txtunlistedchemistname == "") {
                     app.notify.error("Enter chemisy name!");
+                    return false;
+                }
+                //Unlisted_Doctor_Output_ID	Unlisted_Doctor_Output_Message	Unlisted_Chemist_Output_ID	Unlisted_Chemist_Output_Message
+                else if (msl_repeat_details[0].Unlisted_Chemist_Output_ID == 0) {
+                    app.notify.error(msl_repeat_details[0].Unlisted_Chemist_Output_Message);
                     return false;
                 }
                 else if (txtunlistedchemistcontactperson == "") {
@@ -880,6 +891,8 @@ function fun_db_APP_Get_Z6_DCR_UnListed_MSL_Information(Sub_Territory_ID, Employ
         localStorage.setItem("dcrchiefdetails", JSON.stringify(data[2])); // chief details
 
         localStorage.setItem("dcr_product_promot_details", JSON.stringify(data[3])); // product promote details
+
+        localStorage.setItem("dcr_unlisted_msl_repeat_details", JSON.stringify(data[4])); // repeat unlisted msl details
 
         //localStorage.setItem("dcrs_unlistedmsl_details_live", 1);
         fun_load_dcr_unlistedmsl_doctor_pageinit();

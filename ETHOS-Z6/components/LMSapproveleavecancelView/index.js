@@ -35,7 +35,7 @@ function fun_load_leave_cancel_details(records) {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-leavecancelapproval").append("<li>No records found!</li>");
+                $("#listview-leavecancelapproval").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-leavecancelapproval").html(),

@@ -79,7 +79,7 @@ function load_MyTeamView(records) {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-teammembersdetails").append("<li>No records found!</li>");
+                $("#listview-teammembersdetails").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-teammembersdetails").html(),

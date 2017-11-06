@@ -51,14 +51,34 @@
         },
         //savedcrmsterdetails
         savedcrmsterdetails: function () {
+            //localStorage.setItem("holidaydetails"
+            var user = JSON.parse(localStorage.getItem("userdata"));
+            var Division_ID = user.Division_ID;
+            var State_ID = user.State_ID; 
+            var dcrdate =  $("#txtdcrdate").val();
+            var holidaydetailsrecords = JSON.parse(Enumerable.From(JSON.parse(localStorage.getItem("holidaydetails")))
+            .Where("$.Division_ID==" + Division_ID + "   && $.State_ID==" + State_ID + "" + " && $.HolidayDate=='" + dcrdate + "'")
+            .ToJSON());  
             var ddlactivityperiod = parseInt($("#ddlactivityperiod").val());
             var ddlactivity = parseInt($("#ddlactivity").val());
             if (ddlactivityperiod == "" || isNaN(ddlactivityperiod)) {
                 app.notify.error("Select period!");
                 return false;
             }
-            if (ddlactivity == "" || isNaN(ddlactivity)) {
+            else if (ddlactivity == "" || isNaN(ddlactivity)) {
                 app.notify.error("Select activity!");
+                return false;
+            }
+            else if ((ddlactivity == 237 || ddlactivity == 238 || ddlactivity == 410) && (ddlactivityperiod != 227)) {
+                app.notify.error("Activity period should be fullday for the sunday, holiday and compensatory holiday!");
+                    return false; 
+            }
+            else if ((ddlactivity == 237) && !check_issunday($("#txtdcrdate").val())) { 
+                    app.notify.error("Report date is not sunday!");
+                    return false; 
+            }
+            else if ((ddlactivity == 238) && !holidaydetailsrecords.length>0) {
+                app.notify.error("Report date is not holiday!");
                 return false;
             }
             else {
@@ -96,7 +116,7 @@
                             app.notify.error("You can't select alone and some one at same time!");
                             return false;
                         }
-                        fun_save_dcrmaster_fieldstaff();  
+                        fun_save_dcrmaster_fieldstaff();
                         app.navigation.navigateDCRlistedMSLView();
                     }
                 }
@@ -613,6 +633,10 @@ function fun_db_APP_Get_Z6_DCR_Master_Information(Employee_ID, Sub_Territory_ID,
         localStorage.setItem("dcrchiefdetails", JSON.stringify(data[3])); // chief details 
 
         load_promo_balance_details(data[4]);// promo balance
+
+        // taking holiday page store proc also
+        localStorage.setItem("holidaydetails", JSON.stringify(data[5])); // holiday  details 
+        localStorage.setItem("holidaydetails_live", 1);
 
         fun_load_dcr_master_pageload();
     });

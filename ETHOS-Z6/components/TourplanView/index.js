@@ -121,7 +121,7 @@ function init_TourplanView() {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logics
-                $("#listview-tpdetails").append("<li>No records found!</li>");
+                $("#listview-tpdetails").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-tpdetails").html()

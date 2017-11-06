@@ -392,7 +392,7 @@ function fun_load_dcr_master_ww(hdndcr_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcrmasterww").append("<li>No records found!</li>");
+                    $("#listview-dcrmasterww").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcrmasterww").html(),
@@ -413,7 +413,7 @@ function fun_load_dcr_master_mj(hdndcr_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcrmastermj").append("<li>No records found!</li>");
+                    $("#listview-dcrmastermj").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcrmastermj").html(),
@@ -437,7 +437,7 @@ function fun_load_dcr_listeddoctor(hdndcr_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr-listeddoctor").append("<li>No records found!</li>");
+                    $("#listview-dcr-listeddoctor").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr-listeddoctor").html(),
@@ -468,7 +468,7 @@ function fun_load_dcr_listeddoctor_ww(dcr_doctor_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr_listeddoctor_ww").append("<li>No records found!</li>");
+                    $("#listview-dcr_listeddoctor_ww").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr_listeddoctor_ww").html(),
@@ -559,7 +559,7 @@ function fun_load_dcr_unlisteddoctor(hdndcr_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr-unlisteddoctor").append("<li>No records found!</li>");
+                    $("#listview-dcr-unlisteddoctor").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr-unlisteddoctor").html(),
@@ -590,7 +590,7 @@ function fun_load_dcr_unlisteddoctor_ww(dcr_doctor_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr_unlisteddoctor_ww").append("<li>No records found!</li>");
+                    $("#listview-dcr_unlisteddoctor_ww").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr_unlisteddoctor_ww").html(),
@@ -611,7 +611,7 @@ function fun_load_dcr_unlisteddoctor_pp(dcr_doctor_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr_unlisteddoctor_pp").append("<li>No records found!</li>");
+                    $("#listview-dcr_unlisteddoctor_pp").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr_unlisteddoctor_pp").html(),
@@ -704,7 +704,7 @@ function fun_load_dcr_listedchemist(hdndcr_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr-listedchemist").append("<li>No records found!</li>");
+                    $("#listview-dcr-listedchemist").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr-listedchemist").html(),
@@ -733,7 +733,7 @@ function fun_load_dcr_listedchemist_ww(dcr_chemist_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr_listedchemist_ww").append("<li>No records found!</li>");
+                    $("#listview-dcr_listedchemist_ww").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr_listedchemist_ww").html(),
@@ -791,7 +791,7 @@ function fun_load_dcr_unlistedchemist(hdndcr_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr-unlistedchemist").append("<li>No records found!</li>");
+                    $("#listview-dcr-unlistedchemist").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr-unlistedchemist").html(),
@@ -821,7 +821,7 @@ function fun_load_dcr_unlistedchemist_ww(dcr_chemist_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr_unlistedchemist_ww").append("<li>No records found!</li>");
+                    $("#listview-dcr_unlistedchemist_ww").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr_unlistedchemist_ww").html(),
@@ -842,7 +842,7 @@ function fun_load_dcr_unlistedchemist_pp(dcr_chemist_master_id) {
             dataBound: function (e) {
                 if (this.dataSource.data().length == 0) {
                     //custom logic
-                    $("#listview-dcr_unlistedchemist_pp").append("<li>No records found!</li>");
+                    $("#listview-dcr_unlistedchemist_pp").append("<li style='color:#ff6600!important'>No records found!</li>");
                 }
             },
             template: $("#template-dcr_unlistedchemist_pp").html(),

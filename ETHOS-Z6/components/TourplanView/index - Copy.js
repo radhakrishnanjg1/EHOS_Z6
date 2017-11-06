@@ -125,7 +125,7 @@ function load_tourplan_details_today(today) {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-tourplanldetailstoday").append("<li>No records found!</li>");
+                $("#listview-tourplanldetailstoday").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-tourplanldetailstoday").html(),
@@ -149,7 +149,7 @@ function load_tourplan_details_month(month) {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logic
-                $("#listview-tourplanldetailsmonth").append("<li>No records found!</li>");
+                $("#listview-tourplanldetailsmonth").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-tourplanldetailsmonth").html(),

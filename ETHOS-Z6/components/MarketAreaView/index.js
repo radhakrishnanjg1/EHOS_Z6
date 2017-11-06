@@ -12,10 +12,7 @@
             $('#dvmarketareaview_txtauocmpemployeelist').val('');
             $("#dvmarketareaview_txtauocmpemployeelist").kendoAutoComplete({
                 clearButton: false
-            });
-            $('#dvmarketareaview_teamname').html('Team');
-
-
+            }); 
         }, 
         afterShow: function () {
             var userdata = JSON.parse(localStorage.getItem("userdata"));
@@ -121,7 +118,7 @@ function init_marketareaview() {
         dataBound: function (e) {
             if (this.dataSource.data().length == 0) {
                 //custom logics
-                $("#listview-marketareadetails").append("<li>No records found!</li>");
+                $("#listview-marketareadetails").append("<li style='color:#ff6600!important'>No records found!</li>");
             }
         },
         template: $("#template-marketareadetails").html()

@@ -38,7 +38,8 @@ function fun_db_APP_Get_Field_Permited_Holiday_Master(Employee_ID) {
 
     datasource.fetch(function () {
         var data = this.data(); 
-        app.utils.loading(false); 
+        app.utils.loading(false);
+        // taking dcr store proc also
         localStorage.setItem("holidaydetails", JSON.stringify(data)); // holiday  details 
         localStorage.setItem("holidaydetails_live", 1);
         loaddropdownlist();
